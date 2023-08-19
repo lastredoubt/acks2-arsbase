@@ -1,0 +1,65 @@
+{{!-- <fieldset class="border-top">
+    <legend>{{ localize "ARS.weapons" }}</legend> --}}
+<div class="general-header">{{ localize "ARS.weapons" }}</div>
+<div class="category">
+    <div class="item-list">
+
+        <div class="general-subheader flexrow">
+            <div style="flex-grow:2;" class="flexrow">
+                <div style="flex: 0 0 24px;height:14px;margin-right: 5px;" class="item-image"></div>
+                <div class="item-name">Name</div>
+            </div>
+            <div class="item-proficient short-field" data-tooltip="Proficiency with weapon">{{#if isPC}}PR{{/if}}
+            </div>
+            <div class="item-speed short-field" data-tooltip="Weapon speed">SP</div>
+            <div class="item-damage" data-tooltip="Damage (normal/large)">DMG</div>
+            <div class="item-type" data-tooltip="Damage type">Type</div>
+            <div class="item-controls "></div>
+        </div>
+
+        {{#each actor.weapons as |item id|}}
+            {{#if item.notAmmo}}
+                <li class="item flexrow weapon-combat reveal-hidden" data-control-type="weapon" data-id="{{item.id}}"
+                    data-type="{{item.type}}">
+                    <div class="item-name rollable flexrow chatCard-roll" data-id="{{item.id}}">
+                        {{#if (and @root.actor.needsInitiative @root.game.ars.config.settings.initiativeUseSpeed)}}
+                            <div class="initiative-roll-speed" data-tooltip="Roll initiative" role="button"
+                                aria-label="Roll initiative">
+                                <i class="fas fa-dice"></i>
+                            </div>
+                        {{/if}}
+                        <div class="item-image" tabindex="0" role="button" aria-label="{{item.name}}"
+                            style="background-image: url('{{item.img}}')"></div>
+                        <div class="text-trunc">{{item.name}}</div>
+                    </div>
+                    <div class="item-proficient short-field  text-trunc">
+                        {{#if @root.isPC}}{{#if item.system.proficient}}<i class="fas fa-thumbs-up"
+                                    data-tooltip="+++ Proficient with weapon">
+                            {{else}}<i class="click-prof-missing fas fa-exclamation-triangle"
+                                    data-tooltip="*** NOT proficient with weapon. CLICK if you wish to add proficiency">{{/if}}</i>{{/if}}
+                    </div>
+                    <div class="item-speed short-field">{{item.system.attack.speed}}</div>
+                    <div class="item-damage text-trunc">
+                        {{item.system.damage.normal~}}
+                        {{~#if item.system.damage.large~}}
+                            /{{item.system.damage.large~}}
+                            {{~/if~}}
+                    </div>
+                    <div class="item-type text-trunc">
+                        {{item.system.damage.type~}}
+                        {{~#each item.system.damage.otherdmg as |dmg|}}
+                            /{{dmg.type~}}
+                            {{~/each~}}
+                    </div>
+                    <div class="item-controls ">
+                        <a class="item-control item-edit hidden" data-tooltip="Edit Item"><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete hidden" data-tooltip="Delete Item"><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
+{{!-- </fieldset> --}}

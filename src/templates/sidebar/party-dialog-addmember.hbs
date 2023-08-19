@@ -1,0 +1,22 @@
+<form>
+    <div class="flexrow">
+        <h3>{{text}}</h3>
+    </div>
+    <div class="flexrow">
+        <h3>{{title}}</h3>
+        <div>
+        {{#if characterList.length }}
+        <select class="member-add-select" name="memberAddSelect">
+            {{#select memberAddSelect}}
+                {{#each characterList as |member idx|}}
+                    <option value="{{member.id}}">{{member.name}}</option>
+                {{/each}}
+            {{/select}}
+            </optgroup>
+        </select>
+        {{else}}
+            <label>{{localize "ARS.party.nonewmembers"}}</label>
+        {{/if}}
+        </div>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+{{!-- {{log "actions-block-list-mini.hbs actor" actor}}
+{{log "actions-block-list-mini.hbs system" system}}
+{{log "actions-block-list-mini.hbs actionList" actionList}}
+{{log "actions-block-list-mini.hbs this" this}} --}}
+
+{{!-- buttons for actions on the actor --}}
+{{#if actor.system.actions.length}}
+    <div class="mini-actions-list card-buttons hud-actions">
+        <div class="grouping-border">
+            <legend>{{localize "ARS.actions.actionsTitle"}}</legend>
+            <div class="action-block">
+                <div class="actions actions-mini item-titles">
+                    {{> "systems/ars/templates/apps/parts/actions-block-mini.hbs" actor=actor actions=system.actions actionList=system.actionList showActionHeader=true }}
+                    {{!-- {{> "systems/ars/templates/actor/parts/actions-block-inventory-mini.hbs"}} --}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+{{!-- buttons for actions on items --}}
+{{#if actor.system.itemActionCount}}
+    <div class="mini-actions-list card-buttons hud-actions">
+        <div class="grouping-border">
+            <legend>{{localize "TYPES.Item.item"}} {{localize "ARS.actions.actionsTitle"}}</legend>
+            <div class="action-block">
+                <div class="actions actions-mini item-titles">
+                    {{> "systems/ars/templates/actor/parts/actions-block-inventory-mini.hbs"}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

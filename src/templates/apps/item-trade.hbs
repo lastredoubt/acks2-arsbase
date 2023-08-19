@@ -1,0 +1,133 @@
+{{!-- {{log "item-trade.hbs" this}} --}}
+{{!-- <div style="height: 100%;" class="item-trade-sheet"> --}}
+
+{{log "item-trade.hbs this" this}}
+
+    {{!-- <fieldset style="height:100%;" class="trade-box"> --}}
+    <div style="height:100%;" class="trade-box"></fieldset>
+       
+      <div class="trade-window flexrow">
+
+        <!-- Panel 1: Character 1's inventory items -->
+        <div class="trade-panel">
+
+          {{#if trader.currency}}
+            <h3>Currency</h3>
+            <div id="trader-currency" class="flexrow">
+              {{#each trader.currency as |value coin|}}
+                <div class="flex currency">
+                  <div class="flexrow">
+                    <div data-type="{{coin}}" class="trade-icon trader-offer-coin" data-tooltip="{{localize (concat "ARS.currency." coin) }}"><img src="{{lookup ../config.icons.general.currency coin}}" /></div>
+                    {{!-- <div>{{localize (concat "ARS.currency.abbr." coin)}}</div> --}}
+                  </div>
+                  <div>{{value}}</div>
+                </div>
+              {{/each}}
+            </div>
+          {{/if}}
+
+          <h3>{{trader.actor.name}} Inventory</h3>
+          <div id="trader-inventory" class="list">
+            <!-- Add list items here -->
+            {{#each trader.inventory as |item index| }}
+            <div class="flexrow">
+              <a class="trader-inventory-item" data-uuid="{{item.uuid}}">{{item.name}}</a>
+              <a class="trader-inventory-item-quantity" data-tooltip="Quantity">{{item.system.quantity}}</a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+
+        <!-- Panel 2: Items offered for trade by Character 1 -->
+        <div class="trade-panel">
+          <div class="flex">
+            <div>
+              <h3>{{trader.actor.name}} Trade Offer</h3>
+              <div id="trader-trade" class="list">
+                <!-- Add list items here -->
+                {{#each trader.offer as |item index| }}
+                  <div class="trade-item flexrow">
+                    <a class="trader-trade-item" data-uuid="{{item.uuid}}">{{item.name}}</a>
+                    <a class="trader-trade-item-quantity" data-tooltip="Quantity offered in trade">{{item.quantity}}</a>
+                  </div>
+                {{/each}}
+              </div>
+
+              {{#if trader.currencyOffer}}
+                <h3>Currency</h3>
+                <div id="trader-currencyOffer" class="flexrow">
+
+                  {{#each trader.currencyOffer as |value coin|}}
+                    <div class="flex currency">
+                      <div class="flexrow">
+                        <div data-type="{{coin}}" class="trade-icon trader-offer-coin" data-tooltip="{{localize (concat "ARS.currency." coin) }}"><img src="{{lookup ../config.icons.general.currency coin}}" /></div>
+                        {{!-- <div>{{localize (concat "ARS.currency.abbr." coin)}}</div> --}}
+                      </div>
+                      <div>{{value}}</div>
+                    </div>
+                  {{/each}}
+                </div>
+              {{/if}}
+
+            </div>
+
+            <div style="flex-basis:50px;flex-grow: 0;">
+              <hr />
+              <h3 align="center">Barter Status</h3>
+              <div style="text-align:center;">
+              <b style="color:{{#if customer.accepted}}green{{else}}red{{/if}}">{{#if customer.accepted}}Trade Accepted!{{else}}Considering Trade...{{/if}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel 4: Items offered for trade by Character 2 -->
+        <div class="trade-panel">
+          <div class="flex">
+            <div>
+              <h3>{{customer.actor.name}} Trade Offer</h3>
+              <div id="customer-trade" class="list">
+                <!-- Add list items here -->
+                {{#each customer.offer as |item index| }}
+                <div class="trade-item flexrow">
+                  <a class="customer-trade-item" data-uuid="{{item.uuid}}">{{item.name}}</a>
+                  <a class="customer-trade-item-quantity" data-tooltip="Quantity up as offer">{{item.quantity}}</a>
+                </div>
+                {{/each}}
+
+              </div>
+
+              {{#if customer.currencyOffer}}
+                <h3>Currency</h3>
+                <div id="customer-currencyOffer" class="flexrow">
+                  {{#each customer.currencyOffer as |value coin|}}
+                    <div class="flex currency">
+                      <div class="flexrow">
+                        <div data-type="{{coin}}" class="trade-icon" data-tooltip="{{localize (concat "ARS.currency." coin) }}"><img src="{{lookup ../config.icons.general.currency coin}}" /></div>
+                        {{!-- <div>{{localize (concat "ARS.currency.abbr." coin)}}</div> --}}
+                      </div>
+                      <div>{{value}}</div>
+                    </div>
+                  {{/each}}
+                </div>
+              {{/if}}
+
+            </div>
+          
+            <div style="flex-basis:50px;flex-grow: 0;margin-top: 5px;">
+              <button class="trader-accept-button">{{#if trader.accepted}}Accepted{{else}}Accept Trade?{{/if}}</button>
+              <button class="trade-cancel-button">Cancel Trade</button>        
+            </div>
+
+          </div>          
+
+        </div>
+
+        
+      </div>
+
+
+    </fieldset>
+
+{{!-- </div> --}}

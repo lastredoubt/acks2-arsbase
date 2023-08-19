@@ -1,0 +1,18 @@
+<form>
+  {{#if flavor}}
+    <h3>{{{flavor}}}</h3>
+  {{/if}}
+  <div class="flexrow">
+    <b>{{question}}</b>
+    <div>
+      <input name="modifier" type="text" value="{{#if defmod}}{{defmod}}{{else}}{{/if}}" data-dtype="Number" />
+    </div>
+  </div>
+  <div class="flexrow">
+    <b>Casting Spell</b>
+    <div>
+      <input name="casting" type="checkbox" {{ checked casting }} />
+    </div>
+  </div>
+  {{> "systems/ars/templates/dialogs/parts/dialog-rollMode-selection.hbs" }}
+</form>

@@ -1,0 +1,198 @@
+.memorization-slot {
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: rgba(253, 253, 253, 0.692);
+  border: 1px groove;
+  border-radius: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 2px;
+  margin-left: 2px;
+
+  .memorization-slot-empty {
+    background-color: rgba(43, 255, 0, 0.25);
+  }
+
+  // .long-spell-field, .short-spell-field {
+  //   border-right: 1px groove black;
+  // }
+  .short-spell-field {
+    flex-basis: 40px;
+    flex-grow: 0;
+    text-align: center;
+  }
+  .long-spell-field {
+    flex-grow: 2;
+    text-align: center;
+    margin-right: 3px;
+  }
+}
+
+.memorization-used {
+  opacity: 0.5;
+}
+
+.memorization-titles {
+  align-content: center;
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.memorization-controls {
+  flex: 0 0 60px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+  .biography {
+    border: 1px groove;
+    border-radius: 5px;
+    // max-width: calc(100% - 180px);
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .details-header {
+    .resource-save {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;    
+    }
+  }  
+
+  // .character {
+  //   .header {
+  //     .title {
+  //       align-content: center;
+  //       margin: 1px 0;
+  //       padding: 0;
+  //       font-weight: bold;
+  //       background-color: $c-mid;
+  //     }
+  //   }
+  // }
+ 
+
+
+.character, .npc, .lootable {
+
+
+  // tab items, icons centered above text
+  .tab-item {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+
+    .icon-text-container {
+      display: inline-block;
+      text-align: center;
+    }
+
+    .fas {
+      display: block;
+    }
+  }
+
+  .actorname {
+    font-size: 2em;
+  }
+  .race-background-block {
+    .itemsbytype-align-title {
+      text-align: center;
+    }
+  }
+
+  .actor-titles.center {
+    text-align: center;
+  }
+
+  .actor-titles {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    background-color: $c-mid;
+    // border: 2px ridge  gray;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, $c-mid 25%, $c-mid 75%, rgba(255,255,255,0) 100%);
+    font-weight: 600;
+
+    .actor-header {
+      font-weight: bold;
+      background-color: $c-mid;
+    }
+  
+    .actor-image {
+      flex: 0 0 24px;
+      height: 24px;
+      background-size: 24px;
+      border: none;
+      margin-right: 5px;
+      flex-shrink: 1;
+    }
+
+    .actor {
+      height: 25px;
+      line-height: 24px;
+      padding: 1px 0;
+      border-bottom: 1px solid #bbb;
+      
+      .actor-name {
+        flex: 2;
+        margin: 0;
+        overflow: hidden;
+        font-size: 1.01em;
+        text-align: left;
+        align-items: center;  
+        font-weight: 600;
+      }  
+    }
+  
+  }  
+
+  .share-looted-coins {
+    // flex-basis: 24px;
+    // flex-grow: 0;
+    text-align: center;
+    font-size: 1.02em;
+  }
+
+  .actor-lootable-portrait {
+    flex: 0 0 64px;
+  }
+  .currency {
+
+      .coin-value {
+        flex-grow:3;
+      }
+
+      .control {
+        flex-shrink: 2;
+
+      }
+
+      .coin-type {
+        flex-shrink: 1;
+      }
+    }
+
+} // end character/npc
+
+#action-sheet {
+  .general-properties-column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  .general-properties-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }   
+}
+

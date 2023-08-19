@@ -1,0 +1,41 @@
+<div class="sheet-card" style="background: rgb(240, 239, 209);">
+    {{!-- {{log "chatCard-skill.hbs THIS-->" this}}
+    {{log "chatCard-skill.hbs actions-->" actions}}
+    {{log "chatCard-skill.hbs item-->" item}} --}}
+
+    {{!-- <fieldset class="border-top"> --}}
+    {{!-- <legend>{{localize "ARS.chat.skill" }}</legend> --}}
+    <div class="general-header">{{localize "ARS.chat.skill" }}</div>
+    <div class="skill-card item">
+
+        <div class="flexrow">
+            <div class="a25-image" style="">
+                <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+            </div>
+            <div class="action-title">
+                {{item.name}}
+            </div>
+        </div>
+
+        <div class="chatCard-description">
+            <div style="display: block" class="chatCard-description-short">
+                {{{ item.system.description }}}
+            </div>
+            <div style="display: none" class="chatCard-description-full">
+                {{{ item.system.description }}}
+            </div>
+            {{#if item.system.description}}
+                <div class="chatCard-expand-view"><i class="fas fa-expand-alt"></i></div>
+            {{/if}}
+        </div>
+
+        <div class="card-buttons" data-actor-id="{{owner}}" data-source-actor-id="{{sourceActor.id}}"
+            data-item-id="{{item.id}}" data-source-token-id="{{sourceToken.id}}">
+            <button data-action="skill-roll">
+                {{localize "ARS.chat.skill"}}
+            </button>
+        </div>
+        {{!-- </fieldset> --}}
+
+    </div>
+</div>

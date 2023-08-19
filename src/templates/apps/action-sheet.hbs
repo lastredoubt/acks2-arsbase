@@ -1,0 +1,553 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{log "action-sheet.hbs THIS===" this}}
+    {{log "action-sheet.hbs DATA===" data}}
+    {{log "action-sheet.hbs ACTION===" action}}
+    {{log "action-sheet.hbs config===" config}}
+    {{log "action-sheet.hbs actor===" actor}}
+    <section>
+        <div class="flexrow sheet-header">
+            <img class="action-image" style="margin-right: 6px;" src="{{action.img}}" data-edit="img" />
+            <input class="charname" name="name" type="text" value="{{action.name}}" placeholder="Name" />
+        </div>
+
+        <div class="action-titles">
+            <li class="action-header flexrow">
+
+                <div style="flex: 0 0 100px" class="action-type">Type</div>
+                {{#includes action.type 'melee||ranged||thrown||castmelee||castranged||damage'}}
+                    <div class="action-ability">Ability</div>
+                {{/includes}}
+
+                {{#includes action.type 'castshape'}}
+                    <div class="shape-shape-range">{{localize "ARS.actions.castshape.targetSelection"}}
+                    </div>
+					<div class="shape-shape-range">{{localize "ARS.actions.castshape.range"}}
+                    </div>
+                {{/includes}}
+                {{#includes action.type 'cast||castmelee||castranged'}}
+                    <div class="action-success">Success Action</div>
+                {{/includes}}
+                {{#includes action.type 'cast||melee||thrown||ranged||castmelee||castranged'}}
+                    <div class="action-speed">Speed</div>
+                {{/includes}}
+                {{#if (eq action.type 'damage')}}
+                    <div class="action-damagetype">Damage Type</div>
+                {{/if}}
+                {{#includes action.type 'castshape||effect||damage||heal'}}
+                    <div class="action-effect-misc">Details</div>
+                {{/includes}}
+            </li>
+        </div>
+
+        <div class="action-list">
+            <li class="actions-list-data flexrow">
+                <div style="flex: 0 0 100px" class="action-type">
+                    <select style="width: 100px;" name="type">
+                        {{selectOptions config.actions.types selected=action.type localize=true}}
+                    </select>
+                </div>
+                {{#includes action.type 'melee||ranged||thrown||castmelee||castranged||damage'}}
+                    <div class="action-ability">
+                        <select name="ability">
+                            {{selectOptions config.actions.abilityTypes selected=action.ability localize=true}}
+                        </select>
+                    </div>
+                {{/includes}}
+
+                {{#includes action.type 'castshape'}}
+					<div class="action-shape-target">
+						<div class="action-shape-target">
+							<select name="targetShapeSelection.type">
+								{{selectOptions config.targetShapeSelection selected=action.targetShapeSelection.type localize=true}}
+							</select>
+						</div>
+					</div>
+                    <div class="action-shape-range">
+                        <div class="action-shape-range">
+                            <input name="castShapeProperties.range.formula" type="text"
+                                value="{{action.castShapeProperties.range.formula}}" placeholder="0" />
+                        </div>
+                    </div>
+                {{/includes}}
+                {{#includes action.type 'cast||castmelee||castranged'}}
+                    <div class="action-targeting-success">
+                        <select name="successAction">
+                            {{selectOptions config.successAction selected=action.successAction localize=true}}
+                        </select>
+                    </div>
+                {{/includes}}
+                {{#includes action.type 'cast||melee||ranged||thrown||castmelee||castranged'}}
+                    <div class="action-speed">
+                        <input name="speed" type="number" value="{{action.speed}}" data-dtype="Number" />
+                    </div>
+                {{/includes}}
+                {{#if (eq action.type 'damage')}}
+                    <div class="action-damagetype">
+                        <select name="damagetype">
+                            {{selectOptions config.weaponDamageTypes selected=action.damagetype localize=true}}
+                        </select>
+                    </div>
+                {{/if}}
+
+                {{#includes action.type 'castshape||effect||damage||heal'}}
+                    <div class="action-misc">
+                        <input name="misc" type="text" value="{{action.misc}}" data-dtype="String"
+                            placeholder="Short Description" />
+                    </div>
+                {{/includes}}
+
+            </li>
+        </div>
+
+        {{#includes action.type 'melee||ranged||thrown||damage||heal'}}
+            <div class="action-items">
+                <div class="action-list">
+                    <li class="action-header flexrow">
+                        <div class="action-formula">Formula</div>
+                    </li>
+
+                    <div class="actions-list">
+                        <li class="actions-list-data flexrow">
+                            <div class="action-formula">
+                                <input size="4" name="formula" type="text" value="{{action.formula}}" />
+                            </div>
+                        </li>
+                    </div>
+                </div>
+        {{/includes}}
+
+        {{#includes action.type "cast||castmelee||castranged||melee||ranged||thrown||use"}}
+            <div class="action-list">
+                <li class="action-header flexrow">
+                    <div class="resource-title-name">Resource</div>
+                    {{#if (eq action.resource.type 'none') }}
+                    {{else}}
+                        <div style="flex: 0 0 100px" class="action-resource-type">Type</div>
+                        {{#if (eq action.resource.type 'charged') }}
+                            <div style="flex: 0 0 100px" class="action-resource-reuse">Reuse</div>
+                        {{/if}}
+                        <div class="action-resource-cost">Cost</div>
+                        {{!-- {{#if (eq action.resource.type 'item') }}
+                            <div style="flex: 0 0 100px" class="action-resource-item">Item</div>
+                        {{/if}} --}}
+                        {{#includes action.resource.type "item||powered"}}
+                            <div style="flex: 0 0 100px" class="action-resource-item">Item</div>
+                        {{/includes}}
+                        {{#if (eq action.resource.type 'charged') }}
+                            <div class="action-resource-value">Count</div>
+                            <div class="action-resource-max">Max</div>
+                        {{/if}}
+                    {{/if}}
+                </li>
+                <div class="actions-list">
+                    <li class="actions-list-data flexrow">
+                        <div class="action-resource-title-resource"></div>
+                        <div class="action-resource-trunc">
+                            <select name="resource.type">
+                                {{selectOptions config.resources selected=action.resource.type localize=true}}
+                            </select>
+                        </div>
+                        {{#if (eq action.resource.type 'none')}}
+                        {{else}}
+                            {{#if (eq action.resource.type 'charged')}}
+                                <div class="action-resource-trunc">
+                                    <select name="resource.reusetime">
+                                        {{selectOptions config.reusetime selected=action.resource.reusetime localize=true}}
+                                    </select>
+                                </div>
+                            {{/if}}
+                            <div class="action-resource-cost">
+                                <input size="4" name="resource.count.cost" type="text"
+                                    value="{{action.resource.count.cost}}" data-dtype="Number" />
+                            </div>
+
+                            {{!-- {{#if (eq action.resource.type 'item')}} --}}
+                            {{#includes action.resource.type "item||powered"}}
+                                <div class="action-resource-trunc">
+                                    {{#if @root.actor.inventory}}
+                                        <select name="resource.itemId">
+                                            {{#select action.resource.itemId}}
+                                                <option value="">{{localize "ARS.none"}}</option>
+                                                {{#each @root.actor.inventory as |item idx|}}
+                                                    <option value="{{item.id}}">{{item.name}}</option>
+                                                {{/each}}
+                                            {{/select}}
+                                        </select>
+                                    {{else}}
+                                        <label>{{localize "ARS.noinventory"}}</label>
+                                    {{/if}}
+
+                                </div>
+                            {{/includes}}
+                            {{!-- {{/if}} --}}
+
+                            {{#if (eq action.resource.type 'charged')}}
+                                <div class="action-resource-value">
+                                    <input size="4" name="resource.count.value" type="text"
+                                        value="{{action.resource.count.value}}" data-dtype="Number" />
+                                </div>
+                                <div class="action-resource-max">
+                                    <input size="4" name="resource.count.max" type="text"
+                                        value="{{action.resource.count.max}}" />
+                                </div>
+                            {{/if}}
+                        {{/if}}
+                    </li>
+                </div>
+
+            </div>
+
+            <div class="action-list action-save">
+                <li class="action-header flexrow">
+                    <div class="actions-save-title-name">Save</div>
+                    <div class="action-save-type">Type</div>
+                    <div class="action-save-formula">Formula</div>
+                </li>
+
+                <div class="actions-save">
+                    <li class="action-save flexrow">
+                        <div class="actions-save-title-name"></div>
+                        <div class="action-save-type">
+                            <select name="saveCheck.type">
+                                {{selectOptions config.saveTypes selected=action.saveCheck.type localize=true}}
+                            </select>
+                        </div>
+                        <div class="action-save-formula">
+                            <input name="saveCheck.formula" type="text" value="{{action.saveCheck.formula}}"
+                                placeholder="+0" />
+                        </div>
+                    </li>
+                </div>
+            </div>
+
+            <div class="action-list action-check">
+                <li class="action-header flexrow">
+                    <div class="actions-check-title-name">Check</div>
+                    <div class="action-check-type">Type</div>
+                    <div class="action-check-formula">Formula</div>
+                </li>
+
+                <div class="actions-check">
+                    <li class="action-check flexrow">
+                        <div class="actions-check-title-name"></div>
+                        <div class="action-check-type">
+                            <select name="abilityCheck.type">
+                                {{selectOptions config.abilityTypes selected=action.abilityCheck.type localize=true}}
+                            </select>
+                        </div>
+
+                        <div class="action-check-formula">
+                            <input name="abilityCheck.formula" type="text" value="{{action.abilityCheck.formula}}"
+                                placeholder="1d20" />
+                        </div>
+                    </li>
+                </div>
+            </div>
+        {{/includes}}
+
+        {{#includes action.type "castshape"}}
+            <div class="action-list">
+                <div class="general-header resource-title-name">{{localize "ARS.actions.castshape.template"}}</div>
+                <div class="general-subheader flexrow">
+                    <div style="flex: 0 0 100px" class="action-resource-shape">
+                        {{localize "ARS.actions.castshape.shape"}}
+                    </div>
+                    {{#if (eq action.targetShape.type 'none') }}
+                    {{else}}
+                        {{#if (eq action.targetShape.type 'cone') }}
+						<div style="flex: 0 0 100px" class="action-resource-shape-cone-type">
+							{{localize "ARS.actions.castshape.conetype"}}
+						</div>
+							{{#if (eq action.targetShapeConeType.type 'ratio') }}
+                            <div class="action-resource-width">Width</div>
+                            <div class="action-resource-length">Length</div>
+							{{else}}
+							<div class="action-resource-angle">Angle</div>
+                            <div class="action-resource-length">Length</div>
+							{{/if}}
+                        {{/if}}
+                        {{#if (eq action.targetShape.type 'circle') }}
+                            <div class="action-resource-radius">Radius</div>
+                        {{/if}}
+                        {{#if (eq action.targetShape.type 'ray') }}
+                            <div class="action-resource-length">Length</div>
+                            <div class="action-resource-length">Width</div>
+                        {{/if}}
+
+                        {{#if (eq action.targetShape.type 'ray2') }}
+                            <div class="action-resource-length">Length</div>
+                            <div class="action-resource-length">Width</div>
+                        {{/if}}
+
+                        {{#if (eq action.targetShape.type 'rectangle') }}
+                            <div class="action-resource-length">Length</div>
+                            <div class="action-resource-length">Width</div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+                <div class="actions-list actions-list-data flexrow">
+                    <select style="flex: 0 0 100px;width: 100px;" name="targetShape.type">
+                        {{selectOptions config.targetShape selected=action.targetShape.type localize=true}}
+                    </select>
+
+                    {{#if (eq action.targetShape.type 'circle')}}
+                        <div class="cast-shape-radius">
+                            <input name="castShapeProperties.castShapeRadius.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeRadius.formula}}" placeholder="+0" />
+                        </div>
+
+                    {{/if}}
+                    {{#if (eq action.targetShape.type 'cone')}}
+						<select style="flex: 0 0 100px;width: 100px;" name="targetShapeConeType.type">
+							{{selectOptions config.targetShapeConeType selected=action.targetShapeConeType.type localize=true}}
+						</select>
+						{{#if (eq action.targetShapeConeType.type 'ratio')}}
+						<div class="cast-shape-width">
+                            <input name="castShapeProperties.castShapeWidth.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeWidth.formula}}" placeholder="+0" />
+                        </div>
+                        <div class="cast-shape-length">
+                            <input name="castShapeProperties.castShapeLength.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeLength.formula}}" placeholder="+0" />
+                        </div>
+						{{else}}
+						<div class="cast-shape-angle">
+                            <input name="castShapeProperties.castShapeAngle.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeAngle.formula}}" placeholder="+0" />
+                        </div>
+                        <div class="cast-shape-length">
+                            <input name="castShapeProperties.castShapeLength.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeLength.formula}}" placeholder="+0" />
+                        </div>
+						{{/if}}
+                    {{/if}}
+                    {{#if (eq action.targetShape.type 'ray')}}
+                        <div class="cast-shape-length">
+                            <input name="castShapeProperties.castShapeLength.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeLength.formula}}" placeholder="+0" />
+                        </div>
+                        <div class="cast-shape-width">
+                            <input name="castShapeProperties.castShapeWidth.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeWidth.formula}}" placeholder="+0" />
+                        </div>
+                    {{/if}}
+
+
+                    {{#if (eq action.targetShape.type 'ray2')}}
+                        <div class="cast-shape-length">
+                            <input name="castShapeProperties.castShapeLength.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeLength.formula}}" placeholder="+0" />
+                        </div>
+                        <div class="cast-shape-width">
+                            <input name="castShapeProperties.castShapeWidth.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeWidth.formula}}" placeholder="+0" />
+                        </div>
+                    {{/if}}
+
+                    {{#if (eq action.targetShape.type 'rectangle')}}
+                        <div class="cast-shape-length">
+                            <input name="castShapeProperties.castShapeLength.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeLength.formula}}" placeholder="+0" />
+                        </div>
+                        <div class="cast-shape-width">
+                            <input name="castShapeProperties.castShapeWidth.formula" type="text"
+                                value="{{action.castShapeProperties.castShapeWidth.formula}}" placeholder="+0" />
+                        </div>
+
+                    {{/if}}
+                </div>
+
+				<div class="general-subheader flexrow">
+                    <div class="in-range-color">
+                        {{localize "ARS.actions.castshape.inRangeColor"}}
+                    </div>
+					<div class="out-range-color">
+                        {{localize "ARS.actions.castshape.outOfRangeColor"}}
+                    </div>
+				</div>
+				
+                <div>
+                    <div class="flexrow">
+					{{#if action.castShapeProperties.inRangeColor}}
+                        <input type="color" value="{{action.castShapeProperties.inRangeColor}}" placeholder="#696df2"
+                            data-edit="castShapeProperties.inRangeColor" />
+                        <input type="text" value="{{action.castShapeProperties.inRangeColor}}" placeholder="#696df2"
+                            name="castShapeProperties.inRangeColor" />
+                    {{else}}
+						<input type="color" value="#696df2" placeholder="#696df2"
+                            data-edit="castShapeProperties.inRangeColor" />
+                        <input type="text" value="#696df2" placeholder="#696df2"
+                            name="castShapeProperties.inRangeColor" />
+					{{/if}}
+					
+					{{#if action.castShapeProperties.outOfRangeColor}}
+                        <input type="color" value="{{action.castShapeProperties.outOfRangeColor}}" placeholder="#a80000"
+                            data-edit="castShapeProperties.outOfRangeColor" />
+                        <input type="text" value="{{action.castShapeProperties.outOfRangeColor}}" placeholder="#a80000"
+                            name="castShapeProperties.outOfRangeColor" />
+					{{else}}
+						<input type="color" value="#a80000" placeholder="#a80000"
+                            data-edit="castShapeProperties.outOfRangeColor" />
+                        <input type="text" value="#a80000" placeholder="#a80000"
+                            name="castShapeProperties.outOfRangeColor" />
+					
+					{{/if}}
+                    </div>
+                </div>
+
+
+        {{/includes}}
+
+        {{#if (eq action.type 'damage')}}
+            <div class="action-damageother-header resource-title">
+                <div class="action-damageother-header">
+                    <div class="action-damageother-title">
+                        <h4>Additional Damage<a align="right" class="item-control action-control add-damage"><i
+                                    align="right" class="fas fa-plus"></i></a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="action-damageother">
+                {{#checklength action.otherdmg 0}}
+                    <div class="action-titles">
+                        <div class="action-header flexrow">
+                            <div class="action-damageother-type">Type</div>
+                            <div class="action-damageother-formula">Formula</div>
+                            <div class="action-damageother-remove"></div>
+                        </div>
+                    </div>
+                    {{#each action.otherdmg as |dmg index| }}
+                        <div class="actions-damageother">
+                            <li class="action-damageother flexrow">
+                                <div class="action-damageother-type">
+                                    <select name="otherdmg.{{index}}.type">
+                                        {{#select dmg.type}}
+                                            {{#each ../config.weaponDamageTypes as |name type|}}
+                                                <option value="{{type}}">{{localize name}}</option>
+                                            {{/each}}
+                                        {{/select}}
+                                    </select>
+                                </div>
+                                <div class="action-damageother-formula">
+                                    <input type="text" name="otherdmg.{{index}}.formula" value="{{dmg.formula}}" />
+                                </div>
+                                <div class="action-damageother-remove action-controls">
+                                    <a class="item-control action-control delete-damage" data-index={{index}}> <i
+                                            class="fas fa-minus"> </i></a>
+                                </div>
+                            </li>
+                        </div>
+                    {{/each}}
+                {{/checklength}}
+            </div>
+        {{/if}}
+
+        {{!-- {{Heal specific section}} --}}
+        {{#if (eq action.type 'heal')}}
+        {{/if}}
+
+        {{!-- {{Use specific section}} --}}
+        {{#if (eq action.type 'use')}}
+        {{/if}}
+
+
+        {{!-- {{Effect specific section}} --}}
+        {{#if (eq action.type 'effect')}}
+            <div class="action-titles">
+                <div class="action-header flexrow">
+                    <div class="action-effect-title-duration">Duration</div>
+                    <div class="action-effect-durationformula">Formula</div>
+                    <div class="action-effect-durationtype">Type</div>
+                </div>
+            </div>
+            <div>
+                <li class="action-effect-duration flexrow">
+                    <div class="action-effect-title-duration"></div>
+                    <div class="action-effect-durationformula">
+                        <input type="text" name="effect.duration.formula" value="{{action.effect.duration.formula}}" />
+                    </div>
+                    <div class="action-effect-durationtype">
+                        {{!-- <input type="text" name="effect.duration.type" value="{{action.effect.duration.type}}" /> --}}
+                        {{!-- {{log "config.actions.durationTypes" config.actions.durationTypes }} --}}
+                        <select name="effect.duration.type">
+                            {{selectOptions config.actions.durationTypes selected=action.effect.duration.type localize=true}}
+                        </select>
+                    </div>
+                </li>
+            </div>
+            <div class="action-titles action-changes-list">
+                <div class="action-header flexrow">
+                    <div style="flex-grow: 2;" class="key">{{ localize "ARS.key" }}</div>
+                    <div style="flex: 0 0 100px" class="mode">{{ localize "ARS.mode" }}</div>
+                    <div style="flex-grow: 2;" class="value">{{ localize "ARS.value" }}</div>
+                    <div class="effect-controls">
+                        <a class="effect-control" data-action="add"><i class="far fa-plus-square"></i></a>
+                    </div>
+                </div>
+                <div class="changes-list">
+                    {{!-- {{log "action.effect.changes " action.effect.changes }} --}}
+                    {{#each action.effect.changes as |change i|}}
+                        <li class="effect-change flexrow" data-index="{{i}}">
+
+                            <div style="flex-grow: 2;" class="key">
+                                {{!-- <input type="text" name="effect.changes.{{i}}.key" value="{{change.key}}" /> --}}
+                                <input class="effect-change-key" list="predefinedOptions" type="text"
+                                    name="effect.changes.{{i}}.key" value="{{change.key}}" />
+                                <datalist id="predefinedOptions">
+                                    {{#each @root.selectEffectKeys}}
+                                        <option value="{{this.name}}">
+                                    {{/each}}
+                                </datalist>
+                            </div>
+                            <div class="action-resource-trunc mode">
+                                <select name="effect.changes.{{i}}.mode" data-dtype="Number">
+                                    {{#select change.mode}}
+                                        {{#each ../config.actions.effect_modes as |name type|}}
+                                            <option value="{{type}}">{{localize name}}</option>
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                            </div>
+                            <div style="flex-grow: 2;" class="value">
+                                <textarea type="text" name="effect.changes.{{i}}.value">{{change.value}}</textarea>
+                            </div>
+                            <div class="effect-controls">
+                                <a class="effect-control" data-action="delete"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+        </div>
+
+        {{#includes action.type 'cast||castmelee||castranged'}}
+            {{!-- <fieldset> --}}
+            {{!-- <legend data-tooltip="Shown when cast">{{localize "ARS.details"}}</legend> --}}
+            <div class="general-header" data-tooltip="Shown when cast">{{localize "ARS.details"}}</div>
+            <div class="short-editor">
+                {{editor enrichedMisc target="misc" button=true editable=editable}}
+            </div>
+            {{!-- </fieldset> --}}
+            {{> "systems/ars/templates/apps/parts/action-properties-block.hbs"}}
+        {{/includes}}
+        {{#if (eq action.type 'damage')}}
+            {{#if (eq this.item.type 'weapon')}}
+                <div>
+                    <div class="action-potency-section flexrow">
+                        <div class="action-properties-title">{{ localize "ARS.resistTypes.magicpotency" }}</div>
+                        <div><input name="magicpotency" value="{{action.magicpotency}}" data-dtype="Number" /></div>
+                    </div>
+                </div>
+                {{> "systems/ars/templates/apps/parts/action-properties-block.hbs"}}
+            {{/if}}
+        {{/if}}
+
+
+        {{!-- <fieldset> --}}
+        {{!-- <legend>{{localize "ARS.description"}}</legend> --}}
+        <div class="general-header">{{localize "ARS.description"}}</div>
+        {{editor enrichedDesc target="description" button=true editable=editable}}
+        {{!-- </fieldset> --}}
+    </section>
+</form>

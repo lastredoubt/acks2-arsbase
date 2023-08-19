@@ -1,0 +1,89 @@
+{{!-- ac/hp/thaco/move/etc --}}
+{{!-- <fieldset class="border-top title-label combat-stats"> --}}
+<div class="combat-stats">
+    {{!-- <legend>{{ localize "ARS.combat" }}</legend>
+     --}}
+    <div class="general-header">{{ localize "ARS.combat" }}</div>
+    <div class="flexrow combat-box">
+        {{!-- armor class --}}
+        <div style="flex-grow:1;border-right: 1px solid black;" class="flexrow">
+            <label class="armor-icon" data-tooltip="{{actor.system.armorClass.tooltip}}">
+                <div>{{ localize "ARS.armorclass" }}</div>
+                <div class="ac-value">{{actor.system.armorClass.normal}}</div>
+            </label>
+
+            <div class="flexcol">
+                <div class="flexrow underline">
+                    <div>{{ localize "ARS.defensestyle.shieldless" }}</div>
+                    <div>{{actor.system.armorClass.shieldless}}</div>
+                </div>
+                <div class="flexrow">
+                    <div>{{ localize "ARS.rear" }}</div>
+                    <div>{{actor.system.armorClass.rear}}</div>
+                </div>
+            </div>
+
+        </div>
+
+        {{!-- hit points --}}
+        <div style="border-right: 1px solid black;" class="flexrow">
+            <label class="hp-icon">
+                <div>{{ localize "ARS.hitpoints" }}</div>
+                <div class="hp-value">{{actor.system.attributes.hp.value}}</div>
+            </label>
+
+            <div class="flexcol">
+                <div class="flexrow underline">
+                    <div>{{ localize "ARS.max" }}</div>
+                    <div>{{actor.system.attributes.hp.max}}</div>
+                </div>
+                <div class="flexrow">
+                    <div>{{ localize "ARS.current" }}</div>
+                    <div>{{actor.system.attributes.hp.value}}</div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- movement speeds --}}
+        <div style="border-right: 1px solid black;" class="flexrow">
+            <label style="padding-top:1.01em;" class="movement-icon">
+                <div>{{ localize "ARS.move" }}</div>
+                <div class="movement-value"
+                    data-tooltip="Unencumbered move {{#if (eq actor.type 'npc')}}{{actor.system.movement}}{{else}}{{actor.system.attributes.movement.value}}{{/if}}">
+                    {{actor.movement}}
+                </div>
+            </label>
+
+            <div class="flexcol">
+                <div class="flexrow underline">
+                    <div>{{ localize "ARS.movebase" }}</div>
+                    <div style="max-height: 50px;overflow-y: auto;overflow-x: hidden;" class="">
+                        {{#if (eq actor.type 'npc')}}{{actor.system.movement}}{{else}}{{actor.system.attributes.movement.value}}{{/if}}
+                    </div>
+                </div>
+                <div class="flexrow"></div>
+
+            </div>
+
+        </div>
+        {{!-- thaco/attack --}}
+        {{!-- {{#if (or (eq @root.config.settings.systemVariant '1') (eq @root.config.settings.systemVariant '2'))}} --}}
+        <div class="flexrow">
+            {{#if (eq @root.config.settings.systemVariant '2')}}
+                <label style="padding-top:1.01em;" class="thaco-icon">
+                    <div>{{ localize "ARS.thaco" }}</div>
+                    <div class="thaco-value">{{actor.system.attributes.thaco.value}}</div>
+                </label>
+            {{else}}
+                <label style="padding-top:1.01em;" class="thaco-icon">
+                    <div>{{ localize "ARS.attackmatrix" }}</div>
+                    <div class="matrix-value">{{actor.system.matrixTable}}</div>
+                </label>
+            {{/if}}
+        </div>
+
+    </div>
+
+
+</div>
+{{!-- end ac/hp/thaco/move/etc --}}

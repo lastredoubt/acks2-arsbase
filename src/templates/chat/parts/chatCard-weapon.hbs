@@ -1,0 +1,62 @@
+<div class="sheet-card" style="background: rgb(240, 239, 209);">
+    {{!-- {{log "chatCard-weapon.hbs THIS-->" this}}  --}}
+    {{!-- <fieldset class="border-top"> --}}
+    {{!-- <legend>{{localize "ARS.chatCard.ChatContextDamage" }}</legend> --}}
+    <div class="general-header">{{localize "ARS.chatCard.ChatContextDamage" }}</div>
+    <div class="weapon-card item">
+
+        <div class="flexrow">
+            <div class="a25-image" style="">
+                <img src="{{item.img}}"
+                    data-tooltip="{{#if item.isIdentifiedRaw}}{{{item.name}}}{{else}}{{concat (localize "ARS.unknown") (concat " " item.type)}}{{/if}}"
+                    width="24" height="24" />
+            </div>
+            <div class="action-title">
+                <div class="weapon-name">
+                    {{#if item.isIdentifiedRaw}}{{{item.name}}}{{else}}{{concat (localize "ARS.unknown") (concat " " item.type)}}{{/if}}
+                </div>
+            </div>
+        </div>
+
+        {{#if item.system.description}}
+            <div class="chatCard-description">
+                <div style="display: block" class="chatCard-description-short">
+                    {{#if item.isIdentifiedRaw}}
+                        {{{ item.system.description }}}
+                    {{/if}}
+                </div>
+                <div style="display: none" class="chatCard-description-full">
+                    {{#if item.isIdentifiedRaw}}
+                        {{{ item.system.description }}}
+                    {{/if}}
+                </div>
+                {{#if item.system.description}}
+                    <div class="chatCard-expand-view"><i class="fas fa-expand-alt"></i></div>
+                {{/if}}
+            </div>
+        {{/if}}
+
+        <div class="card-buttons" data-actor-id="{{owner}}" data-source-actor-id="{{sourceActor.id}}"
+            data-item-id="{{item.id}}" data-source-token-id="{{sourceToken.id}}">
+
+            <button data-action="healthchange-roll" data-forceLarge="false">
+                <div class="flexrow">
+                    <div class="action-icon"><img src="{{localize config.icons.general.combat.damage}}" /></div>
+                    {{#if item.ammo}}
+                        <div class="center-text">{{localize "ARS.chat.damage"}}
+                            ({{item.ammo.system.damage.normal}}{{#if item.ammo.system.damage.large}}/{{item.ammo.system.damage.large}}{{/if}})
+                        </div>
+                    {{else}}
+                        <div class="center-text">{{localize "ARS.chat.damage"}}
+                            ({{item.system.damage.normal}}{{#if item.system.damage.large}}/{{item.system.damage.large}}{{/if}})
+                        </div>
+                    {{/if}}
+                </div>
+            </button>
+
+        </div>
+
+
+    </div>
+    {{!-- </fieldset> --}}
+</div>

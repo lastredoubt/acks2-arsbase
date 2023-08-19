@@ -1,0 +1,218 @@
+{{log "item-attributes.hbs" this}}
+
+<div class="item-attributes">
+    {{#if item.isIdentified}}
+        {{#includes item.type "race||class||proficiency||bundle||skill||encounter||ability||background"}}
+    {{else}}
+        {{!-- <fieldset> --}}
+        {{!-- <legend>{{ localize "ARS.itemattributes" }}</legend> --}}
+        <div class="general-header">{{ localize "ARS.itemattributes" }}</div>
+        <div class="item-titles">
+            <div class="general-subheader flexrow">
+                <div class="item-type">
+                    <label class="resource-label">{{localize "ARS.type"}}</label>
+                </div>
+                <div class="item-subtype">
+                    <label class="resource-label">{{localize "ARS.subtype"}}</label>
+                </div>
+                <div class="item-rarity">
+                    <label class="resource-label">{{localize "ARS.rarity"}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="flexrow">
+            <div class="item-type">
+                <select name="system.attributes.type">
+                    {{#select system.attributes.type}}
+                        <option value="">{{localize "ARS.none"}}</option>
+                        {{#each config.itemTypes as |name type|}}
+                            <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="item-subtype">
+                <select name="system.attributes.subtype">
+                    {{#select system.attributes.subtype}}
+                        <option value="">{{localize "ARS.none"}}</option>
+                        {{#each config.itemTypes as |name type|}}
+                            <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="item-rarity">
+                <select name="system.attributes.rarity">
+                    {{#select system.attributes.rarity}}
+                        <option value="">{{localize "ARS.none"}}</option>
+                        {{#each config.itemRarityTypes as |name type|}}
+                            <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        {{!-- <fieldset class="border-top"> --}}
+        {{!-- <legend>{{ localize "ARS.itemcharges" }}</legend> --}}
+        <div class="general-header">{{ localize "ARS.itemcharges" }}</div>
+        <div class="item-titles">
+            <div class="general-subheader flexrow">
+                {{!-- <div class="charge-min">
+                                <label class="resource-label">{{localize "ARS.resources.minimum"}}</label>
+                            </div> --}}
+                <div class="charge-max">
+                    <label class="resource-label">{{localize "ARS.resources.maximum"}}</label>
+                </div>
+                <div class="charge-value">
+                    <label class="resource-label">{{localize "ARS.resources.used"}}</label>
+                </div>
+                <div class="charge-reuse">
+                    <label class="resource-label">{{localize "ARS.resources.reuse"}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="flexrow">
+            {{!-- <div class="charge-min">
+                            <input type="number" data-dtype="Number" name="system.charges.min" value="{{system.charges.min}}" placeholder="0" />
+                        </div> --}}
+            <div class="charge-max">
+                <input type="number" data-dtype="Number" name="system.charges.max" value="{{system.charges.max}}"
+                    placeholder="0" {{#unless isGM}}readonly{{/unless}} />
+            </div>
+            <div class="charge-value">
+                <input type="number" data-dtype="Number" name="system.charges.value" value="{{system.charges.value}}"
+                    placeholder="0" {{#unless isGM}}readonly{{/unless}} />
+            </div>
+            <div class="charge-reuse">
+                <select name="system.charges.reuse">
+                    {{#select system.charges.reuse}}
+                        {{!-- <option value="">{{localize "ARS.none"}}</option> --}}
+                        {{#each config.reusetime as |name type|}}
+                            <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        {{!-- </fieldset> --}}
+        {{!-- </fieldset> --}}
+        {{/includes}}
+
+        {{!-- variant 2 weapon v armor --}}
+        {{#with @root.config.settings as |settings|}}
+            {{#with @root.item as |currentItem|}}
+
+                {{!-- {{#if (eq settings.systemVariant '1')}} --}}
+                {{#if (or (eq settings.systemVariant '1') (eq settings.systemVariant '0'))}}
+                    {{#if (eq currentItem.type 'weapon')}}
+                        {{!-- <fieldset> --}}
+                        {{!-- <legend>{{ localize "ARS.weaponstyle" }}</legend> --}}
+                        <div class="general-header">{{ localize "ARS.weaponstyle" }}</div>
+                        <div class="flexrow">
+                            <div class="weaponstyle-select">
+                                <select name="system.weaponstyle">
+                                    {{#select @root.system.weaponstyle}}
+                                        <option value="">{{localize "ARS.none"}}</option>
+                                        {{#each (lookup @root.config.weaponVarmor 1) as |value key|}}
+                                            <option value="{{@key}}">{{@key}}</option>
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                            </div>
+                            {{#if @root.system.weaponstyle}}
+                                <div style="flex-grow:2;padding: auto; margin-left: 5px;">
+                                    <div style="font-size: 0.65rem;" class="flexcol wva-weapon-details">
+                                        <div style="font-weight: bold;" class="flexrow">
+                                            {{#each @root.item.wvaDetails}}
+                                                <div>AC{{@index}}</div>
+                                            {{/each}}
+                                        </div>
+                                        <div class="flexrow">
+                                            {{#each @root.item.wvaDetails}}
+                                                <div>{{this}}</div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            {{else}}
+                                <div></div>
+                            {{/if}}
+                        </div>
+                        {{!-- </fieldset> --}}
+                    {{/if}}
+                {{/if}} {{!-- end varian 1 --}}
+
+                {{#if (eq settings.systemVariant '2')}}
+                    {{#if currentItem.isArmor}}
+                        {{!-- <fieldset> --}}
+                        {{!-- <legend>{{ localize "ARS.armorstyle" }}</legend> --}}
+                        <div class="general-header">{{ localize "ARS.armorstyle" }}</div>
+                        <div class="flexrow">
+                            <div class="armorstyle-select">
+                                <select name="system.armorstyle">
+                                    {{#select @root.system.armorstyle}}
+                                        <option value="">{{localize "ARS.none"}}</option>
+                                        {{#each (lookup @root.config.weaponVarmor 2) as |value key|}}
+                                            <option value="{{@key}}">{{@key}}</option>
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                            </div>
+                            <div style="flex-grow:2;padding: auto; margin-left: 5px;">
+                                <div style="font-size: 0.75rem;" class="flexcol wva-armor-details">
+                                    <div style="font-weight: bold;" class="flexrow">
+                                        {{#each @root.item.wvaDetails}}
+                                            <div>{{@key}}</div>
+                                        {{/each}}
+                                    </div>
+                                    <div class="flexrow">
+                                        {{#each @root.item.wvaDetails}}
+                                            <div>{{this}}</div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {{!-- </fieldset> --}}
+                    {{/if}}
+                {{/if}}
+            {{/with}}
+        {{/with}}
+
+        {{!-- properties --}}
+        {{!-- <fieldset> --}}
+        {{!-- <legend>{{ localize "ARS.properties" }} <a class="general-properties-controls create-entry"
+                data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></legend> --}}
+        <div class="general-header">{{ localize "ARS.properties" }} <a class="general-properties-controls create-entry"
+                data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></div>
+        <div class="general-properties-row">
+            {{#if system.attributes.properties }}
+                {{#each system.attributes.properties as |property index|}}
+                    <div class="general-properties-column">
+                        <li class="flexrow" data-index={{index}}>
+                            <input type="text" name="system.attributes.properties.{{index}}" value="{{property}}"
+                                placeholder="{{localize "ARS.placeholder"}}" />
+                            <div class="short-field">
+                                <a class="general-properties-controls remove-property"
+                                    data-tooltip="{{localize "ARS.remove" }}" data-action="remove"><i
+                                        class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div style="text-align:center;">{{localize "ARS.none"}}</div>
+            {{/if}}
+        </div>
+        {{!-- </fieldset> --}}
+
+        {{!-- skill mods --}}
+        {{>"systems/ars/templates/item/parts/item-skillmods-block.hbs"}}
+
+        {{!-- item audio options --}}
+        {{>"systems/ars/templates/item/parts/item-attributes-audio.hbs"}}
+
+    {{/if}}
+</div>

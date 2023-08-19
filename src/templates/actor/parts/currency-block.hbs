@@ -1,0 +1,24 @@
+{{!-- <fieldset class="border-top">
+    <legend>{{ localize "ARS.coins" }} </legend> --}}
+<div class="general-header">{{ localize "ARS.coins" }}</div>
+<div class="general-subheader flexrow">
+    {{#each system.currency as |value index|}}
+        <div>
+            {{ localize (concat "ARS.currency.short." index) }}
+        </div>
+    {{/each}}
+</div>
+<div class="currency flexrow">
+    {{#each system.currency as |value index|}}
+        {{!-- <fieldset class="no-border">
+            <legend>{{ localize (concat "ARS.currency.short." index) }}</legend> --}}
+        {{!-- <div class="general-subheader">{{ localize (concat "ARS.currency.short." index) }}</div> --}}
+        <div class="flexrow">
+            <div class="coin-value" style="flex-grow: 3;">
+                <input class="coins" name="system.currency.{{index}}" type="text" value="{{value}}" />
+            </div>
+        </div>
+        {{!-- </fieldset> --}}
+    {{/each}}
+</div>
+{{!-- </fieldset> --}}

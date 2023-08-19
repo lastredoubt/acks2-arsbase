@@ -1,0 +1,83 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <header class="sheet-header item">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" data-tooltip="{{item.name}}" />
+        <div class="header-fields">
+            <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+        </div>
+    </header>
+
+
+    <nav class="sheet-tabs" data-group="primary">
+        <div class="tab-items flexrow">
+            <a class="item" data-tab="main">Main</a>
+            <a class="item" data-tab="description">Description</a>
+            {{!-- {{#if item.system.itemList.length}}
+                <a class="item" data-tab="contents">{{localize "ARS.contents"}}</a>
+            {{/if}} --}}
+        </div>
+    </nav>
+    <section class="sheet-body">
+
+        <div class="tab main" data-group="primary" data-tab="main">
+            <div class="item-list">
+                {{!-- <div class="item"> --}}
+                <div class="general-header">
+                    <div class="flexrow item-header">
+                        <div class="item-image"></div>
+                        <span class=>Contents</span>
+                        <div class="item-controls">
+                            <a class="item-control item-create" data-tooltip="Create item" data-type="item"><i
+                                    class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {{#if system.itemList}}
+                    <div class="general-subheader">
+                        <div class="item flexrow">
+                            <div class="short-field" style="font-size: 1.01em;">#</div>
+                            <div class="item-image"></div>
+                            <div class="item-name">Name</div>
+                            <div class="item-controls"></div>
+                        </div>
+                    </div>
+                    {{#each system.itemList as |subitem index|}}
+                        {{!-- {{log "bundle-sheet.hbs==============?" subitem}} --}}
+                        <li class="item flexrow" data-type="count" data-uuid="{{subitem.uuid}}" data-id="{{subitem.id}}"
+                            data-index="{{index}}">
+                            <div class="short-field"><input class="bundle-subitem-count" type="number"
+                                    value="{{subitem.count}}" data-dtype="Number" /></div>
+                            <div class="item-image"><img class="item-image" src="{{subitem.img}}"
+                                    data-tooltip="{{subitem.name}}" width="24" height="24" /></div>
+                            <h4 class="item-name text-trunc">{{subitem.name}}</h4>
+                            <div class="item-controls">
+                                <a class="item-control item-edit" data-tooltip="Edit Item"><i
+                                        class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" data-tooltip="Delete Item"><i
+                                        class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                    {{/each}}
+                {{else}}
+                    <div class="item flexrow item-header">
+                        <div class="item-name">EMPTY</div>
+                    </div>
+                {{/if}}
+                {{!-- </div> --}}
+            </div>
+            {{> "systems/ars/templates/actor/parts/currency-block.hbs" }}
+        </div>
+        <div class="tab main" data-group="primary" data-tab="description">
+            <div class="grouping-border">
+                {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+            </div>
+        </div>
+
+        {{!-- contents tab --}}
+        {{!-- <div class="tab contents" data-group="primary" data-tab="contents">
+        <div class="contents-block">
+            {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+        </div>        
+    </div>           --}}
+    </section>
+</form>

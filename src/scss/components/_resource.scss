@@ -1,0 +1,49 @@
+.resource-label {
+  font-weight: bold;
+  //text-transform: uppercase;
+}
+
+.resource-label-ability {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.resource-numberfield {
+  font-size: 1.4em;
+  width: 38px;
+  padding: 0px;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+input.resource-percent {
+  font-size: 0.5em;
+  width: 25px;
+  padding: 3px;
+  text-align: right;
+}
+.resource-number {
+  font-size: 1.4em;
+  width: 30px;
+  padding: 0px;
+  text-align: center;
+  // background-color: #fafafa;
+}
+.resource-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.resource-number-field {
+  flex-basis: 50px;
+  flex-grow: 0;
+  text-align: center;
+  font-size: 0.99em;
+    input {
+      margin: 0px 0;
+      border-bottom: none;
+    }
+}
+
+// 

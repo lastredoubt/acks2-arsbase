@@ -1,0 +1,13 @@
+<div style="margin-bottom:10px;">
+    <b>{{text}}</b>
+    <div class="flexcol">
+        {{#each items as |item index| }}
+        {{!-- {{log "dialog-show-items" item}} --}}
+            <div class="flexrow">
+                <div style="flex: 0 0 24px;height:24px;margin-right: 5px; background-size: 24px;flex-shrink: 1;background-image: url('{{item.img}}')" aria-label="{{item.name}}"></div>
+                <div style="text-transform: uppercase;">{{item.type}}</div>
+                <div style="flex-grow:2;" >{{item.name}}</div>
+            </div>
+        {{/each}}
+    </div>
+</div>

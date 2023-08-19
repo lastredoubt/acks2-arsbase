@@ -1,0 +1,48 @@
+{{!-- ability scores --}}
+<fieldset class="border-top ability-tables">
+    <legend>{{ localize "ARS.abilities" }}</legend>
+    <table>
+        {{#each system.abilities as |ability key|}}
+        <tr>
+            <td>
+                <div class="ability-label" >
+                    <label for="system.abilities.{{key}}.value" class="ability-score rollable ability-check" data-roll="d20" data-target="{{ability.value}}"
+                        data-label="{{ability.labelExtended}}">{{ability.label}}</label>
+                </div>
+
+                <div class="ability-score">
+                    <input type="number" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number" />
+                </div>
+            </td>
+            
+            <td>
+                <table class="fields">
+                    <tr class="table-headers">
+                        <th class="percent">
+                            <label>{{localize "ARS.abilityFields.all.percent.label"}}</label>
+                        </th>
+
+                        {{#each ability.fields as | field fkey|}}
+                            <th>
+                                <label data-value={{field.value}}>{{localize field.label}}</label>
+                            </th>
+                        {{/each}}
+                    </tr>
+                    <tr>
+                        <td class="percent">
+                            <input class="percent" type="number" name="system.abilities.{{key}}.percent" value="{{ability.percent}}" data-dtype="Number" />
+                        </td>
+
+                        {{#each ability.fields as | field fkey|}}
+                            <td >
+                                <label data-tooltip="{{field.tip}}" data-value="{{field.value}}" data-label="{{localize field.label}}">{{field.value}}</label>
+                            </td>
+                        {{/each}}
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</fieldset>
+{{!-- end ability scores --}}

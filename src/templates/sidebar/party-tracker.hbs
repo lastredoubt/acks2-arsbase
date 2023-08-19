@@ -1,0 +1,147 @@
+{{!-- {{log "party-tracker.hbs" this}} --}}
+<section class="tab sidebar-tab directory flexcol" id="party" data-tab="party">
+    <div class="party-tracker directory-list">
+        <nav style="padding-bottom: 1px;" class="party-commands general-header">
+            <div class="flexrow">
+                <a class="boxed party-longrest" data-tooltip="Long rest for party">
+                    <div class="time-type">
+                        <i class="fas fa-campground"></i>
+                        {{localize "ARS.time.longrest"}}
+                    </div>
+                </a>
+                <div class="boxed time-round1" data-tooltip="Advance time by round">
+                    <div class="time-type">
+                        <i class="fas fa-stopwatch"></i>
+                        {{localize "ARS.time.round"}}
+                    </div>
+                </div>
+                <div class="boxed time-turn1" data-tooltip="Advance time by turn">
+                    <div class="time-type">
+
+                        <i class="fas fa-hourglass-start"></i>
+                        {{localize "ARS.time.turn"}}
+                    </div>
+                </div>
+                <div class="boxed time-hour1" data-tooltip="Advance time by hour">
+                    <div class="time-type">
+                        <i class="fas fa-hourglass-end"></i>
+                        {{localize "ARS.time.hour"}}
+                    </div>
+                </div>
+                <div class="boxed time-day1" data-tooltip="Advance time by day">
+                    <div class="time-type">
+                        <i class="fas fa-sun"></i>
+                        {{localize "ARS.time.day"}}
+                    </div>
+                </div>
+                <div class="boxed time-custom" data-tooltip="Advance time...">
+                    <div class="time-type">
+                        <i class="fas fa-clock"></i>
+                        <div>{{localize "ARS.time.custom"}}</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="party-members">
+            <nav style="margin-bottom: 5px;" class="general-header flexrow">
+                <div style="font-size:1.3rem;flex-grow:1;">
+                    {{localize "ARS.party.members"}}
+                </div>
+                <div
+                    style="font-size:0.75rem;display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow:0;">
+                    <div>
+                        <a class="member-add" data-tooltip="Add member to party"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <div> {{localize "ARS.add"}}</div>
+                </div>
+            </nav>
+            <nav class="list flexcol">
+                {{#each members as |member| }}
+                    <li class="entry actor flexrow" data-index="{{index}}" data-id="{{member.id}}">
+                        <img class="token-image" src="{{member.img}}" data-tooltip="{{member.name}}" />
+                        <span class="member">{{member.name}}</span>
+                        {{#if member.flags.ars.henchman}} <i
+                                data-tooltip="Member is a henchman getting reduced experience awards"
+                                class="control henchman fas fa-user-check"></i>{{/if}}
+                        <a class="member-configure control" data-tooltip="Adjust henchman status"><i
+                                class="fas fa-cog"></i></a>
+                        <a class="member-longrest control" data-tooltip="Long rest for member"><i
+                                class="fas fa-campground"></i></a>
+                        <a class="member-remove control" data-tooltip="Remove party member"><i
+                                class="fas fa-minus"></i></a>
+                    </li>
+                {{/each}}
+            </nav>
+        </div>
+        <br>
+
+        <div class="party-awards">
+            <nav class="general-header flexrow">
+                <div style="font-size:1.3rem;">{{localize "ARS.party.awards"}}</div>
+                <div class="control">
+                    <a class="award-create" data-tooltip="Add party experience award"><i class="fas fa-plus"></i></a>
+                </div>
+                <div class="control">
+                    <a class="award-apply" data-tooltip="Grant all queued awards to current party members"><i
+                            class="fas fa-trophy"></i></a>
+                </div>
+            </nav>
+            <nav class="list flexcol">
+                {{#if awards.length}}
+                    <div class="general-subheader award-titles">
+                        <li class="flexrow">
+                            <div class="award-xp">XP</div>
+                            <div>{{localize "ARS.party.description"}}</div>
+                            <div style="flex: 0 0 100px">{{localize "ARS.party.destination"}}</div>
+                            <div class="control"></div>
+                        </li>
+                    </div>
+                {{/if}}
+                {{#each awards as |award index|}}
+                    <li class="flexrow" data-index="{{index}}">
+                        <div>
+                            <input class="award-xp" type="number" value="{{award.xp}}" data-dtype="Number" />
+                        </div>
+                        <div class="text-trunc">
+                            <input class="award-text" type="text" value="{{award.text}}"
+                                placeholder="Award description" />
+                        </div>
+                        <div style="flex: 0 0 100px">
+                            <select class="award-destination">
+                                {{#select targetId}}
+                                    <option value="">{{localize "ARS.party.party"}}</option>
+                                    {{#each ../members as |member index|}}
+                                        <option value="{{member.id}}">{{member.name}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                        </div>
+                        <div class="control">
+                            <a class="award-delete" data-tooltip="Delete award"><i class="fas fa-minus"></i></a>
+                        </div>
+                    </li>
+                {{/each}}
+            </nav>
+        </div>
+
+        <div class="party-logs">
+            <nav class="general-header flexrow">
+                <div style="font-size:1.3rem;">{{localize "ARS.party.logs"}}</div>
+                <div class="control">
+                    <a class="logs-purge" data-tooltip="Purge all log entries"><i class="fas fa-trash"></i></a>
+                </div>
+            </nav>
+            <nav class="list flexcol">
+                {{#each logs as |log index|}}
+                    <span data-index="{{index}}">
+                        <div class="date">[{{log.date}}]</div>
+                        <div class="log"> {{log.text}}</div>
+                    </span>
+                {{/each}}
+            </nav>
+        </div>
+
+    </div>
+
+    <footer class="directory-footer"></footer>
+</section>

@@ -1,0 +1,79 @@
+{{#if game.ars.config.settings.consumeFoodWater}}
+    {{!-- <fieldset class="border-top">
+        <legend>{{ localize "ARS.dailyfoodwater" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.dailyfoodwater" }}</div>
+    <div style="text-align: center;align-items:center;align-content:center;" class="general-subheader flexrow">
+        <div>
+            {{localize "ARS.longrest"}}
+        </div>
+        <div>
+            {{localize "ARS.food"}}
+        </div>
+        <div>
+            {{localize "ARS.water"}}
+        </div>
+    </div>
+    <div class="item-list">
+        <div style="text-align:center;align-items:center;" class="flexrow">
+            <div>
+                <div class="combat-value"><a class="actor-longrest" data-tooltip="Long rest for actor"><i
+                            class="fas fa-campground"></i></a></div>
+            </div>
+
+            {{#if actor.dailyprovisions.food}}
+                <li style="margin-right:3px;" class="flexrow item reveal-hidden" data-type="food"
+                    data-id="{{actor.dailyprovisions.food.id}}" data-uuid="{{actor.dailyprovisions.food.uuid}}"
+                    data-tooltip="Remaining {{actor.dailyprovisions.food.system.quantity}}">
+                    {{!-- <div class="item-image"><img src="{{actor.dailyprovisions.food.img}}"></div> --}}
+                    <div class="text-trunc provision-name">
+                        {{actor.dailyprovisions.food.name}}
+                        ({{actor.dailyprovisions.food.system.quantity}})
+                    </div>
+                    <div class="item-controls">
+                        <a class="item-control item-provisions-edit hidden" data-tooltip="Edit Item"><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-provisions-delete hidden" data-tooltip="Remove Daily Item"><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{else}}
+                <div class="flexrow">
+                    <div class="iprovisions-select">
+                        <a class="item-provisions-select" data-tooltip="Select Item" data-type="food">
+                            <i>{{localize "ARS.none-selected"}}</i>
+                            <i class="fas fa-bread-slice"></i>
+                        </a>
+                    </div>
+                </div>
+            {{/if}}
+            {{#if actor.dailyprovisions.water}}
+                <li style="margin-right:3px;" class="flexrow item reveal-hidden" data-type="water"
+                    data-id="{{actor.dailyprovisions.water.id}}" data-uuid="{{actor.dailyprovisions.water.uuid}}"
+                    data-tooltip="Remaining {{actor.dailyprovisions.water.system.quantity}}">
+                    {{!-- <div class="item-image"><img src="{{actor.dailyprovisions.water.img}}"></div> --}}
+                    <div class="text-trunc provision-name">
+                        {{actor.dailyprovisions.water.name}}
+                        ({{actor.dailyprovisions.water.system.quantity}})
+                    </div>
+                    <div class="item-controls">
+                        <a class="item-control item-provisions-edit hidden" data-tooltip="Edit Item"><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-provisions-delete hidden" data-tooltip="Remove Daily Item"><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{else}}
+                <div class="flexrow">
+                    <div class="iprovisions-select">
+                        <a class="item-provisions-select" data-tooltip="Select Item" data-type="water">
+                            <i>{{localize "ARS.none-selected"}}</i>
+                            <i class="fas fa-beer"></i>
+                        </a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+    {{!-- </fieldset> --}}
+{{/if}}

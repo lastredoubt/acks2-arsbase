@@ -1,0 +1,136 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{> "systems/ars/templates/item/parts/item-header.hbs"}}
+
+    <div class="general-skill-parts">
+        <div class="skill-cost flexrow">
+            <label>Cost</label>
+            <input name="system.features.cost" type="number" value="{{system.features.cost}}" data-dtype="Number" />
+        </div>
+    </div>
+    <div class="item-titles">
+        <div class="item-header flexrow">
+            <div class="skill-start">Target Type</div>
+            <div class="skill-ability">Ability</div>
+            <div class="skill-formula">Formula</div>
+            {{#if (eq system.features.ability 'none')}}
+                <div class="skill-value">Target Formula</div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="skill-header">
+        <div class="skill-header flexrow">
+            <div class="skill-type">
+                <select class="selector" name="system.features.type">
+                    {{#select system.features.type}}
+                        {{#each config.skillTypes as |name type|}}
+                            <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="skill-ability">
+                <select class="selector" name="system.features.ability">
+                    {{#select system.features.ability}}
+                        {{#each config.abilityTypes as |name type|}}
+                            <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="skill-formula">
+                <input name="system.features.formula" type="text" value="{{system.features.formula}}" />
+            </div>
+            {{#if (eq system.features.ability 'none')}}
+                <div class="skill-target">
+                    <input name="system.features.target" type="text" value="{{system.features.target}}" />
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="skills-header">
+        <div class="item-titles">
+            <div class="item-header">
+                <h4 align="center" data-tooltip="Customized modifiers applied during skill check">Modifiers</h4>
+            </div>
+        </div>
+        <div class="item-header flexrow">
+            <div class="skill-start">Formula</div>
+            <div class="skill-type">
+                <input name="system.features.modifiers.formula" type="text"
+                    value="{{system.features.modifiers.formula}}" />
+            </div>
+        </div>
+    </div>
+    <div class="item-titles">
+        <div class="item-header flexrow">
+            <div class="skill-start">Class</div>
+            <div class="skill-start">Ability</div>
+            <div class="skill-start">Armor</div>
+            <div class="skill-start">Race</div>
+            <div class="skill-start">Item</div>
+            <div class="skill-start" data-tooltip="Background or secondary skill set">BG</div>
+            <div class="skill-start">Other</div>
+        </div>
+    </div>
+    <div class="skill-header">
+        <div class="skill-header flexrow">
+            <div class="skill-class">
+                <input name="system.features.modifiers.class" type="number" value="{{system.features.modifiers.class}}"
+                    data-dtype="Number" />
+            </div>
+            <div class="skill-ability">
+                <input name="system.features.modifiers.ability" type="number"
+                    value="{{system.features.modifiers.ability}}" data-dtype="Number" />
+            </div>
+            <div class="skill-armor">
+                <input name="system.features.modifiers.armor" type="number" value="{{system.features.modifiers.armor}}"
+                    data-dtype="Number" />
+            </div>
+            <div class="skill-race">
+                <input name="system.features.modifiers.race" type="number" value="{{system.features.modifiers.race}}"
+                    data-dtype="Number" />
+            </div>
+            <div class="skill-item">
+                <input name="system.features.modifiers.item" type="number" value="{{system.features.modifiers.item}}"
+                    data-dtype="Number" />
+            </div>
+            <div class="skill-background">
+                <input name="system.features.modifiers.background" type="number"
+                    value="{{system.features.modifiers.background}}" data-dtype="Number" />
+            </div>
+            <div class="skill-other">
+                <input name="system.features.modifiers.other" type="number" value="{{system.features.modifiers.other}}"
+                    data-dtype="Number" />
+            </div>
+        </div>
+    </div>
+
+    {{!-- TODO Set this to allow adding group and custom properties.
+    These are arrays of strings --}}
+    <div class="skills-header">
+        <div class="skill-header">
+            <h4 align="center">Misc</h4>
+        </div>
+    </div>
+    <div class="skill-header">
+        <div class="skill-header flexrow">
+            <div class="skill-groups" data-tooltip="Group names separated by comma">Groups</div>
+        </div>
+    </div>
+    <div class="skill-header flexrow">
+        <input name="system.groups" type="text" value="{{system.groups}}" />
+    </div>
+
+    {{!-- <div class="skills-header">
+        <div class="skill-header">
+            <h4 align="center">Description</h4>
+        </div>
+    </div> --}}
+    <div>
+        <div>
+            {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+        </div>
+    </div>
+
+</form>

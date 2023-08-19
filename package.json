@@ -1,0 +1,51 @@
+{
+  "name": "ars",
+  "version": "2023.08.06",
+  "description": "CSS compiler for the ars",
+  "scripts": {
+    "build": "gulp",
+    "compile": "gulp css",
+    "watch": "gulp",
+    "gulp": "gulp"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "AD&D Mike",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cli": "^2.3.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^7.0.1"
+  },
+  "main": "gulpfile.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "archiver": "^3.1.1",
+    "chalk": "^3.0.0",
+    "del": "^6.0.0",
+    "fs-extra": "^8.1.0",
+    "gulp": "^4.0.2",
+    "gulp-git": "^2.10.0",
+    "gulp-less": "^4.0.1",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "json-stringify-pretty-compact": "^2.0.0",
+    "mkdirp": "^3.0.1",
+    "sass": "^1.52.1",
+    "typescript": "^3.7.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/foundryprojects/systems/advanced-roleplay-system.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/issues"
+  },
+  "homepage": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system"
+}

@@ -1,0 +1,80 @@
+{{!-- {{log "chatCard-spell.hbs THIS-->" this}}
+{{log "chatCard-spell.hbs actions-->" actions}}
+{{log "chatCard-spell.hbs item-->" item}} --}}
+
+<div class="sheet-card" style="background: rgb(240, 239, 209);">
+    <div class="non-owner-only-view">
+        {{localize "ARS.unknownAction"}}
+    </div>
+    <div class="owner-only-view">
+        {{!-- <fieldset class="border-top"> --}}
+        {{!-- <legend>{{localize "ARS.spell" }}</legend> --}}
+        <div class="general-header">{{localize "ARS.spell" }}</div>
+        <div class="action-card spell-card item">
+            <div class="flexrow">
+                <div class="a25-image" style="">
+                    <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+                </div>
+                <div class="general-subheader spell-title">
+                    {{#if item.pack}}
+                        @Compendium[{{item.pack}}.{{item.id}}]
+                    {{else}}
+                        {{#if item.isOwned}}
+                            {{item.name}}
+                        {{else}}
+                            @Item[{{item.id}}]
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-item" data-tooltip="{{item.system.range}}">Rng {{item.system.range}}</div>
+
+                {{!-- <div class="grid-item">2</div> --}}
+
+                <div class="grid-item">
+                    Comp
+                    {{#if item.system.components.verbal}}V{{/if}}
+                    {{#if item.system.components.somatic}}S{{/if}}
+                    {{#if item.system.components.material}}M{{/if}}
+                </div>
+
+                <div class="grid-item" data-tooltip="{{item.system.durationText}}">Dur {{item.system.durationText}}
+                </div>
+
+                {{!-- <div class="grid-item">5
+                        <img class="actionImage" src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+                    </div> --}}
+
+                <div class="grid-item" data-tooltip="{{item.system.castingTime}}">Cast {{item.system.castingTime}}
+                </div>
+
+                <div class="grid-item" data-tooltip="{{item.system.areaOfEffect}}">AE {{item.system.areaOfEffect}}
+                </div>
+
+                {{!-- <div class="grid-item">8</div> --}}
+
+                <div class="grid-item" data-tooltip="{{item.system.save}}">Save {{item.system.save}}</div>
+
+            </div>
+            <div class="chatCard-description">
+                <div style="display: block" class="chatCard-description-short">
+                    {{{ item.system.description }}}
+                </div>
+                <div style="display: none" class="chatCard-description-full">
+                    {{{ item.system.description }}}
+                </div>
+                {{#if item.system.description}}
+                    <div class="chatCard-expand-view"><i class="fas fa-expand-alt"></i></div>
+                {{/if}}
+                {{!-- <div class="chatCard-expand-view"><i class="fas fa-compress-alt"></i></div> --}}
+            </div>
+
+            <div class="card-buttons" data-type="{{slotType}}" data-index="{{slotIndex}}" data-level="{{slotLevel}}">
+                {{> "systems/ars/templates/chat/parts/chatCard-actions-block.hbs" }}
+            </div>
+        </div>
+        {{!-- </fieldset> --}}
+    </div>
+</div>

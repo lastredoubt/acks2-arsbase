@@ -1,0 +1,71 @@
+{{!-- //TODO: Make this "aura" config part --}}
+
+<div class="tab" data-group="main" data-tab="auras">
+
+    {{!-- {{log "token-aura.hbs this" this}}
+{{log "token-aura.hbs config" config}}
+{{log "token-aura.hbs object" object}} --}}
+
+    <div class="form-group">
+        <label>{{localize "TOKEN.AuraEnabled"}}</label>
+        <input type="checkbox" name="flags.ars.aura.isEnabled" {{checked object.flags.ars.aura.isEnabled}} />
+        <p class="hint">{{ localize 'TOKEN.AuraEnabledTT' }}</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "TOKEN.AuraSquare"}}</label>
+        <input type="checkbox" name="flags.ars.aura.isSquare" {{checked object.flags.ars.aura.isSquare}} />
+        <p class="hint">{{ localize 'TOKEN.AuraSquareTT' }}</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "TOKEN.AuraColor"}}</label>
+        <div class="flexrow">
+            <input type="color" value="{{object.flags.ars.aura.color}}" data-edit="flags.ars.aura.color" />
+            <input type="text" value="{{object.flags.ars.aura.color}}" name="flags.ars.aura.color" />
+        </div>
+        <p class="hint">{{ localize 'TOKEN.AuraColorTT' }}</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "TOKEN.AuraOpacity"}}</label>
+        <div class="flexrow">
+            <input type="range" value="{{object.flags.ars.aura.opacity}}" name="flags.ars.aura.opacity" step="0.1"
+                min="0" max="1" />
+            <span class="range-value" placeholder="0.5">{{object.flags.ars.aura.opacity}}</span>
+        </div>
+        <p class="hint">{{ localize 'TOKEN.AuraOpacityTT' }}</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "TOKEN.AuraDistance"}}</label>
+        <input type="number" data-dtype="Number" value="{{object.flags.ars.aura.distance}}" step="any" min="1"
+            name="flags.ars.aura.distance" placeholder="10" />
+        <p class="hint">{{ localize 'TOKEN.AuraDistanceTT' }}</p>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "TOKEN.AuraPermission"}}</label>
+        {{!-- <input type="text" value="{{object.flags.ars.aura.permission}}" name="flags.ars.aura.permission" /> --}}
+
+
+        {{!-- <select name="flags.ars.aura.permission">
+            {{selectOptions config.auraPermissisions selected=object.flags.ars.aura.permission localize=true}}
+        </select> --}}
+
+        <select name="flags.ars.aura.permission">
+            {{#select object.flags.ars.aura.permission}}
+                {{#each config.auraPermissisions as |name type|}}
+                    {{!-- {{log "token-aura.hbs auraPermissisions name" name}} --}}
+                    {{!-- {{log "token-aura.hbs auraPermissisions type" type}} --}}
+                    <option value="{{type}}">{{localize name}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+
+
+        <p class="hint">{{ localize 'TOKEN.AuraPermissionTT' }}</p>
+    </div>
+
+
+</div>

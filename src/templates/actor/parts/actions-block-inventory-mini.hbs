@@ -1,0 +1,24 @@
+{{!-- {{log "actions-block-inventory-mini.hbs actionInventory" actor.actionInventory}} --}}
+{{!-- {{log "actions-block-inventory-mini.hbs this" this}} --}}
+{{#if actor.system.itemActionCount}}
+  <div class="hud-actions">
+    <div class="mini-actions-buttons" style="--action-button-size: {{actor.system.itemActionCount}};">
+      {{#each actor.actionInventory as |item id|}}
+        {{!-- {{log "actions-block-inventory-mini.hbs item.name" item.name}}
+        {{log "actions-block-inventory-mini.hbs item.system.actionCount" item.system.actionCount}} --}}
+        {{#if item.system.actionCount}}
+          {{#each item.system.actionList as |actionGroup actionGroupName|}}
+            {{!-- data-sourceitem-id="{{item.id}}" data-tooltip="{{item.name}}" ///  --}}
+            <li class="mini-action action-header with-background-image flexrow" data-action-group="{{actionGroupName}}"
+              data-sourceitem-id="{{item.id}}" data-tooltip="{{item.name}}"
+              style="background-image: url('{{actionGroup.img}}')">
+              <div class="mini-action-button action-name rollable actionCard-roll" data-type="action-name">
+                {{actionGroupName}}
+              </div>
+            </li>
+          {{/each}}
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+{{/if}}

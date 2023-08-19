@@ -1,0 +1,18 @@
+{{!-- {{ log "chat/chatCard-check.hbs" roll }}
+{{ log "chat/chatCard-check.hbs" passedcheck }} --}}
+
+<div class="sheet-card">
+    <div class="testResult {{#if passedcheck}}succeedCheck{{else}}failedCheck{{/if}}">
+        {{#if flavor}}
+            <div style="text-align: center;" class="check-flavor dice-flavor">
+                {{{flavor}}}
+            </div>
+        {{/if}}
+        <div class="check-test">
+            {{#if passedcheck}}{{localize "ARS.succeded"}}{{else}}{{localize "ARS.failed"}}{{/if}} {{#if difference}}by
+                {{difference}}{{/if}}, {{localize "ARS.target"}} {{targetnumber}}
+        </div>
+    </div>
+
+    {{> "systems/ars/templates/chat/parts/chatCard-dice-roll.hbs" roll=roll}}
+</div>

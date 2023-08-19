@@ -1,0 +1,75 @@
+{{!-- combatStats ac/hp/thaco/move/etc --}}
+{{> "systems/ars/templates/actor/parts/combat-stats-block.hbs"}}
+
+{{!-- NPC special attack/defense --}}
+{{#if (eq actor.type 'npc')}}
+    {{#if (or actor.system.specialAttacks actor.system.specialDefenses)}}
+        <div>
+            {{#if actor.system.specialAttacks}}
+                <div><b>{{localize "ARS.specialAttacks"}}</b> {{actor.system.specialAttacks}}</div>
+            {{/if}}
+            {{#if actor.system.specialDefenses}}
+                <div><b>{{localize "ARS.specialDefenses"}}</b> {{actor.system.specialDefenses}}</div>
+            {{/if}}
+        </div>
+    {{/if}}
+{{/if}}
+{{!-- matrix attack block --}}
+<div class="general-header">{{localize "ARS.matrix.matrixTitle" }}</div>
+<div class="matrix-block flexrow">
+    {{#if (or (eq @root.config.settings.systemVariant '0') (eq @root.config.settings.systemVariant '1'))}}
+        {{#each actor.matrixSlice}}
+            <div class="flexcol" {{#if (eq @index 10)}}style="background-color: red;color:white" {{/if}}>
+                <div class="ac">{{math @index "-" 10}}</div>
+                <div class="hit">{{this}}</div>
+            </div>
+        {{/each}}
+    {{else}}
+        {{#each actor.system.matrix as |matrix index|}}
+            <div class="flexcol" {{#if (eq index 10)}}style="background-color: red;color:white" {{/if}}>
+                <div class="ac">{{matrix.ac}}</div>
+                <div class="hit">{{matrix.hit}}</div>
+            </div>
+        {{/each}}
+    {{/if}}
+    <div class="matrix-label flexcol">
+        <div class="ac-label" data-tooltip="{{ localize "ARS.matrix.targetactip" }}">
+            {{ localize "ARS.matrix.targetac" }}
+        </div>
+        <div class="roll-label" data-tooltip="{{ localize "ARS.matrix.hitrolltip" }}">
+            {{ localize "ARS.matrix.hitroll" }}
+        </div>
+    </div>
+</div>
+<div class="general-footer"></div>
+{{!-- </fieldset> --}}
+
+{{!-- weapons --}}
+{{#if actor.weapons}}
+    <div style="margin-bottom: 3px;" class="weapon-block">
+        {{> "systems/ars/templates/actor/parts/weaponlist-block.hbs"}}
+    </div>
+    {{!-- <div class="general-footer"></div> --}}
+{{/if}}
+
+{{!-- spells  --}}
+{{#if actor.hasSpellSlots}}
+    <div style="margin-bottom: 3px;" class="spell-block">
+        {{> "systems/ars/templates/actor/parts/memorization-block.hbs"}}
+    </div>
+    {{!-- <div class="general-footer"></div> --}}
+{{/if}}
+
+{{!-- actions for self and all items --}}
+<div style="margin-bottom: 3px;" class="actions-block-list">
+    {{> "systems/ars/templates/actor/parts/actions-block-list.hbs" }}
+</div>
+{{!-- <div class="general-footer"></div> --}}
+
+{{!-- skills --}}
+{{!-- {{#if actor.skills}} --}}
+<div style="margin-bottom: 3px;" class="skill-block">
+    {{> "systems/ars/templates/actor/parts/skills-block.hbs"}}
+</div>
+{{!-- <div class="general-footer"></div> --}}
+{{!-- {{/if}} --}}

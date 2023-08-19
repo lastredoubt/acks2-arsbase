@@ -1,0 +1,28 @@
+
+.dialog {
+    .dialog-content {
+
+        .flexrow {
+            align-items: center;
+        }
+        select {
+            width:98%;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+        .dialog-icon {
+            flex-basis: 25px;
+            flex-grow: 0;
+            font-size: 0.99em;
+            margin-right: 5px;
+            
+            img {
+                vertical-align:middle;
+            }
+        }
+    
+    }
+}

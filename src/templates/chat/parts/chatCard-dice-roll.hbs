@@ -1,0 +1,17 @@
+{{log "chatCard-dice-roll.hbs" this}}
+<div class="dice-roll">
+    <div class="dice-result">
+            <div class="rolledText dice-formula">
+                <input type="text" name="formula" value="{{roll.formula}}" data-tooltip="{{ roll.rawformula }}" disabled/>        
+            </div>
+            <div class="rolledText dice-tooltip">
+                <input type="text" name="result" value="{{roll.result}}" disabled/>        
+            </div>
+        {{#if roll.diceToolTip}}
+            {{{roll.diceToolTip}}}
+        {{/if}}
+            <div class="rolledText rolledTotal dice-total">
+                <input class="rolledTotal" type="text" name="total" value="{{roll.total}}" disabled/>        
+            </div>          
+    </div>
+</div>

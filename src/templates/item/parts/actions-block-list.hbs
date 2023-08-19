@@ -1,0 +1,14 @@
+<div class="action-block">
+    <div class="actions">
+        {{!-- <div class="item-titles"> --}}
+        <li class="general-header flexrow">
+            <div class="item-header flex-text-center">Actions</div>
+            <div class="item-controls" style="flex-basis: 25px;flex-grow: 0;text-align: center;font-size: 10px;">
+                <a class="item-control action-controls action-create" data-tooltip="{{ localize "ARS.actions.create" }}"
+                    data-action="create"><i class="fas fa-plus"></i></a>
+            </div>
+        </li>
+        {{!-- </div> --}}
+        {{> "systems/ars/templates/apps/parts/actions-block.hbs" actor=item.actor actions=system.actions actionList=item.system.actionList }}
+    </div>
+</div>

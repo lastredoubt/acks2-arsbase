@@ -1,0 +1,60 @@
+
+// div.npc-data-label:nth-child(odd) td{
+//   background:#ccc;
+// }
+// div.npc-data-label:nth-child(even) td{
+//    background:#fff;
+// }
+
+.npc {
+  
+  .npc-sheet-header {
+    flex: 0 0 64px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 2px;
+  
+    img.npc-profile-img {
+      flex: 0 0 64px;
+      height: 64px;
+      width: 64px;
+      margin-right: 10px;
+    }
+  }
+
+  .npc-label {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .npc-sheet {
+    // background: white;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  .npc-th {
+    text-align:left;
+    // color:#4169e1;
+    font-weight:bold; 
+  }
+  
+  .npc-data-label {
+    border: 0.5px groove;
+    font-weight: bold;     
+  
+    margin-top: 0.5px;
+    margin-bottom: 0px;
+    margin-right: 1px;
+    margin-left: 1px;
+    padding-left: 2px;  
+  }
+  
+}
+
+td.npc-data-input, td.npc-data-label, th.npc-data-input, th.npc-data-label {
+  padding: 0px;
+}

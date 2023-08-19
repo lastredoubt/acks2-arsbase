@@ -1,0 +1,402 @@
+.character, .npc, .lootable {
+
+    select {
+        width:100%;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        margin-left: 2px;
+        margin-right: 2px;
+      }
+      
+    .rollable {
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          text-shadow: 0 0 8px red;
+        }
+    }
+
+    .sheet-header {
+        h1.character-name {
+            width: 100%;
+            height: 100%;
+            input {
+              width: 95%;
+              height: 100%;
+            }
+        }
+    }
+
+    .tab.main, .tab.attributes {
+        text-align: left;
+
+        .ability-save-grid {
+            display: grid; 
+
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 21%;
+            
+            gap: 0px;
+            height: 100%;            
+        }
+        .ability-tables {
+            grid-row-start: 1;
+            grid-column-start: 1;
+         
+            grid-row-end: 2;
+            grid-column-end: 2;
+            margin: 1px;
+            padding: 1px;
+         }
+         .save-stats {
+            grid-row-start: 1;
+            grid-column-start: 2;
+         
+            grid-row-end: 2;
+            grid-column-end: 3;
+            margin: 1px;
+            padding: 1px;
+
+            .save-quadrant {
+                // border: 1px solid black;
+            }
+            .save-label {
+                // background-color: $c-mid;
+                text-align: center;
+                font-weight: 700;
+                flex-grow: 0;
+
+                grid-row-start: 1;
+                grid-column-start: 1;
+             
+                grid-row-end: 2;
+                grid-column-end: 2;
+                margin: 1px;
+                padding: 1px;
+            }
+            .save-value {
+                font-weight: normal;
+                text-align: center;
+                border: 2px solid black;
+                border-radius: 12px;
+                padding: 2px;     
+
+                grid-row-start: 1;
+                grid-column-start: 2;
+             
+                grid-row-end: 2;
+                grid-column-end: 3;
+                margin: 1px;
+                padding: 1px;
+            }
+
+         }
+         .save-box {
+            display: grid; 
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr;
+            gap: 0px;
+            // height: 100%;            
+            .saves-recalculate {
+                text-align: right;
+            }
+         }
+
+        .flexcol {
+            padding: 1px;
+        }
+        .flexrow {
+            padding: 1px;
+        }
+        .resource {
+            flex-grow: 2;
+            border-bottom: 1px solid;
+        }
+        .resource-input {
+            height: 18px;
+            border: none;
+            border-bottom: 1px solid;
+        }
+        label.ability-score {
+            font-size: 1.01em;
+        }
+        label {
+            font-size: 0.99em;
+            font-weight: 600;
+        }
+        select {
+            height: 100%;
+        }
+
+        .ability-tables {
+            text-align: center;
+
+            .ability-label {
+                text-transform: uppercase;
+            }
+
+            .ability-score {
+                input {
+                    align-items: center;
+                    font-size: 1.4em;
+                    width: 38px;
+                    padding: 0px;
+                    background-color: #fafafa;
+                }
+            }
+            table {
+                padding: 0px;
+                margin: 0px;
+
+            }
+            tr {
+                border-top: none;
+            }
+            .fields {
+                tr:nth-of-type(odd) {
+                    background-color: $item-background-color;
+                  }
+                
+                  tr:nth-of-type(even) {
+                    background-color: $item-background-alt-color;
+                  }
+    
+    
+                padding: 4px;
+                font-size: smaller;
+            }
+            th {
+                padding: 0px;
+                margin: 0px;
+                .percent {
+                    width: 10%;
+                }
+            }
+            td {
+                border: 1px groove black;
+                border-bottom: none;
+                padding: 0px;
+                margin: 0px;
+                input.percent {
+                    border: none;
+                    border-bottom: 1px solid;
+                    font-weight: 200;
+                    width: 40px;
+                    padding: 1px;
+                }
+                .percent {
+                    width: 10%;
+                }
+            }
+
+        }
+ 
+    }
+    
+    .tab.combat {
+        font-size:smaller;
+
+        .underline {
+            border-bottom: 1px solid black;
+        }
+
+        .combat-stats {
+            padding: 0px;
+            margin-bottom: 10px;
+            height: 80px;
+              
+            .combat-box {
+                height:100%;
+                justify-content: flex-start;
+                align-items: center;
+                // flex-wrap: wrap;
+            }
+
+            .armor-icon,.hp-icon,.movement-icon,.thaco-icon {
+                margin-right: 3px;
+                background-position: center;
+                background-repeat: no-repeat;
+                // height:100%;
+                // background-size: 70px 55px;
+                background-size: 90%;
+            }
+            .armor-icon {
+                background-image: url("icons/general/shield.webp");
+            }
+            .hp-icon {
+                background-image: url("icons/general/health.webp");
+            }
+            .movement-icon {
+                // background-size: 36px 47px;
+                background-image: url("icons/general/leather-boot.webp");
+            }
+            .thaco-icon {
+                background-image: url("icons/general/combat.webp");
+            }
+
+            .hp-value, .ac-value, .movement-value, .thaco-value {
+                align-self: center;
+                font-size: 1.75em;
+                font-weight: 600;
+            }
+            .variant, .hp-value, .ac-value, .movement-value, .thaco-value {
+                flex-basis: 20px;
+                flex-grow: 0;
+            }
+            label {
+                text-align: center;
+                margin: 4px;
+                height: 50px;
+                flex-basis: 50px;
+                flex-grow: 0;
+                font-weight: bolder;
+            }
+            .combat-value {
+                text-align: center;
+                border-bottom: 1px solid black;
+                border-right: 1px solid black;
+                font-weight: normal;
+            }
+            .combat-label {
+                padding: 4px;
+                border-right: 1px solid black;
+                font-size: 0.98em;
+                font-weight: 600;
+            }
+        }        
+        .combat-bar {
+            margin-left: auto;
+            font-size: 0.99em;
+
+            .combat-value {
+                text-align: center;
+                border-bottom: 1px solid black;
+                border-right: 1px solid black;
+            }
+
+            .combat-label {
+                font-weight: 700;
+            }
+    
+            .bar {
+                margin: 2px;
+                flex-basis: 20px;
+                flex-grow: 0;
+
+            }
+            .bar-right {
+                margin: 2px;
+                margin-left: auto;
+                flex-basis: 20px;
+                flex-grow: 0;
+            }
+            .initiative-block {
+                margin-left: 5px;
+                flex-basis: 30px;
+                flex-grow: 0;
+
+                .roll-initiative {
+                    flex-basis: 30px;
+                    flex-grow: 0;
+                    font-size: 1.09em;
+                    &:hover,
+                    &:focus {
+                      text-shadow: 0 0 8px red;
+                      cursor: pointer;
+                    }      
+                }
+            }
+            
+        }
+
+        .matrix-block {
+            text-align: center;
+            font-size: smaller;
+            .matrix-label {
+                font-weight: 700;
+                // padding-left: 2px;
+                .ac-label {
+                    border-bottom: 1px solid black;
+                    border-top: 1px solid black;
+                    border-right: 1px solid black;
+                }
+                .roll-label {
+                    border-bottom: 1px solid black;
+                    border-right: 1px solid black;
+                }
+            }
+            .ac, .hit {
+                padding :1px;
+            }
+            .ac {
+                border-top: 1px solid black;
+                border-left: 1px solid black;
+                border-right: 1px solid black;
+            }
+            .hit {
+                border: 1px solid black;
+            }
+        }
+
+    }
+
+    .tab.items {
+        
+        font-size:smaller;
+
+        .currency {
+            .coin-value {
+                input.coins {
+                    border: none;
+                    border-bottom: 1px solid black;
+                }
+            }
+        }
+    }
+    
+    .tab.proficiencies {
+        font-size:smaller;
+    }
+
+    .tab.details {
+        font-size:smaller;
+        text-align: center;
+        .effect-list-types {
+            border-bottom: 1px groove black;
+        }
+        .class-list {
+            li:nth-of-type(odd) {
+                background-color: $item-background-color;
+              }
+            
+              li:nth-of-type(even) {
+                background-color: $item-background-alt-color;
+              }            
+            .class-controls {
+                flex: 0 0 50px;
+                font-size: 0.99em;
+            }
+        }
+    }
+
+    .tab.description {
+    
+        // .desc-block  {
+        // }
+        .desc-label, .desc-value {
+            margin-left: 5px;
+        }
+        .desc-label {
+            flex-basis: 50px;
+            flex-grow: 0;
+            font-weight: 700;
+        }
+        .desc-value {
+            flex-grow: 1;
+        }
+    }
+
+    .inventory {
+        min-height: 24px;
+    }
+}

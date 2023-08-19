@@ -1,0 +1,26 @@
+{{!-- {{log "item-nav.hbs this" this}}
+{{log "item-nav.hbs data" data}}
+{{log "item-nav.hbs item" item}} --}}
+
+<nav class="sheet-tabs" data-group="primary">
+    <div class="tabs flexrow">
+        <a class="item" data-tab="description">Description</a>
+        {{#includes item.type 'item||weapon||armor||skill||ability||potion||spell'}}
+            <a class="item" data-tab="actions">Actions</a>
+        {{/includes}}
+
+        <a class="item" data-tab="attributes">Attributes</a>
+
+        {{#if (eq item.type 'container')}}
+            <a class="item" data-tab="contents">{{localize "ARS.contents"}}</a>
+        {{else}}
+            {{#if item.system.itemList.length}}
+                <a class="item" data-tab="contents">{{localize "ARS.contents"}}</a>
+            {{/if}}
+        {{/if}}
+        {{#if (eq item.type 'spell')}}
+        {{else}}
+            <a class="item" data-tab="effects">Effects</a>
+        {{/if}}
+    </div>
+</nav>

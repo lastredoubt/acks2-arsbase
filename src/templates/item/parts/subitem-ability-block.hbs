@@ -1,0 +1,50 @@
+<div class="abilityList-block">
+    {{!-- 
+    {{log "subitem-ability-block.hbs, actor---->" actor}} 
+    {{log "subitem-ability-block.hbs, item---->" item}} 
+    {{log "subitem-ability-block.hbs, data---->" data}} 
+    {{log "subitem-ability-block.hbs, this---->" this}}  --}}
+
+    <section>
+        <div class="item-list">
+            {{#each config.classSubItemTypes as |type index|}}
+                <div>
+                    <div class="item-titles">
+                        <div class="flexrow item-header">
+                            <div class="item-image"></div>
+                            <span>{{localize (concat "ARS.class.subitemtypes." type) }}</span>
+                            <div class="item-controls">
+                                <a class="item-control item-create" data-tooltip="Create item" data-type="{{type}}"><i
+                                        class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item flexrow general-subheader">
+                        <div class="short-field" style="font-size: 1.01em;">Lvl</div>
+                        <div class="item-image"></div>
+                        <div class="item-name">Name</div>
+                    </div>
+                    {{#each ../system.itemList as |subitem index|}}
+                        {{#if (eq subitem.type type) }}
+                            <li class=" item flexrow" data-type="level" data-uuid="{{subitem.uuid}}"
+                                data-id="{{subitem.id}}" data-index="{{index}}">
+                                <div class="short-field"><input class="class-subitem-level" type="number"
+                                        value="{{subitem.level}}" data-dtype="Number" /></div>
+                                <div class="item-image"><img src="{{subitem.img}}" data-tooltip="{{subitem.name}}"
+                                        width="24" height="24" />
+                                </div>
+                                <div class="text-trunc">{{subitem.name}}</div>
+                                <div class="item-controls">
+                                    <a class="item-control item-edit" data-tooltip="Edit Item"><i
+                                            class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete" data-tooltip="Delete Item"><i
+                                            class="fas fa-trash"></i></a>
+                                </div>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            {{/each}}
+        </div>
+    </section>
+</div>

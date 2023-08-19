@@ -1,0 +1,46 @@
+{{!-- {{log "inventoryList-Sorted-block.hbs this" this}} --}}
+{{!-- <fieldset class="border-top">
+    <legend>{{ localize "ARS.equipment" }}<a class="item-control item-create" data-tooltip="Create item"
+            data-type="item"><i class="fas fa-plus"></i></a></legend> --}}
+<div class="general-header">{{ localize "ARS.equipment" }}<a class="item-control item-create" data-tooltip="Create item"
+        data-type="item"><i class="fas fa-plus"></i></a></div>
+<div class="category inventory">
+    <div class="item-list inventory">
+        <div class="general-subheader flexrow">
+            <div class="short-field"></div>
+            <div class="item-name-details flexrow">
+                <div>
+                    <div class="item-name">{{localize "ARS.Name"}}</div>
+                </div>
+                <div class="item-location">
+                    <div data-tooltip="{{localize "ARS.inventoryItemCarryState" }}"><i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="short-field"><i class="fas fa-hashtag"></i></div>
+            <div class="short-field"><i class="fas fa-weight-hanging"></i></div>
+            <div class="item-controls"></div>
+        </div>
+
+        {{#each actor.inventoryItems as |item id|}}
+            {{#if item.containedIn}}
+            {{else}}
+                {{> "systems/ars/templates/actor/parts/inventoryList-item.hbs" looting=../looting isGM=@root.isGM item=item config=@root.config}}
+            {{/if}}
+        {{/each}}
+    </div>
+    <div class="general-footer"></div>
+    <div style="margin-top:1px" class="carried-weight actor-titles flexrow">
+        <div style="text-align:left;" data-tooltip="Weight allowance/carry">
+            {{localize "ARS.max"}} {{actor.maxWeight}}
+            {{!-- {{#if (eq @root.config.settings.systemVariant '2')}} --}}
+            {{ localize (concat "ARS.abilityFields.str.encumbrance." actor.encumbrance) }}
+            {{!-- {{/if}} --}}
+            {{!-- {{localize "ARS.max"}} {{actor.maxWeight}} --}}
+        </div>
+        <div style="text-align:right;" data-tooltip="Carried weight total">
+            {{localize "ARS.total"}} {{actor.carriedweight}}
+        </div>
+    </div>
+</div>
+{{!-- </fieldset> --}}

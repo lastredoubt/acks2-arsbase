@@ -1,0 +1,1799 @@
+.fa-times, .fa-minus, .fa-asterisk, .fa-exclamation-triangle {
+  color: red;
+}
+
+.fa-plus, .fa-check-circle, .fa-scroll, .fa-thumbs-up {
+  color: green;
+}
+
+/* Global styles */
+.hidden {
+  display: none;
+}
+
+.grouping-border {
+  border: 2px groove;
+  padding: 1px;
+  margin: 6px;
+}
+
+fieldset.border-top {
+  border: none;
+  border-top: 1px solid #000;
+}
+
+fieldset.no-border, fieldset.border-none {
+  border: none;
+}
+
+fieldset.border-bottom {
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+fieldset {
+  border: 1px solid #000;
+  padding-top: 3px;
+  margin: 1px;
+  margin-top: 2px;
+}
+
+legend {
+  font-weight: 600;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+
+.general-header {
+  text-align: center;
+  font-weight: bolder;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+}
+
+.general-subheader {
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.15) 25%, rgba(0, 0, 0, 0.15) 75%, rgba(255, 255, 255, 0) 100%);
+}
+
+.general-footer {
+  min-height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0) 75%, rgba(0, 0, 0, 0) 100%);
+}
+
+.button-box {
+  background-color: rgba(206, 162, 67, 0.514);
+  border: 3px outset grey;
+}
+
+.playerlist-trade-button {
+  line-height: inherit;
+  font-size: 0.85rem;
+  width: calc(100% - 0.5rem);
+  margin: 0.25rem;
+  background: rgba(60, 60, 60, 0.6);
+  border: 1px solid black;
+  color: white;
+}
+
+.window-app {
+  font-family: "Book Antiqua", "Sitka", sans-serif;
+}
+
+.sheet nav.sheet-tabs, .sheet-header nav.sheet-tabs {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #775b12 20%, #775b12 65%, rgba(255, 255, 255, 0) 100%);
+  color: white;
+}
+.sheet nav.sheet-tabs .tab-items, .sheet nav.sheet-tabs .tabs, .sheet-header nav.sheet-tabs .tab-items, .sheet-header nav.sheet-tabs .tabs {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.sheet nav.sheet-tabs .item, .sheet-header nav.sheet-tabs .item {
+  border: 1px groove black;
+  align-content: center;
+  padding: 2px;
+  margin: 2px;
+}
+.sheet nav.sheet-tabs .item:hover, .sheet nav.sheet-tabs .item:focus, .sheet-header nav.sheet-tabs .item:hover, .sheet-header nav.sheet-tabs .item:focus {
+  color: black;
+  text-shadow: none;
+  background-color: lightgray;
+  cursor: pointer;
+}
+.sheet nav.sheet-tabs .item.active, .sheet-header nav.sheet-tabs .item.active {
+  border: 1px groove rgb(71, 71, 71);
+  text-shadow: 2px 2px rgb(71, 71, 71);
+  color: white;
+  background-image: radial-gradient(rgba(209, 209, 207, 0.662745098), rgba(146, 145, 143, 0.3843137255), rgba(249, 237, 201, 0.4196078431));
+}
+
+.grid,
+.grid-2col {
+  display: grid;
+  grid-column: span 2/span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 2px 0;
+  padding: 0;
+}
+
+.grid-3col {
+  grid-column: span 3/span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4col {
+  grid-column: span 4/span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5col {
+  grid-column: span 5/span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-6col {
+  grid-column: span 6/span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-7col {
+  grid-column: span 7/span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-8col {
+  grid-column: span 8/span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-9col {
+  grid-column: span 9/span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.grid-10col {
+  grid-column: span 10/span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-11col {
+  grid-column: span 11/span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.grid-12col {
+  grid-column: span 12/span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2px;
+  border: 1px solid #999;
+}
+
+.flex-group-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flex-text-center {
+  text-align: center;
+  padding: 0;
+  font-weight: normal;
+}
+
+.flexrowtrunc {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.flexrowtrunc > * {
+  flex: 1;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+/* ----------------------------------------- */
+/*  Flexbox                                  */
+/* ----------------------------------------- */
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.flexrow > * {
+  flex: 1;
+}
+.flexrow .flex1 {
+  flex: 1;
+}
+.flexrow .flex2 {
+  flex: 2;
+}
+.flexrow .flex3 {
+  flex: 3;
+}
+.flexrow .flex4 {
+  flex: 4;
+}
+.flexrow .flex5 {
+  flex: 5;
+}
+.flexrow .flex6 {
+  flex: 6;
+}
+.flexrow .flexshrink0 {
+  flex-shrink: 0;
+}
+.flexrow .flexshrink1 {
+  flex-shrink: 1;
+}
+.flexrow .flexshrink2 {
+  flex-shrink: 2;
+}
+.flexrow .flexshrink3 {
+  flex-shrink: 3;
+}
+.flexrow .flexshrink4 {
+  flex-shrink: 4;
+}
+.flexrow .flexshrink5 {
+  flex-shrink: 5;
+}
+.flexrow .text-trunc {
+  flex-shrink: 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flexcol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.flexcol > * {
+  flex: 1;
+}
+.flexcol .flex1 {
+  flex: 1;
+}
+.flexcol .flex2 {
+  flex: 2;
+}
+.flexcol .flex3 {
+  flex: 3;
+}
+.flexcol .flex4 {
+  flex: 4;
+}
+.flexcol .flex5 {
+  flex: 5;
+}
+.flexcol .flex6 {
+  flex: 6;
+}
+
+/* Styles limited to ars sheets */
+.memorization-slot {
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px groove;
+  border-radius: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+.memorization-slot .memorization-slot-empty {
+  background-color: rgba(43, 255, 0, 0.25);
+}
+.memorization-slot .short-spell-field {
+  flex-basis: 40px;
+  flex-grow: 0;
+  text-align: center;
+}
+.memorization-slot .long-spell-field {
+  flex-grow: 2;
+  text-align: center;
+  margin-right: 3px;
+}
+
+.memorization-used {
+  opacity: 0.5;
+}
+
+.memorization-titles {
+  align-content: center;
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.memorization-controls {
+  flex: 0 0 60px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.biography {
+  border: 1px groove;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.details-header .resource-save {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.character .tab-item, .npc .tab-item, .lootable .tab-item {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+.character .tab-item .icon-text-container, .npc .tab-item .icon-text-container, .lootable .tab-item .icon-text-container {
+  display: inline-block;
+  text-align: center;
+}
+.character .tab-item .fas, .npc .tab-item .fas, .lootable .tab-item .fas {
+  display: block;
+}
+.character .actorname, .npc .actorname, .lootable .actorname {
+  font-size: 2em;
+}
+.character .race-background-block .itemsbytype-align-title, .npc .race-background-block .itemsbytype-align-title, .lootable .race-background-block .itemsbytype-align-title {
+  text-align: center;
+}
+.character .actor-titles.center, .npc .actor-titles.center, .lootable .actor-titles.center {
+  text-align: center;
+}
+.character .actor-titles, .npc .actor-titles, .lootable .actor-titles {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.25);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+  font-weight: 600;
+}
+.character .actor-titles .actor-header, .npc .actor-titles .actor-header, .lootable .actor-titles .actor-header {
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.character .actor-titles .actor-image, .npc .actor-titles .actor-image, .lootable .actor-titles .actor-image {
+  flex: 0 0 24px;
+  height: 24px;
+  background-size: 24px;
+  border: none;
+  margin-right: 5px;
+  flex-shrink: 1;
+}
+.character .actor-titles .actor, .npc .actor-titles .actor, .lootable .actor-titles .actor {
+  height: 25px;
+  line-height: 24px;
+  padding: 1px 0;
+  border-bottom: 1px solid #bbb;
+}
+.character .actor-titles .actor .actor-name, .npc .actor-titles .actor .actor-name, .lootable .actor-titles .actor .actor-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.01em;
+  text-align: left;
+  align-items: center;
+  font-weight: 600;
+}
+.character .share-looted-coins, .npc .share-looted-coins, .lootable .share-looted-coins {
+  text-align: center;
+  font-size: 1.02em;
+}
+.character .actor-lootable-portrait, .npc .actor-lootable-portrait, .lootable .actor-lootable-portrait {
+  flex: 0 0 64px;
+}
+.character .currency .coin-value, .npc .currency .coin-value, .lootable .currency .coin-value {
+  flex-grow: 3;
+}
+.character .currency .control, .npc .currency .control, .lootable .currency .control {
+  flex-shrink: 2;
+}
+.character .currency .coin-type, .npc .currency .coin-type, .lootable .currency .coin-type {
+  flex-shrink: 1;
+}
+
+#action-sheet .general-properties-column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+#action-sheet .general-properties-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.action-sheet-block .actionGroup:nth-of-type(odd) {
+  background-color: rgb(230, 229, 224);
+}
+.action-sheet-block .actionGroup:nth-of-type(even) {
+  background-color: rgb(212, 212, 211);
+}
+
+.action-buttons-menu {
+  bottom: 150px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap-reverse;
+  max-width: 55%;
+  font-weight: 600;
+  margin-left: 0px;
+  padding: 0px 0.5rem;
+  position: absolute;
+}
+.action-buttons-menu legend {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.753);
+}
+.action-buttons-menu .mini-actions-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-rows: repeat(auto-fit, 50px);
+  grid-auto-rows: 50px;
+  grid-gap: 1px;
+  grid-auto-flow: dense;
+  max-width: 400px;
+  /* 50px x 5 */
+  justify-items: center;
+  margin: auto;
+  list-style: none;
+  border: 1px solid grey;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.753);
+}
+.action-buttons-menu .mini-action-button {
+  height: 50px;
+  width: 100%;
+  word-wrap: break-word;
+  box-shadow: 0 0 0 3px white;
+}
+.action-buttons-menu li.mini-action {
+  height: 49px;
+  width: 50px;
+}
+.action-buttons-menu .hud-actions {
+  pointer-events: all;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons {
+  color: white;
+  -webkit-text-stroke: 0.25px black;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons .with-background-image {
+  background-size: 100%;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons .with-background-image .item-name {
+  text-shadow: 0 0 3px #918c8c;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons .no-image {
+  color: black;
+  background-color: rgb(194, 192, 192);
+  -webkit-text-stroke: 0.25px white;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons .no-image .item-name {
+  text-shadow: 0 0 3px #918c8c;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons .action-name {
+  border: 1px groove;
+  text-align: center;
+  font-size: 0.8em;
+}
+.action-buttons-menu .hud-actions .mini-actions-buttons .action-name:hover, .action-buttons-menu .hud-actions .mini-actions-buttons .action-name:focus {
+  color: black;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+.action-buttons-menu .hud-actions .action-name {
+  border: 1px groove;
+  text-align: center;
+  font-size: 0.8em;
+}
+.action-buttons-menu .hud-actions .action-name:hover, .action-buttons-menu .hud-actions .action-name:focus {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+#action-sheet.action-name {
+  flex: auto 1;
+}
+
+#action-sheet .action-image {
+  flex: 0 0 24px;
+  height: 24px;
+  width: 24px;
+  margin-right: 5px;
+}
+
+.action-block-images {
+  align-items: center;
+  align-content: center;
+  text-align: left;
+}
+
+.actionImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.action-resource-trunc > select {
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.actionGroup {
+  border: 1px groove;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.actionEntry {
+  border-width: 0.5px;
+  border-style: groove hidden hidden hidden;
+  font-size: 1.01em;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 24px;
+  background-color: rgb(230, 229, 224);
+}
+
+.action-dice-visual {
+  flex: 0 0 24px;
+  height: 24px;
+  background-size: 24px;
+  border: none;
+  margin-right: 5px;
+  flex-shrink: 1;
+}
+
+.action-control-buttons {
+  align-content: center;
+  text-align: center;
+}
+.action-control-buttons .green {
+  color: rgb(90, 163, 18);
+}
+
+.action-control {
+  padding-right: 5px;
+  text-align: right;
+}
+
+.action-header {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.delete-damage {
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.action-titles, .action-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.action-titles .action-header, .action-list .action-header {
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+}
+.action-titles .action, .action-list .action {
+  height: 25px;
+  line-height: 24px;
+  padding: 1px 0;
+  border-bottom: 1px solid #bbb;
+}
+.action-titles .action .action-name, .action-list .action .action-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.01em;
+  text-align: left;
+  align-items: center;
+}
+.action-titles .action .action-name, .action-list .action .action-name {
+  cursor: pointer;
+}
+.action-titles .action .action-name.rollable:hover .item-image, .action-titles .action .action-name.rollable:hover .action-image, .action-list .action .action-name.rollable:hover .item-image, .action-list .action .action-name.rollable:hover .action-image {
+  background-image: url("../../icons/svg/d20-grey.svg") !important;
+}
+.action-titles .action .action-name.rollable .item-image:hover, .action-titles .action .action-name.rollable .action-image:hover, .action-list .action .action-name.rollable .item-image:hover, .action-list .action .action-name.rollable .action-image:hover {
+  background-image: url("../../icons/svg/d20-black.svg") !important;
+}
+.action-titles .action .action-image, .action-list .action .action-image {
+  flex: 0 0 24px;
+  height: 24px;
+  background-size: 24px;
+  border: none;
+  margin-right: 5px;
+  flex-shrink: 1;
+}
+
+#floatingHudWindow {
+  display: flex;
+  position: absolute;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#floatingHudWindow .floating-hud-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  cursor: move;
+  border-radius: 50%;
+}
+#floatingHudWindow .mini-actions-list, #floatingHudWindow .mini-weapon-list, #floatingHudWindow .mini-skills-list, #floatingHudWindow .mini-spells-list {
+  flex-grow: 0;
+}
+
+.dialog .dialog-content .flexrow {
+  align-items: center;
+}
+.dialog .dialog-content select {
+  width: 98%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.dialog .dialog-content .dialog-icon {
+  flex-basis: 25px;
+  flex-grow: 0;
+  font-size: 0.99em;
+  margin-right: 5px;
+}
+.dialog .dialog-content .dialog-icon img {
+  vertical-align: middle;
+}
+
+.item-form {
+  font-family: "Book Antiqua", "Sitka", sans-serif;
+}
+
+#action-sheet > section > form > section > div.short-editor > div > div {
+  min-height: 150px;
+}
+
+.editor {
+  height: 100%;
+}
+.editor .editor-content {
+  min-height: 300px;
+}
+
+.tox .tox-editor-container {
+  background: #fff;
+}
+.tox .tox-edit-area {
+  padding: 0 4px;
+}
+
+#item-browser-sheet .search-filters-box {
+  background-color: rgb(199, 199, 199);
+}
+#item-browser-sheet .item-header, #item-browser-sheet .filter-titles {
+  text-transform: uppercase;
+}
+#item-browser-sheet .item-browser-sheet {
+  padding: 6px;
+}
+#item-browser-sheet .filter-item-type, #item-browser-sheet .filter-source {
+  flex-shrink: 1;
+}
+#item-browser-sheet .item-filter-value, #item-browser-sheet .item-filter-header, #item-browser-sheet .filter-name, #item-browser-sheet .item-weapon, #item-browser-sheet .item-item, #item-browser-sheet .item-wt, #item-browser-sheet .item-level, #item-browser-sheet .item-ac, #item-browser-sheet .item-skill, #item-browser-sheet .item-weapon-type {
+  margin-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#item-browser-sheet .filter-name {
+  flex-grow: 3;
+}
+#item-browser-sheet .item-filter-header {
+  text-transform: uppercase;
+}
+#item-browser-sheet .item-filter-level, #item-browser-sheet .item-filter-header-level, #item-browser-sheet .item-wt, #item-browser-sheet .item-cost {
+  text-align: center;
+}
+#item-browser-sheet .item-list-controls {
+  flex: 0 0 53px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: right;
+}
+#item-browser-sheet .rollable:hover, #item-browser-sheet .rollable:focus {
+  cursor: pointer;
+  text-shadow: 0 0 8px red;
+}
+#item-browser-sheet .filter-search {
+  flex-basis: 25px;
+  flex-grow: 0;
+  text-align: center;
+}
+#item-browser-sheet .filter-search:hover, #item-browser-sheet .filter-search:focus {
+  cursor: pointer;
+  text-shadow: 0 0 8px red;
+}
+
+.effect-change textarea {
+  min-height: 80px;
+  min-width: 100px;
+  max-width: 200px;
+  max-height: 100px;
+}
+
+.resource-label {
+  font-weight: bold;
+}
+
+.resource-label-ability {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.resource-numberfield {
+  font-size: 1.4em;
+  width: 38px;
+  padding: 0px;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+input.resource-percent {
+  font-size: 0.5em;
+  width: 25px;
+  padding: 3px;
+  text-align: right;
+}
+
+.resource-number {
+  font-size: 1.4em;
+  width: 30px;
+  padding: 0px;
+  text-align: center;
+}
+
+.resource-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.resource-number-field {
+  flex-basis: 50px;
+  flex-grow: 0;
+  text-align: center;
+  font-size: 0.99em;
+}
+.resource-number-field input {
+  margin: 0px 0;
+  border-bottom: none;
+}
+
+.item-magic-checks {
+  flex: 0 0 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.sheet.item {
+  min-width: 500px;
+  min-height: 470px;
+}
+.sheet.item select {
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.sheet.item .general-properties-column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+.sheet.item .item-skill-modifier-column.li {
+  border: 1px groove black;
+}
+.sheet.item .general-properties-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.sheet.item .item-check-label {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.sheet.item .skill-mod-field {
+  flex-basis: 60px;
+  flex-grow: 0;
+  text-align: center;
+  font-size: 0.99em;
+}
+.sheet.item .skill-mod-field input {
+  margin: 3px 0;
+  border-bottom: none;
+}
+
+.icon-row .icon {
+  border: 0px;
+  filter: brightness(0);
+}
+
+.sheet-body .item-header-weapon {
+  text-align: center;
+  padding: 0;
+  font-weight: normal;
+}
+
+.item-titles, .item-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.item-titles #context-menu li.context-item, .item-list #context-menu li.context-item {
+  background: #23221d;
+  background-color: #23221d;
+}
+.item-titles li:nth-of-type(odd), .item-list li:nth-of-type(odd) {
+  background-color: rgb(230, 229, 224);
+}
+.item-titles li:nth-of-type(even), .item-list li:nth-of-type(even) {
+  background-color: rgb(212, 212, 211);
+}
+.item-titles .item-container-collapsed, .item-list .item-container-collapsed {
+  flex: 0 0 8px;
+  height: 8px;
+  background-size: 8px;
+  border: none;
+  margin-right: 1px;
+  flex-shrink: 1;
+}
+.item-titles .initiative-roll-speed, .item-list .initiative-roll-speed {
+  flex-grow: 0;
+  flex-basis: 25px;
+}
+.item-titles .in-container, .item-list .in-container {
+  margin-left: 10px;
+}
+.item-titles .in-container li:nth-of-type(odd), .item-list .in-container li:nth-of-type(odd) {
+  background-color: rgb(179, 179, 179);
+}
+.item-titles .in-container li:nth-of-type(even), .item-list .in-container li:nth-of-type(even) {
+  background-color: rgb(172, 172, 172);
+}
+.item-titles .in-container li:first-of-type::before, .item-list .in-container li:first-of-type::before {
+  height: 50%;
+  top: 0;
+}
+.item-titles .in-container li:last-of-type::after, .item-list .in-container li:last-of-type::after {
+  border: none;
+}
+.item-titles .in-container .item, .item-list .in-container .item {
+  position: relative;
+}
+.item-titles .in-container .item::before, .item-titles .in-container .item::after, .item-list .in-container .item::before, .item-list .in-container .item::after {
+  position: absolute;
+  border-left: 1px solid black;
+  top: 0;
+  height: 50%;
+  left: -5px;
+  width: 5px;
+  content: "";
+}
+.item-titles .in-container .item::before, .item-list .in-container .item::before {
+  border-bottom: 1px solid black;
+  top: 0;
+}
+.item-titles .in-container .item::after, .item-list .in-container .item::after {
+  top: 50%;
+}
+.item-titles .item-header, .item-list .item-header {
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+}
+.item-titles .item-subheader, .item-list .item-subheader {
+  font-weight: normal;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.15) 25%, rgba(0, 0, 0, 0.15) 75%, rgba(255, 255, 255, 0) 100%);
+}
+.item-titles .item, .item-list .item {
+  height: 25px;
+  line-height: 24px;
+  padding: 1px 0;
+  border-bottom: 1px solid #bbb;
+}
+.item-titles .item .item-name, .item-list .item .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.01em;
+  text-align: left;
+  align-items: center;
+}
+.item-titles .item .item-name, .item-list .item .item-name {
+  cursor: pointer;
+}
+.item-titles .item .item-name.rollable:hover .item-image, .item-list .item .item-name.rollable:hover .item-image {
+  background-image: url("../../icons/svg/d20-grey.svg") !important;
+}
+.item-titles .item .item-name.rollable .item-image:hover, .item-list .item .item-name.rollable .item-image:hover {
+  background-image: url("../../icons/svg/d20-black.svg") !important;
+}
+.item-titles .item .item-image, .item-list .item .item-image {
+  flex: 0 0 24px;
+  height: 24px;
+  background-size: 24px;
+  border: none;
+  margin-right: 5px;
+  flex-shrink: 1;
+}
+.item-titles .item .icon-row .tooltip, .item-list .item .icon-row .tooltip {
+  position: relative;
+  display: inline-block;
+}
+.item-titles .item .icon-row .tooltip .tooltip-text, .item-list .item .icon-row .tooltip .tooltip-text {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 3px;
+  padding: 2px 2px;
+  position: absolute;
+  z-index: 1;
+}
+.item-titles .item .icon-row .tooltip:hover .tooltip-text, .item-list .item .icon-row .tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.item .item-header-input .short-number, .item .item-header-titles .short-number {
+  flex-shrink: 1;
+}
+.item .item-header-input .short-text, .item .item-header-titles .short-text {
+  flex-shrink: 2;
+}
+.item .item-header-input .longer-number, .item .item-header-titles .longer-number {
+  flex-grow: 2;
+}
+
+.inventory .item-location {
+  flex-basis: 25px;
+  flex-grow: 0;
+  text-align: center;
+  align-items: center;
+}
+.inventory .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.01em;
+  text-align: left;
+  align-items: center;
+}
+.inventory .magic {
+  color: darkblue;
+}
+.inventory .gm-unidentified {
+  color: red;
+}
+
+.short-field {
+  flex-basis: 25px;
+  flex-grow: 0;
+  text-align: center;
+  font-size: 0.99em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.short-field.quantity {
+  display: flex;
+}
+.short-field.quantity input {
+  margin: 3px 0;
+  border-bottom: none;
+}
+
+.item-controls {
+  flex: 0 0 53px;
+  text-align: right;
+}
+
+.item-spell {
+  font-size: 1.01em;
+}
+.item-spell .spell-details-input {
+  flex-grow: 2;
+}
+.item-spell .spell-details-block {
+  padding: 3px;
+}
+.item-spell .spell-component-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  grid-auto-rows: minmax(10px, auto);
+  width: 50px;
+}
+.item-spell .spell-component {
+  font-size: 0.99em;
+  margin: auto;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  align-content: center;
+}
+
+.item-spell {
+  border: 1px groove;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.npc .npc-sheet-header {
+  flex: 0 0 64px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 2px;
+}
+.npc .npc-sheet-header img.npc-profile-img {
+  flex: 0 0 64px;
+  height: 64px;
+  width: 64px;
+  margin-right: 10px;
+}
+.npc .npc-label {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.npc .npc-sheet {
+  padding: 0px;
+  margin: 0px;
+}
+.npc .npc-th {
+  text-align: left;
+  font-weight: bold;
+}
+.npc .npc-data-label {
+  border: 0.5px groove;
+  font-weight: bold;
+  margin-top: 0.5px;
+  margin-bottom: 0px;
+  margin-right: 1px;
+  margin-left: 1px;
+  padding-left: 2px;
+}
+
+td.npc-data-input, td.npc-data-label, th.npc-data-input, th.npc-data-label {
+  padding: 0px;
+}
+
+.character select, .npc select, .lootable select {
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.character .rollable:hover, .character .rollable:focus, .npc .rollable:hover, .npc .rollable:focus, .lootable .rollable:hover, .lootable .rollable:focus {
+  cursor: pointer;
+  text-shadow: 0 0 8px red;
+}
+.character .sheet-header h1.character-name, .npc .sheet-header h1.character-name, .lootable .sheet-header h1.character-name {
+  width: 100%;
+  height: 100%;
+}
+.character .sheet-header h1.character-name input, .npc .sheet-header h1.character-name input, .lootable .sheet-header h1.character-name input {
+  width: 95%;
+  height: 100%;
+}
+.character .tab.main, .character .tab.attributes, .npc .tab.main, .npc .tab.attributes, .lootable .tab.main, .lootable .tab.attributes {
+  text-align: left;
+}
+.character .tab.main .ability-save-grid, .character .tab.attributes .ability-save-grid, .npc .tab.main .ability-save-grid, .npc .tab.attributes .ability-save-grid, .lootable .tab.main .ability-save-grid, .lootable .tab.attributes .ability-save-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 21%;
+  gap: 0px;
+  height: 100%;
+}
+.character .tab.main .ability-tables, .character .tab.attributes .ability-tables, .npc .tab.main .ability-tables, .npc .tab.attributes .ability-tables, .lootable .tab.main .ability-tables, .lootable .tab.attributes .ability-tables {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  grid-column-end: 2;
+  margin: 1px;
+  padding: 1px;
+}
+.character .tab.main .save-stats, .character .tab.attributes .save-stats, .npc .tab.main .save-stats, .npc .tab.attributes .save-stats, .lootable .tab.main .save-stats, .lootable .tab.attributes .save-stats {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-row-end: 2;
+  grid-column-end: 3;
+  margin: 1px;
+  padding: 1px;
+}
+.character .tab.main .save-stats .save-label, .character .tab.attributes .save-stats .save-label, .npc .tab.main .save-stats .save-label, .npc .tab.attributes .save-stats .save-label, .lootable .tab.main .save-stats .save-label, .lootable .tab.attributes .save-stats .save-label {
+  text-align: center;
+  font-weight: 700;
+  flex-grow: 0;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  grid-column-end: 2;
+  margin: 1px;
+  padding: 1px;
+}
+.character .tab.main .save-stats .save-value, .character .tab.attributes .save-stats .save-value, .npc .tab.main .save-stats .save-value, .npc .tab.attributes .save-stats .save-value, .lootable .tab.main .save-stats .save-value, .lootable .tab.attributes .save-stats .save-value {
+  font-weight: normal;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 2px;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-row-end: 2;
+  grid-column-end: 3;
+  margin: 1px;
+  padding: 1px;
+}
+.character .tab.main .save-box, .character .tab.attributes .save-box, .npc .tab.main .save-box, .npc .tab.attributes .save-box, .lootable .tab.main .save-box, .lootable .tab.attributes .save-box {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+}
+.character .tab.main .save-box .saves-recalculate, .character .tab.attributes .save-box .saves-recalculate, .npc .tab.main .save-box .saves-recalculate, .npc .tab.attributes .save-box .saves-recalculate, .lootable .tab.main .save-box .saves-recalculate, .lootable .tab.attributes .save-box .saves-recalculate {
+  text-align: right;
+}
+.character .tab.main .flexcol, .character .tab.attributes .flexcol, .npc .tab.main .flexcol, .npc .tab.attributes .flexcol, .lootable .tab.main .flexcol, .lootable .tab.attributes .flexcol {
+  padding: 1px;
+}
+.character .tab.main .flexrow, .character .tab.attributes .flexrow, .npc .tab.main .flexrow, .npc .tab.attributes .flexrow, .lootable .tab.main .flexrow, .lootable .tab.attributes .flexrow {
+  padding: 1px;
+}
+.character .tab.main .resource, .character .tab.attributes .resource, .npc .tab.main .resource, .npc .tab.attributes .resource, .lootable .tab.main .resource, .lootable .tab.attributes .resource {
+  flex-grow: 2;
+  border-bottom: 1px solid;
+}
+.character .tab.main .resource-input, .character .tab.attributes .resource-input, .npc .tab.main .resource-input, .npc .tab.attributes .resource-input, .lootable .tab.main .resource-input, .lootable .tab.attributes .resource-input {
+  height: 18px;
+  border: none;
+  border-bottom: 1px solid;
+}
+.character .tab.main label.ability-score, .character .tab.attributes label.ability-score, .npc .tab.main label.ability-score, .npc .tab.attributes label.ability-score, .lootable .tab.main label.ability-score, .lootable .tab.attributes label.ability-score {
+  font-size: 1.01em;
+}
+.character .tab.main label, .character .tab.attributes label, .npc .tab.main label, .npc .tab.attributes label, .lootable .tab.main label, .lootable .tab.attributes label {
+  font-size: 0.99em;
+  font-weight: 600;
+}
+.character .tab.main select, .character .tab.attributes select, .npc .tab.main select, .npc .tab.attributes select, .lootable .tab.main select, .lootable .tab.attributes select {
+  height: 100%;
+}
+.character .tab.main .ability-tables, .character .tab.attributes .ability-tables, .npc .tab.main .ability-tables, .npc .tab.attributes .ability-tables, .lootable .tab.main .ability-tables, .lootable .tab.attributes .ability-tables {
+  text-align: center;
+}
+.character .tab.main .ability-tables .ability-label, .character .tab.attributes .ability-tables .ability-label, .npc .tab.main .ability-tables .ability-label, .npc .tab.attributes .ability-tables .ability-label, .lootable .tab.main .ability-tables .ability-label, .lootable .tab.attributes .ability-tables .ability-label {
+  text-transform: uppercase;
+}
+.character .tab.main .ability-tables .ability-score input, .character .tab.attributes .ability-tables .ability-score input, .npc .tab.main .ability-tables .ability-score input, .npc .tab.attributes .ability-tables .ability-score input, .lootable .tab.main .ability-tables .ability-score input, .lootable .tab.attributes .ability-tables .ability-score input {
+  align-items: center;
+  font-size: 1.4em;
+  width: 38px;
+  padding: 0px;
+  background-color: #fafafa;
+}
+.character .tab.main .ability-tables table, .character .tab.attributes .ability-tables table, .npc .tab.main .ability-tables table, .npc .tab.attributes .ability-tables table, .lootable .tab.main .ability-tables table, .lootable .tab.attributes .ability-tables table {
+  padding: 0px;
+  margin: 0px;
+}
+.character .tab.main .ability-tables tr, .character .tab.attributes .ability-tables tr, .npc .tab.main .ability-tables tr, .npc .tab.attributes .ability-tables tr, .lootable .tab.main .ability-tables tr, .lootable .tab.attributes .ability-tables tr {
+  border-top: none;
+}
+.character .tab.main .ability-tables .fields, .character .tab.attributes .ability-tables .fields, .npc .tab.main .ability-tables .fields, .npc .tab.attributes .ability-tables .fields, .lootable .tab.main .ability-tables .fields, .lootable .tab.attributes .ability-tables .fields {
+  padding: 4px;
+  font-size: smaller;
+}
+.character .tab.main .ability-tables .fields tr:nth-of-type(odd), .character .tab.attributes .ability-tables .fields tr:nth-of-type(odd), .npc .tab.main .ability-tables .fields tr:nth-of-type(odd), .npc .tab.attributes .ability-tables .fields tr:nth-of-type(odd), .lootable .tab.main .ability-tables .fields tr:nth-of-type(odd), .lootable .tab.attributes .ability-tables .fields tr:nth-of-type(odd) {
+  background-color: rgb(230, 229, 224);
+}
+.character .tab.main .ability-tables .fields tr:nth-of-type(even), .character .tab.attributes .ability-tables .fields tr:nth-of-type(even), .npc .tab.main .ability-tables .fields tr:nth-of-type(even), .npc .tab.attributes .ability-tables .fields tr:nth-of-type(even), .lootable .tab.main .ability-tables .fields tr:nth-of-type(even), .lootable .tab.attributes .ability-tables .fields tr:nth-of-type(even) {
+  background-color: rgb(212, 212, 211);
+}
+.character .tab.main .ability-tables th, .character .tab.attributes .ability-tables th, .npc .tab.main .ability-tables th, .npc .tab.attributes .ability-tables th, .lootable .tab.main .ability-tables th, .lootable .tab.attributes .ability-tables th {
+  padding: 0px;
+  margin: 0px;
+}
+.character .tab.main .ability-tables th .percent, .character .tab.attributes .ability-tables th .percent, .npc .tab.main .ability-tables th .percent, .npc .tab.attributes .ability-tables th .percent, .lootable .tab.main .ability-tables th .percent, .lootable .tab.attributes .ability-tables th .percent {
+  width: 10%;
+}
+.character .tab.main .ability-tables td, .character .tab.attributes .ability-tables td, .npc .tab.main .ability-tables td, .npc .tab.attributes .ability-tables td, .lootable .tab.main .ability-tables td, .lootable .tab.attributes .ability-tables td {
+  border: 1px groove black;
+  border-bottom: none;
+  padding: 0px;
+  margin: 0px;
+}
+.character .tab.main .ability-tables td input.percent, .character .tab.attributes .ability-tables td input.percent, .npc .tab.main .ability-tables td input.percent, .npc .tab.attributes .ability-tables td input.percent, .lootable .tab.main .ability-tables td input.percent, .lootable .tab.attributes .ability-tables td input.percent {
+  border: none;
+  border-bottom: 1px solid;
+  font-weight: 200;
+  width: 40px;
+  padding: 1px;
+}
+.character .tab.main .ability-tables td .percent, .character .tab.attributes .ability-tables td .percent, .npc .tab.main .ability-tables td .percent, .npc .tab.attributes .ability-tables td .percent, .lootable .tab.main .ability-tables td .percent, .lootable .tab.attributes .ability-tables td .percent {
+  width: 10%;
+}
+.character .tab.combat, .npc .tab.combat, .lootable .tab.combat {
+  font-size: smaller;
+}
+.character .tab.combat .underline, .npc .tab.combat .underline, .lootable .tab.combat .underline {
+  border-bottom: 1px solid black;
+}
+.character .tab.combat .combat-stats, .npc .tab.combat .combat-stats, .lootable .tab.combat .combat-stats {
+  padding: 0px;
+  margin-bottom: 10px;
+  height: 80px;
+}
+.character .tab.combat .combat-stats .combat-box, .npc .tab.combat .combat-stats .combat-box, .lootable .tab.combat .combat-stats .combat-box {
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.character .tab.combat .combat-stats .armor-icon, .character .tab.combat .combat-stats .hp-icon, .character .tab.combat .combat-stats .movement-icon, .character .tab.combat .combat-stats .thaco-icon, .npc .tab.combat .combat-stats .armor-icon, .npc .tab.combat .combat-stats .hp-icon, .npc .tab.combat .combat-stats .movement-icon, .npc .tab.combat .combat-stats .thaco-icon, .lootable .tab.combat .combat-stats .armor-icon, .lootable .tab.combat .combat-stats .hp-icon, .lootable .tab.combat .combat-stats .movement-icon, .lootable .tab.combat .combat-stats .thaco-icon {
+  margin-right: 3px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
+}
+.character .tab.combat .combat-stats .armor-icon, .npc .tab.combat .combat-stats .armor-icon, .lootable .tab.combat .combat-stats .armor-icon {
+  background-image: url("icons/general/shield.webp");
+}
+.character .tab.combat .combat-stats .hp-icon, .npc .tab.combat .combat-stats .hp-icon, .lootable .tab.combat .combat-stats .hp-icon {
+  background-image: url("icons/general/health.webp");
+}
+.character .tab.combat .combat-stats .movement-icon, .npc .tab.combat .combat-stats .movement-icon, .lootable .tab.combat .combat-stats .movement-icon {
+  background-image: url("icons/general/leather-boot.webp");
+}
+.character .tab.combat .combat-stats .thaco-icon, .npc .tab.combat .combat-stats .thaco-icon, .lootable .tab.combat .combat-stats .thaco-icon {
+  background-image: url("icons/general/combat.webp");
+}
+.character .tab.combat .combat-stats .hp-value, .character .tab.combat .combat-stats .ac-value, .character .tab.combat .combat-stats .movement-value, .character .tab.combat .combat-stats .thaco-value, .npc .tab.combat .combat-stats .hp-value, .npc .tab.combat .combat-stats .ac-value, .npc .tab.combat .combat-stats .movement-value, .npc .tab.combat .combat-stats .thaco-value, .lootable .tab.combat .combat-stats .hp-value, .lootable .tab.combat .combat-stats .ac-value, .lootable .tab.combat .combat-stats .movement-value, .lootable .tab.combat .combat-stats .thaco-value {
+  align-self: center;
+  font-size: 1.75em;
+  font-weight: 600;
+}
+.character .tab.combat .combat-stats .variant, .character .tab.combat .combat-stats .hp-value, .character .tab.combat .combat-stats .ac-value, .character .tab.combat .combat-stats .movement-value, .character .tab.combat .combat-stats .thaco-value, .npc .tab.combat .combat-stats .variant, .npc .tab.combat .combat-stats .hp-value, .npc .tab.combat .combat-stats .ac-value, .npc .tab.combat .combat-stats .movement-value, .npc .tab.combat .combat-stats .thaco-value, .lootable .tab.combat .combat-stats .variant, .lootable .tab.combat .combat-stats .hp-value, .lootable .tab.combat .combat-stats .ac-value, .lootable .tab.combat .combat-stats .movement-value, .lootable .tab.combat .combat-stats .thaco-value {
+  flex-basis: 20px;
+  flex-grow: 0;
+}
+.character .tab.combat .combat-stats label, .npc .tab.combat .combat-stats label, .lootable .tab.combat .combat-stats label {
+  text-align: center;
+  margin: 4px;
+  height: 50px;
+  flex-basis: 50px;
+  flex-grow: 0;
+  font-weight: bolder;
+}
+.character .tab.combat .combat-stats .combat-value, .npc .tab.combat .combat-stats .combat-value, .lootable .tab.combat .combat-stats .combat-value {
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-weight: normal;
+}
+.character .tab.combat .combat-stats .combat-label, .npc .tab.combat .combat-stats .combat-label, .lootable .tab.combat .combat-stats .combat-label {
+  padding: 4px;
+  border-right: 1px solid black;
+  font-size: 0.98em;
+  font-weight: 600;
+}
+.character .tab.combat .combat-bar, .npc .tab.combat .combat-bar, .lootable .tab.combat .combat-bar {
+  margin-left: auto;
+  font-size: 0.99em;
+}
+.character .tab.combat .combat-bar .combat-value, .npc .tab.combat .combat-bar .combat-value, .lootable .tab.combat .combat-bar .combat-value {
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+.character .tab.combat .combat-bar .combat-label, .npc .tab.combat .combat-bar .combat-label, .lootable .tab.combat .combat-bar .combat-label {
+  font-weight: 700;
+}
+.character .tab.combat .combat-bar .bar, .npc .tab.combat .combat-bar .bar, .lootable .tab.combat .combat-bar .bar {
+  margin: 2px;
+  flex-basis: 20px;
+  flex-grow: 0;
+}
+.character .tab.combat .combat-bar .bar-right, .npc .tab.combat .combat-bar .bar-right, .lootable .tab.combat .combat-bar .bar-right {
+  margin: 2px;
+  margin-left: auto;
+  flex-basis: 20px;
+  flex-grow: 0;
+}
+.character .tab.combat .combat-bar .initiative-block, .npc .tab.combat .combat-bar .initiative-block, .lootable .tab.combat .combat-bar .initiative-block {
+  margin-left: 5px;
+  flex-basis: 30px;
+  flex-grow: 0;
+}
+.character .tab.combat .combat-bar .initiative-block .roll-initiative, .npc .tab.combat .combat-bar .initiative-block .roll-initiative, .lootable .tab.combat .combat-bar .initiative-block .roll-initiative {
+  flex-basis: 30px;
+  flex-grow: 0;
+  font-size: 1.09em;
+}
+.character .tab.combat .combat-bar .initiative-block .roll-initiative:hover, .character .tab.combat .combat-bar .initiative-block .roll-initiative:focus, .npc .tab.combat .combat-bar .initiative-block .roll-initiative:hover, .npc .tab.combat .combat-bar .initiative-block .roll-initiative:focus, .lootable .tab.combat .combat-bar .initiative-block .roll-initiative:hover, .lootable .tab.combat .combat-bar .initiative-block .roll-initiative:focus {
+  text-shadow: 0 0 8px red;
+  cursor: pointer;
+}
+.character .tab.combat .matrix-block, .npc .tab.combat .matrix-block, .lootable .tab.combat .matrix-block {
+  text-align: center;
+  font-size: smaller;
+}
+.character .tab.combat .matrix-block .matrix-label, .npc .tab.combat .matrix-block .matrix-label, .lootable .tab.combat .matrix-block .matrix-label {
+  font-weight: 700;
+}
+.character .tab.combat .matrix-block .matrix-label .ac-label, .npc .tab.combat .matrix-block .matrix-label .ac-label, .lootable .tab.combat .matrix-block .matrix-label .ac-label {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+.character .tab.combat .matrix-block .matrix-label .roll-label, .npc .tab.combat .matrix-block .matrix-label .roll-label, .lootable .tab.combat .matrix-block .matrix-label .roll-label {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+.character .tab.combat .matrix-block .ac, .character .tab.combat .matrix-block .hit, .npc .tab.combat .matrix-block .ac, .npc .tab.combat .matrix-block .hit, .lootable .tab.combat .matrix-block .ac, .lootable .tab.combat .matrix-block .hit {
+  padding: 1px;
+}
+.character .tab.combat .matrix-block .ac, .npc .tab.combat .matrix-block .ac, .lootable .tab.combat .matrix-block .ac {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.character .tab.combat .matrix-block .hit, .npc .tab.combat .matrix-block .hit, .lootable .tab.combat .matrix-block .hit {
+  border: 1px solid black;
+}
+.character .tab.items, .npc .tab.items, .lootable .tab.items {
+  font-size: smaller;
+}
+.character .tab.items .currency .coin-value input.coins, .npc .tab.items .currency .coin-value input.coins, .lootable .tab.items .currency .coin-value input.coins {
+  border: none;
+  border-bottom: 1px solid black;
+}
+.character .tab.proficiencies, .npc .tab.proficiencies, .lootable .tab.proficiencies {
+  font-size: smaller;
+}
+.character .tab.details, .npc .tab.details, .lootable .tab.details {
+  font-size: smaller;
+  text-align: center;
+}
+.character .tab.details .effect-list-types, .npc .tab.details .effect-list-types, .lootable .tab.details .effect-list-types {
+  border-bottom: 1px groove black;
+}
+.character .tab.details .class-list li:nth-of-type(odd), .npc .tab.details .class-list li:nth-of-type(odd), .lootable .tab.details .class-list li:nth-of-type(odd) {
+  background-color: rgb(230, 229, 224);
+}
+.character .tab.details .class-list li:nth-of-type(even), .npc .tab.details .class-list li:nth-of-type(even), .lootable .tab.details .class-list li:nth-of-type(even) {
+  background-color: rgb(212, 212, 211);
+}
+.character .tab.details .class-list .class-controls, .npc .tab.details .class-list .class-controls, .lootable .tab.details .class-list .class-controls {
+  flex: 0 0 50px;
+  font-size: 0.99em;
+}
+.character .tab.description .desc-label, .character .tab.description .desc-value, .npc .tab.description .desc-label, .npc .tab.description .desc-value, .lootable .tab.description .desc-label, .lootable .tab.description .desc-value {
+  margin-left: 5px;
+}
+.character .tab.description .desc-label, .npc .tab.description .desc-label, .lootable .tab.description .desc-label {
+  flex-basis: 50px;
+  flex-grow: 0;
+  font-weight: 700;
+}
+.character .tab.description .desc-value, .npc .tab.description .desc-value, .lootable .tab.description .desc-value {
+  flex-grow: 1;
+}
+.character .inventory, .npc .inventory, .lootable .inventory {
+  min-height: 24px;
+}
+
+.combat-situationals {
+  margin: 1px;
+}
+.combat-situationals input {
+  text-align: center;
+  width: 24px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.combat-situationals .situation {
+  font-weight: 700;
+}
+.combat-situationals .flexcol {
+  flex: 0 0 30px;
+}
+.combat-situationals .attack-left {
+  text-align: left;
+}
+.combat-situationals .damage-right {
+  text-align: right;
+  justify-content: right;
+}
+
+.failedCheck {
+  background-color: rgb(194, 167, 167);
+}
+
+.succeedCheck {
+  background-color: rgb(198, 218, 198);
+}
+
+.hitSuccess {
+  background-color: rgb(216, 209, 157);
+}
+
+.hitFailed {
+  background-color: rgb(198, 202, 218);
+}
+
+.hpdamage {
+  background-color: palevioletred;
+}
+
+.hpheal {
+  background-color: aquamarine;
+}
+
+.attackResult, .rolledText, .testResult, .hpadjustment, .undoButton, .spellCard-name, .weaponCard-name {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border: 1px groove;
+  border-radius: 5px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.rolledTotal {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.chatCard-button {
+  height: 29px;
+  width: 100%;
+}
+
+.traded-list {
+  padding: 1px 0;
+  border-bottom: 1px solid #bbb;
+}
+.traded-list div:nth-of-type(odd) {
+  background-color: rgb(230, 229, 224);
+}
+.traded-list div:nth-of-type(even) {
+  background-color: rgb(212, 212, 211);
+}
+.traded-list .tradeChat-list {
+  padding: 1px;
+}
+
+.action-card .action-icon, .weapon-card .action-icon, .actionChat-list .action-icon, .tradeChat-list .action-icon {
+  flex-basis: 25px;
+  flex-grow: 0;
+  font-size: 0.99em;
+  padding-right: 3px;
+}
+.action-card .action-icon img, .weapon-card .action-icon img, .actionChat-list .action-icon img, .tradeChat-list .action-icon img {
+  vertical-align: middle;
+}
+
+.chat-message.img.chat-profile-img {
+  flex: 0 0 64px;
+  height: 64px;
+  width: 64px;
+  margin-right: 10px;
+}
+
+.message-content .a25-image {
+  flex-basis: 25px;
+  flex-grow: 0;
+}
+.message-content .a25-image img {
+  vertical-align: middle;
+}
+
+.chat-message button {
+  border-radius: 8px;
+}
+.chat-message select {
+  border-radius: 8px;
+}
+.chat-message .hpadjustment, .chat-message .testResult {
+  margin: 5px;
+  margin-bottom: 10px;
+}
+.chat-message .message-content .action-title {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: red;
+  text-align: center;
+}
+.chat-message .message-content .chatCard-description {
+  margin-bottom: 2px;
+}
+.chat-message .message-content .chatCard-description-short {
+  min-height: 5px;
+  max-height: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-message .message-content .chatCard-description-full {
+  white-space: wrap;
+}
+.chat-message .message-content .spell-card .grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  border: 1px groove;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1px;
+  width: 100%;
+}
+.chat-message .message-content .spell-card .grid-item {
+  padding: 1px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-message .message-content .spell-card .spell-title {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: red;
+  text-align: center;
+}
+
+.character table, .character tr, .character th, .character td, .npc table, .npc tr, .npc th, .npc td {
+  padding: 1px;
+}
+.character table .table-headers, .character tr .table-headers, .character th .table-headers, .character td .table-headers, .npc table .table-headers, .npc tr .table-headers, .npc th .table-headers, .npc td .table-headers {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+}
+
+.sidebar-tab .party-tracker {
+  padding: 1px;
+  margin: 1px;
+}
+.sidebar-tab .party-tracker .general-header {
+  text-align: center;
+  font-weight: bolder;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 0, 0, 0.25) 25%, rgba(255, 0, 0, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+}
+.sidebar-tab .party-tracker .general-subheader {
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(128, 0, 0, 0.15) 25%, rgba(128, 0, 0, 0.15) 75%, rgba(255, 255, 255, 0) 100%);
+}
+.sidebar-tab .party-tracker .general-footer {
+  min-height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 0, 0.25) 10%, rgba(255, 255, 0, 0.25) 75%, rgba(0, 0, 0, 0) 100%);
+}
+.sidebar-tab .party-tracker input, .sidebar-tab .party-tracker select {
+  color: white;
+}
+.sidebar-tab .party-tracker select {
+  background-color: rgb(131, 127, 127);
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sidebar-tab .party-tracker select option {
+  background-color: rgb(148, 150, 148);
+}
+.sidebar-tab .party-tracker .party-commands .boxed {
+  text-align: center;
+  font-size: 0.75rem;
+  border: 1px ridge rgb(87, 29, 29);
+}
+.sidebar-tab .party-tracker .party-commands .boxed:hover, .sidebar-tab .party-tracker .party-commands .boxed:focus {
+  background-color: grey;
+  cursor: pointer;
+}
+.sidebar-tab .party-tracker .party-commands .boxed .time-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-tab .party-tracker .party-members .entry {
+  align-items: center;
+}
+.sidebar-tab .party-tracker .party-members .entry .member {
+  font-size: large;
+  font-weight: bold;
+}
+.sidebar-tab .party-tracker .party-members .entry .henchman {
+  color: aqua;
+}
+.sidebar-tab .party-tracker .party-members .entry .token-image {
+  margin: 0;
+  flex: 0 0 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+.sidebar-tab .party-tracker .party-logs .date {
+  color: gray;
+}
+.sidebar-tab .party-tracker .party-logs .log {
+  color: greenyellow;
+}
+.sidebar-tab .party-tracker .control {
+  flex-basis: 25px;
+  flex-grow: 0;
+  text-align: center;
+  font-size: 0.99em;
+}
+.sidebar-tab .party-tracker .party-awards .award-xp {
+  flex-shrink: 1;
+}
+
+article.journal-entry-page, .editor {
+  background: white;
+  box-sizing: content-box;
+  border-width: 5px;
+  border-style: inset;
+  border-image: linear-gradient(to right, rgba(173, 154, 100, 0.8156862745), rgba(243, 198, 75, 0.3215686275));
+  border-image-slice: 1;
+  padding: 5px;
+}
+article.journal-entry-page section.journal-page-content, article.journal-entry-page .editor-content, .editor section.journal-page-content, .editor .editor-content {
+  margin: 20px;
+}
+article.journal-entry-page section.journal-page-content img, article.journal-entry-page .editor-content img, .editor section.journal-page-content img, .editor .editor-content img {
+  border: 5px groove;
+}
+article.journal-entry-page section.journal-page-content h1, article.journal-entry-page .editor-content h1, .editor section.journal-page-content h1, .editor .editor-content h1 {
+  border-bottom: 3px double black;
+  color: rgb(204, 3, 3);
+}
+article.journal-entry-page section.journal-page-content h2, article.journal-entry-page .editor-content h2, .editor section.journal-page-content h2, .editor .editor-content h2 {
+  border-bottom: 3px double black;
+  color: rgb(146, 3, 3);
+}
+article.journal-entry-page section.journal-page-content h3, article.journal-entry-page .editor-content h3, .editor section.journal-page-content h3, .editor .editor-content h3 {
+  color: rgb(7, 118, 245);
+}
+article.journal-entry-page section.journal-page-content h4, article.journal-entry-page .editor-content h4, .editor section.journal-page-content h4, .editor .editor-content h4 {
+  color: rgb(7, 118, 245);
+}
+
+.trade-box .trade-window {
+  height: 100%;
+}
+.trade-box .trade-window .trade-icon {
+  flex-basis: 25px;
+  flex-grow: 0;
+  font-size: 0.99em;
+  padding-right: 3px;
+}
+.trade-box .trade-window .trade-icon img {
+  vertical-align: middle;
+}
+.trade-box .trade-window .currency {
+  border: 1px solid #bbb;
+}
+.trade-box .trade-window .trade-panel {
+  border: 1px solid black;
+  margin: 2px;
+  padding: 2px;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+.trade-box .trade-window .accept-trade-button {
+  padding: 10px 20px;
+  background-color: lightblue;
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;
+}
+.trade-box .trade-window #trader-inventory, .trade-box .trade-window #trader-trade, .trade-box .trade-window #customer-trade.list {
+  padding: 1px 0;
+  border-bottom: 1px solid #bbb;
+}
+.trade-box .trade-window #trader-inventory div:nth-of-type(odd), .trade-box .trade-window #trader-trade div:nth-of-type(odd), .trade-box .trade-window #customer-trade.list div:nth-of-type(odd) {
+  background-color: rgb(230, 229, 224);
+}
+.trade-box .trade-window #trader-inventory div:nth-of-type(even), .trade-box .trade-window #trader-trade div:nth-of-type(even), .trade-box .trade-window #customer-trade.list div:nth-of-type(even) {
+  background-color: rgb(212, 212, 211);
+}
+.trade-box .trade-window #trader-inventory .trader-trade-item, .trade-box .trade-window #trader-inventory .trader-inventory-item, .trade-box .trade-window #trader-inventory .customer-trade-item, .trade-box .trade-window #trader-trade .trader-trade-item, .trade-box .trade-window #trader-trade .trader-inventory-item, .trade-box .trade-window #trader-trade .customer-trade-item, .trade-box .trade-window #customer-trade.list .trader-trade-item, .trade-box .trade-window #customer-trade.list .trader-inventory-item, .trade-box .trade-window #customer-trade.list .customer-trade-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 3;
+  flex-shrink: 0;
+}
+.trade-box .trade-window #trader-inventory .trader-inventory-item-quantity, .trade-box .trade-window #trader-inventory .trader-trade-item-quantity, .trade-box .trade-window #trader-inventory .customer-trade-item-quantity, .trade-box .trade-window #trader-trade .trader-inventory-item-quantity, .trade-box .trade-window #trader-trade .trader-trade-item-quantity, .trade-box .trade-window #trader-trade .customer-trade-item-quantity, .trade-box .trade-window #customer-trade.list .trader-inventory-item-quantity, .trade-box .trade-window #customer-trade.list .trader-trade-item-quantity, .trade-box .trade-window #customer-trade.list .customer-trade-item-quantity {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 40px;
+}
+
+div.gm-screen-grid-cell-content-wrapper > div > div > aside {
+  color: black !important;
+}

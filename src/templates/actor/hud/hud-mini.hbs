@@ -1,0 +1,124 @@
+{{log "hud-mini.hbs this" this}}
+
+{{!-- actions-block-list-mini --}}
+
+{{!-- buttons for actions on the actor --}}
+{{#if actor.system.actions.length}}
+    <div class="mini-actions-list card-buttons hud-actions">
+        <div class="grouping-border">
+            <legend>{{localize "ARS.actions.actionsTitle"}}</legend>
+            <div class="action-block">
+                <div class="actions actions-mini item-titles">
+                    {{> "systems/ars/templates/apps/parts/actions-block-mini.hbs" actor=actor actions=system.actions actionList=system.actionList showActionHeader=true }}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+{{!-- buttons for actions on items --}}
+{{#if actor.system.itemActionCount}}
+    <div class="mini-actions-list card-buttons hud-actions">
+        <div class="grouping-border">
+            <legend>{{localize "TYPES.Item.item"}} {{localize "ARS.actions.actionsTitle"}}</legend>
+            <div class="action-block">
+                <div class="actions actions-mini item-titles">
+                    {{> "systems/ars/templates/actor/parts/actions-block-inventory-mini.hbs"}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+
+{{!-- weaponslist --}}
+
+<div class="mini-weapon-list">
+    {{#if actor.weapons.length}}
+        <div class="grouping-border">
+            <legend>{{localize "ARS.weapons"}}</legend>
+            <div class="hud-actions">
+                <div class="mini-actions-buttons" style="--action-button-size: {{actor.weapons.length}};">
+                    {{#each actor.weapons as |item id|}}
+                        {{#if item.notAmmo}}
+                            <li class="mini-action item flexrow weapon-combat with-background-image"
+                                data-control-type="weapon" data-id="{{item.id}}" data-type="{{item.type}}"
+                                data-tooltip="{{item.name}}" style="background-image: url('{{item.img}}')">
+                                <div class="mini-action-button action-name rollable flexrow chatCard-roll"
+                                    data-id="{{item.id}}">
+                                    <div class="item-name">{{item.name}}</div>
+                                </div>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>
+
+{{!-- skillslist --}}
+
+<div class="mini-skills-list">
+    {{#if actor.skills.length}}
+        <div class="grouping-border">
+            <legend>{{localize "ARS.skills"}}</legend>
+            <div class="hud-actions">
+                <div class="mini-actions-buttons" style="--action-button-size: {{actor.skills.length}};">
+                    {{#each actor.skills as |item id|}}
+                        <li class="mini-action item with-background-image" data-id="{{item.id}}"
+                            data-type="{{item.type}}" data-tooltip="{{item.name}}"
+                            style="background-image: url('{{item.img}}')">
+                            <div class="mini-action-button action-name rollable chatCard-roll">
+                                <div class="item-name">{{item.name}}</div>
+                            </div>
+                        </li>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>
+
+{{!-- memorizationlist --}}
+
+<div class="mini-spells-list">
+    {{#if actor.hasSpellSlots}}
+        <div class="grouping-border">
+            <legend>{{localize "ARS.spells"}}</legend>
+            <div class="spells-list">
+                {{#each system.memorizations as |slotData spellType|}}
+                    <div class="hud-actions">
+                        <div class="mini-actions-buttons" style="--action-button-size: {{slotData.totalSlots}};">
+                            {{#each slotData.spellslots.value as |slotCount level| }}
+                                {{#if slotCount}}
+                                    {{!-- {{log "memorization-block-mini.hbs slotCount" slotCount}} --}}
+                                    {{#each (lookup slotData.memslots level) as | memslot slotindex|}}
+                                        {{!-- {{log "memorization-block-mini.hbs memslot" memslot}} --}}
+                                        {{#if memslot.cast}}
+                                        {{else}}
+                                            {{#if memslot.id}}
+                                                <li class="mini-action item with-background-image memorization-slot flexrow"
+                                                    data-control-type="memorization" data-uuid="{{memslot.uuid}}"
+                                                    data-id="{{memslot.id}}" data-level="{{level}}"
+                                                    data-index="{{slotindex}}" data-type="{{spellType}}"
+                                                    data-owned="{{memslot.owned}}" data-tooltip="{{memslot.name}}"
+                                                    style="background-image: url('{{memslot.img}}')">
+                                                    <div class="mini-action-button action-name item-name rollable spellCard-roll"
+                                                        data-id="{{memslot.id}}">
+                                                        <div class="item-name">{{memslot.name}}</div>
+                                                    </div>
+                                                </li>
+                                            {{/if}}
+                                        {{/if}}
+                                    {{/each}}
+                                {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/each}}
+                {{!-- </div> --}}
+            </div>
+        </div>
+    {{/if}}
+</div>

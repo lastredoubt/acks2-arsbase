@@ -1,0 +1,25 @@
+<form>
+  <div class="flexrow">
+    <b>{{question}}</b>
+  </div>
+  <div class="flexrow">
+    <b>{{title}}</b>
+    <div>
+      {{#if actor.inventory}}
+        <select class="onuse-item-select" name="inventorySelect">
+          {{!-- <optgroup label="{{localize 'CHAT.RollDefault'}}"> --}}
+          {{#select inventorySelect}}
+            {{#each inventoryList as |item idx|}}
+              {{#if item.system.quantity}}
+                <option value="{{item.id}}">{{item.name}}</option>
+              {{/if}}
+            {{/each}}
+          {{/select}}
+          </optgroup>
+        </select>
+      {{else}}
+        <label>{{localize "ARS.noinventory"}}</label>
+      {{/if}}
+    </div>
+  </div>
+</form>

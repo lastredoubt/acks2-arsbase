@@ -1,0 +1,121 @@
+{{log "settings-combat.hbs" this}}
+
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <div class="settings-combat">
+
+        <fieldset>
+            <legend>Combat Settings</legend>
+
+            <fieldset>
+                <legend>Tracker</legend>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.ctShowOnlyVisible"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="ctShowOnlyVisible" data-dtype="Boolean"
+                            {{ checked ctShowOnlyVisible }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.ctShowOnlyVisibleTT"}}</p>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Initiative</legend>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.initiativeFormula"}}</label>
+                    <div class="form-fields">
+                        <input type="text" name="initiativeFormula" value="{{initiativeFormula}}" data-dtype="String">
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.initiativeFormulaTT"}}</p>
+                </div>
+
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.initiativeUseSpeed"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="initiativeUseSpeed" data-dtype="Boolean"
+                            {{ checked initiativeUseSpeed }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.initiativeUseSpeedTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.InitiativeAscending"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="InitiativeAscending" data-dtype="Boolean"
+                            {{ checked InitiativeAscending }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.InitiativeAscendingTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.initSideVSide"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="initSideVSide" data-dtype="Boolean" {{ checked initSideVSide }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.initSideVSideTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.rollInitEachRound"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="rollInitEachRound" data-dtype="Boolean"
+                            {{ checked rollInitEachRound }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.rollInitEachRoundTT"}}</p>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Automation</legend>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.autoCheck"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="autoCheck" data-dtype="Boolean" {{ checked autoCheck }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.autoCheckTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.autoDamage"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="autoDamage" data-dtype="Boolean" {{ checked autoDamage }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.autoDamageTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.useAutoHitFailDice"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="useAutoHitFailDice" data-dtype="Boolean"
+                            {{ checked useAutoHitFailDice }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.useAutoHitFailDiceTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.combatAutomateRangeMods"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="combatAutomateRangeMods" data-dtype="Boolean"
+                            {{ checked combatAutomateRangeMods }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.combatAutomateRangeModsTT"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.weaponVarmor"}}</label>
+                    <div class="form-fields">
+                        <input type="checkbox" name="weaponVarmor" data-dtype="Boolean" {{ checked weaponVarmor }}>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.weaponVarmorTT"}}</p>
+                </div>
+            </fieldset>
+
+            {{#if isVariant2}}
+                <fieldset>
+                    <legend>Misc</legend>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.useArmorDamage"}}</label>
+                        <div class="form-fields">
+                            <input type="checkbox" name="useArmorDamage" data-dtype="Boolean"
+                                {{ checked useArmorDamage }}>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.useArmorDamageTT"}}</p>
+                    </div>
+                </fieldset>
+            {{/if}}
+        </fieldset>
+        <button type="submit" name="submit"><i class="fas fa-save"></i>{{localize "Submit"}}</button>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+<div class="category">
+    <div class="item-titles flexrow item-header">
+        <div class="item-caret"><i class="fas fa-caret-down"></i></div>
+        <span align="left" class="item-name">Armor</span>
+        <div class="item-controls"></div>
+    </div>
+    <div class="item-list">
+        <li class="item-header">
+            <div class="item flexrow">
+                <div class="item-image flexrow"></div>
+                <div class="item-name flexrow">
+                    <h4>Name</h4>
+                </div>
+                <div class="flexrow"><label class="item-name">AC</label></div>
+                <div class="flexrow"><label class="item-name">modifier</label></div>
+                <div class="short-field"><i class="fas fa-weight-hanging"></i></div>
+                <div class="item-controls"><a class="item-control item-create" data-tooltip="Create item"
+                        data-type="armor"><i class="fas fa-plus"></i></a></div>
+            </div>
+        </li>
+        {{#each actor.armors as |item id|}}
+            <li class="item-entry">
+                <div class="item flexrow reveal-hidden" data-id="{{item.id}}" data-type="{{item.type}}">
+                    <div class="item-image rollable chatCard-roll" data-id="{{item.id}}"><img src="{{item.img}}"
+                            data-tooltip="{{item.name}}" width="24" height="24" /></div>
+                    <div class="item-name flexrow">
+                        <h4>{{item.name}}</h4>
+                    </div>
+                    <div class="flexrow">
+                        <h4>{{item.system.protection.ac}}</h4>
+                    </div>
+                    <div class="flexrow">
+                        <h4>{{item.system.protection.modifier}}</h4>
+                    </div>
+                    <div class="short-field">{{item.system.weight}}</div>
+                    <div class="item-controls">
+                        <a class="item-control item-edit hidden" data-tooltip="Edit Item"><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete hidden" data-tooltip="Delete Item"><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </div>
+</div>

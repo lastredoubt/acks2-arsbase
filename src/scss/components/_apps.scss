@@ -1,0 +1,67 @@
+.trade-box {
+
+    .trade-window{
+        height:100%;
+
+        .trade-icon {
+            flex-basis: 25px;
+            flex-grow: 0;
+            font-size: 0.99em;
+            padding-right: 3px;
+            img {
+                vertical-align:middle;
+            }
+        }
+
+        .currency {
+            border: 1px solid #bbb;
+        }
+        .trade-panel {
+            border: 1px solid black;
+            margin: 2px;
+            padding: 2px;
+            height:100%;
+            width:100%;
+            overflow: scroll;
+        }
+          .accept-trade-button {
+            padding: 10px 20px;
+            background-color: lightblue;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+        }        
+    
+        #trader-inventory,#trader-trade,#customer-trade.list {
+            padding: 1px 0;
+            border-bottom: 1px solid #bbb;
+        
+            div:nth-of-type(odd) {
+                background-color: $item-background-color;
+            }
+            div:nth-of-type(even) {
+                background-color: $item-background-alt-color;
+            }        
+        
+            .trader-trade-item,.trader-inventory-item,.customer-trade-item {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex-grow:3;
+                flex-shrink:0;
+            }
+            .trader-inventory-item-quantity,.trader-trade-item-quantity,.customer-trade-item-quantity {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                // flex-grow: 0;
+                min-width: 0;
+                max-width: 40px;
+                // flex-shrink:1;
+            }
+        }
+    }
+}
+
+// this is so GM screen text is not white on light background
+div.gm-screen-grid-cell-content-wrapper > div > div > aside {
+        color:black !important;
+}

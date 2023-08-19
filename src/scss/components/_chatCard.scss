@@ -1,0 +1,200 @@
+.combat-situationals {
+    margin: 1px;
+    input {
+        text-align: center;
+        width:24px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    .situation {
+        font-weight: 700;
+    }
+    .flexcol {
+        flex: 0 0 30px;
+    }
+    .attack-left {
+        text-align: left;
+    }
+    .damage-right {
+        text-align: right;
+        justify-content: right;
+    }
+}
+
+.failedCheck {
+    background-color: rgb(194, 167, 167);
+}
+
+.succeedCheck {
+    background-color: rgb(198, 218, 198);
+}
+
+.hitSuccess {
+    background-color: rgb(216, 209, 157);
+}
+
+.hitFailed {
+    background-color: rgb(198, 202, 218);
+}
+
+.hpdamage {
+    background-color: palevioletred;
+}
+
+.hpheal {
+    background-color: aquamarine;
+}
+
+.attackResult, .rolledText, .testResult, .hpadjustment, .undoButton, .spellCard-name, .weaponCard-name {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: 1px groove;
+    border-radius: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.rolledTotal {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.chatCard-button {
+    height: 29px;
+    width: 100%;
+}
+
+.traded-list {
+    padding: 1px 0;
+    border-bottom: 1px solid #bbb;
+
+    div:nth-of-type(odd) {
+        background-color: $item-background-color;
+    }
+    div:nth-of-type(even) {
+        background-color: $item-background-alt-color;
+    } 
+    
+    .tradeChat-list {
+            padding: 1px;
+    }
+}
+.action-card, .weapon-card , .actionChat-list, .tradeChat-list {
+    .action-icon {
+        flex-basis: 25px;
+        flex-grow: 0;
+        font-size: 0.99em;
+        padding-right: 3px;
+        img {
+            vertical-align:middle;
+        }
+    }
+
+}
+
+.chat-message.img.chat-profile-img {
+    flex: 0 0 64px;
+    height: 64px;
+    width: 64px;
+    margin-right: 10px;
+}
+
+.message-content {
+    .a25-image {
+        flex-basis: 25px;
+        flex-grow: 0;
+        img {
+            vertical-align:middle;
+        }
+    }
+}
+
+.chat-message {
+
+    button {
+        border-radius: 8px;
+    }
+
+    select {
+        border-radius: 8px;
+    }
+    .hpadjustment, .testResult {
+        margin: 5px;
+        margin-bottom: 10px;
+    }
+    .message-content {
+
+        // .weapon-card {
+        //     background-color: rgb(201, 184, 165);
+        // }
+        .action-title {
+            font-weight: bold;
+            font-size: 1.3em;
+            color:red;
+            text-align: center;
+        }
+
+        .chatCard-description {
+            margin-bottom :2px;              
+          }
+          .chatCard-description-short {
+            min-height: 5px;
+            max-height: 90px;
+            overflow: hidden ;
+            text-overflow: ellipsis ;  
+          }     
+          .chatCard-description-full {
+            white-space: wrap ;
+          }  
+
+        .spell-card {
+            .grid-container {
+                display: inline-grid;
+                grid-template-columns: auto auto;
+                border: 1px groove;
+                border-radius: 5px;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 1px;
+                width: 100%;
+              }     
+
+              .grid-item {
+                padding: 1px;
+                text-align: left;
+                white-space: nowrap ;
+                overflow: hidden ;
+                text-overflow: ellipsis ;                
+              }                
+   
+              .spell-title {
+                font-weight: bold;
+                font-size: 1.3em;
+                color:red;
+                text-align: center;
+              }
+        }
+    }
+}
+
+// this is the background on various/chat windows
+
+// .chat-message {
+// 	background: url(ui/textured_paper.png) repeat;
+//     // background: white;
+// }
+// #chat-form textarea {
+// 	background: url(ui/textured_paper.png) repeat;
+//     // background: white;
+// }
+// .inline-roll .dice-tooltip {
+// 	background: url(ui/textured_paper.png) repeat;
+//     // background: white;
+// }

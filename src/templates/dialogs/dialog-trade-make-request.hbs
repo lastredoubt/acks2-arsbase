@@ -1,0 +1,23 @@
+<div class="trade-request-dialog">
+    <p>Please select a player:</p>
+    <select id="trade-player-select">
+        {{#select trade-player-select}}
+            {{#each customers as |customer id|}}
+                <option value="{{customer.id}}">{{localize customer.name}}</option>
+            {{/each}}
+        {{/select}}
+    </select>
+    {{#if trader.isGM}}
+        <div>Select Token that you will be trading as:</div>
+        <div>
+            <select id="gm-selected-token">
+                {{#select gm-selected-token}}
+                    {{#each tokens as |token id|}}
+                        <option value="{{token.id}}">{{localize token.name}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+    {{/if}}
+
+</div>

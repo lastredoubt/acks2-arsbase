@@ -1,0 +1,217 @@
+{{!-- <fieldset> --}}
+
+{{#if isPC}}
+    {{!-- <fieldset class="border-top">
+        <legend>{{ localize "ARS.combat" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.combat" }}</div>
+    {{!-- PC stuff --}}
+    <div class="general-subheader flexrow">
+        {{!-- <label class="general-xp">EXP</label> --}}
+        <label class="general-label">{{ localize "ARS.armorclass" }}</label>
+        <label class="general-label">{{ localize "ARS.hpbase" }}</label>
+        <label class="general-label">{{ localize "ARS.hp" }}</label>
+        <label class="general-label">{{ localize "ARS.hpmax" }}</label>
+        <label class="general-label">{{ localize "ARS.thaco" }}</label>
+        <label class="general-label">{{ localize "ARS.move" }}</label>
+    </div>
+    <div class="general-config flexrow">
+        {{!-- <div>
+                <input type="number" name="system.details.xp" value={{system.details.xp}} {{#unless isGM}}readonly{{/unless}}/>
+            </div> --}}
+        <div>
+            <input class="resource" type="number" name="system.attributes.ac.value"
+                value="{{system.attributes.ac.value}}" data-dtype="Number" {{#unless isGM}}readonly{{/unless}} />
+        </div>
+        <div>
+            <input class="resource" type="number" name="system.attributes.hp.base" value="{{system.attributes.hp.base}}"
+                data-dtype="Number" {{#unless isGM}}readonly{{/unless}} />
+        </div>
+        <div>
+            <input class="resource" type="number" name="system.attributes.hp.value"
+                value="{{system.attributes.hp.value}}" data-dtype="Number" />
+        </div>
+        <div>
+            <input class="resource" type="number" name="system.attributes.hp.max" value="{{system.attributes.hp.max}}"
+                data-dtype="Number" {{#unless isGM}}readonly{{else}}{{#if actor.classes}}readonly{{/if}}{{/unless}} />
+        </div>
+        <div>
+            <input class="resource" type="number" name="system.attributes.thaco.value"
+                value="{{system.attributes.thaco.value}}" data-dtype="Number" />
+        </div>
+        <div>
+            <input class="resource" type="number" name="system.attributes.movement.value"
+                value="{{system.attributes.movement.value}}" data-dtype="Number" />
+        </div>
+    </div>
+    {{!-- </fieldset> --}}
+    {{!-- <fieldset class="border-top">
+        <legend>{{ localize "ARS.exp" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.exp" }}</div>
+    <div class="general-subheader flexrow">
+        <label class="general-xp">Total Earned</label>
+        <label class="general-xpearned">Un-Applied</label>
+    </div>
+    <div class="general-config flexrow">
+        <div>
+            <input type="number" name="system.xp" value="{{system.xp}}" {{#unless isGM}}readonly{{/unless}} />
+        </div>
+        <div class="flexrow">
+            <input type="number" name="system.applyxp" value="{{system.applyxp}}" {{#unless isGM}}readonly{{/unless}} />
+            {{#if system.applyxp}}
+                <button style="line-height:normal;" class="apply-experience" data-tooltip="Apply awarded experience"><i
+                        class="fas fa-trophy"></i><label
+                        class="general-xpearned">{{localize "ARS.apply"}}</label></button>
+            {{/if}}
+        </div>
+    </div>
+    {{!-- </fieldset> --}}
+    {{!-- <fieldset class="border-top">
+        <legend>{{ localize "ARS.actorsheet.general.proficiency" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.actorsheet.general.proficiency" }}</div>
+    <div class="general-subheader flexrow">
+        <label class="general-label">{{localize "ARS.actorsheet.general.penalty"}}</label>
+        <label class="general-profs">{{localize "ARS.actorsheet.general.weapon"}}</label>
+        <label class="general-profs">{{localize "ARS.actorsheet.general.weaponused"}}</label>
+        <label class="general-label">{{localize "ARS.actorsheet.general.nonweapon"}}</label>
+        <label class="general-label">{{localize "ARS.actorsheet.general.nonweaponused"}}</label>
+    </div>
+    <div class="general-config flexrow">
+        <div>
+            <label>{{system.attributes.proficiencies.weapon.penalty}}</label>
+        </div>
+        <div>
+            <label>{{system.attributes.proficiencies.weapon.value}}</label>
+        </div>
+        <div>
+            <label>{{system.attributes.proficiencies.weapon.used}}</label>
+        </div>
+        <div>
+            <label>{{system.attributes.proficiencies.skill.value}}</label>
+        </div>
+        <div>
+            <label>{{system.attributes.proficiencies.skill.used}}</label>
+        </div>
+    </div>
+    {{!-- </fieldset> --}}
+
+
+{{else}}
+    {{!-- NPC stuff --}}
+    {{!-- <fieldset class="border-top">
+        <legend>{{ localize "ARS.sheet.actor.npc" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.sheet.actor.npc" }}</div>
+    <div class="general-subheader general-config flexrow">
+        <div><label class="general-label">{{localize "ARS.hpmax"}}</label></div>
+        <div><label class="general-label">{{localize "ARS.resistTypes.magicpotency"}}</label></div>
+    </div>
+    <div class="general-config flexrow">
+        <div>
+            <input class="resource" type="number" name="system.attributes.hp.max" value="{{system.attributes.hp.max}}"
+                data-dtype="Number" {{#if @root.actor.classes}}readonly{{/if}} />
+        </div>
+        <div>
+            <input class="resource" type="number" name="system.resistances.weapon.magicpotency"
+                value="{{system.resistances.weapon.magicpotency}}" data-dtype="Number" />
+        </div>
+    </div>
+    <div class="title weapon-metal-label">Weapon Substance Vulnerability<a class="weapon-metal-controls create-entry"
+            data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></div>
+    {{#each system.resistances.weapon.metals as |metal index|}}
+        <li class="weapon-metal-protection" data-index={{index}}>
+            <div class="flexrow">
+                <input type="text" name="system.resistances.weapon.metals.{{index}}.type" value="{{metal.type}}" />
+                <div class="npc-resistance-metal">
+                    <select name="system.resistances.weapon.metals.{{index}}.protection">
+                        {{#select metal.protection}}
+                            {{#each ../config.metalprotections as |name type|}}
+                                <option value="{{type}}">{{localize name}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="npc-resistance-metal short-field">
+                    <a class="weapon-metal-controls remove-rank" data-tooltip="{{localize "ARS.remove" }}"
+                        data-action="remove"><i class="fas fa-minus"></i></a>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+    {{!-- </fieldset> --}}
+{{/if}}
+
+{{!-- <fieldset class="border-top">
+    <legend>{{ localize "ARS.slotsperlevel" }}</legend> --}}
+
+<div class="general-header">{{ localize "ARS.slotsperlevel" }}</div>
+<div class="general-subheader center flexrow">
+    <div style="flex-grow: 2;" class="class-spelltype" data-tooltip="Spell class type">Type</div>
+    <div class="class-casterlevel" data-tooltip="Caster Level">Level</div>
+    <div class="class-null"></div>
+    {{#each system.spellInfo.slots.arcane.value as |lvl index| }}
+        <div class="class-spell-levelX">{{index}}</div>
+    {{/each}}
+</div>
+<div class="class-rank-header">
+    <div class="flexrow">
+        <div style="flex-grow: 2;" class="class-spelltype flex-text-center" data-tooltip="Spell class type">
+            {{localize "ARS.spellTypes.arcane"}}
+        </div>
+        <div class="class-spell-level-arcane">
+            <input name="system.spellInfo.level.arcane.value" type="text"
+                value="{{system.spellInfo.level.arcane.value}}" data-dtype="Number" />
+        </div>
+        <div></div>
+        {{#each system.spellInfo.slots.arcane.value as |lvl index| }}
+            <div class="class-spell-levelX">
+                <input class="spell_slots" name="system.spellInfo.slots.arcane.value.{{index}}" type="text"
+                    value="{{lvl}}" data-dtype="Number" />
+            </div>
+        {{/each}}
+    </div>
+    <div class="flexrow">
+        <div style="flex-grow: 2;" class="class-spelltype flex-text-center" data-tooltip="Spell class type">
+            {{localize "ARS.spellTypes.divine"}}
+        </div>
+        <div class="class-spell-divinelevel">
+            <input name="system.spellInfo.level.divine.value" type="text"
+                value="{{system.spellInfo.level.divine.value}}" data-dtype="Number" />
+        </div>
+        <div></div>
+        {{#each system.spellInfo.slots.divine.value as |lvl index| }}
+            <div class="class-spell-levelX">
+                <input class="spell_slots" name="system.spellInfo.slots.divine.value.{{index}}" type="text"
+                    value="{{lvl}}" data-dtype="Number" />
+            </div>
+        {{/each}}
+        <div class="class-spell-levelX-empty"></div>
+        <div class="class-spell-levelX-empty"></div>
+    </div>
+</div>
+{{!-- </fieldset> --}}
+
+{{!-- properties --}}
+{{!-- <fieldset class="border-top">
+    <legend>{{ localize "ARS.properties" }} <a class="general-properties-controls create-entry"
+            data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></legend> --}}
+<div class="general-header">{{ localize "ARS.properties" }} <a class="general-properties-controls create-entry"
+        data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></div>
+<div class="general-properties-row">
+    {{#if system.properties }}
+        {{#each system.properties as |property index|}}
+            <div class="general-properties-column">
+                <li class="flexrow" data-index={{index}}>
+                    <input type="text" name="system.properties.{{index}}" value="{{property}}"
+                        placeholder="{{localize "ARS.placeholder"}}" />
+                    <div class="short-field">
+                        <a class="general-properties-controls remove-property" data-tooltip="{{localize "ARS.remove" }}"
+                            data-action="remove"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </li>
+            </div>
+        {{/each}}
+    {{else}}
+        <div style="text-align:center;">{{localize "ARS.none"}}</div>
+    {{/if}}
+</div>
+{{!-- </fieldset> --}}
+{{!-- </fieldset> --}}

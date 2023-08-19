@@ -1,0 +1,728 @@
+{
+   "Actor":{
+      "types":[
+         "character",
+         "npc",
+         "lootable"
+      ],
+      "templates":{
+         "base":{
+            "alias": "",
+            "power":{
+               "value":5,
+               "min":0,
+               "max":5
+            },
+            "abilities":{
+               "str":{
+                  "value":10,
+                  "percent":0
+               },
+               "dex":{
+                  "value":10,
+                  "percent":0
+               },
+               "con":{
+                  "value":10,
+                  "percent":0
+               },
+               "int":{
+                  "value":10,
+                  "percent":0
+               },
+               "wis":{
+                  "value":10,
+                  "percent":0
+               },
+               "cha":{
+                  "value":10,
+                  "percent":0
+               }
+            },
+            "saves":{
+               "paralyzation":{
+                  "value":20
+               },
+               "poison": {
+                  "value":20
+               },
+               "death": {
+                  "value":20
+               },
+               "rod": {
+                  "value":20
+               },
+               "staff": {
+                  "value":20
+               },
+               "wand":{
+                  "value":20
+               },
+               "petrification": {
+                  "value":20
+               },
+               "polymorph": {
+                  "value":20
+               },
+               "breath":{
+                  "value":20
+               },
+               "spell":{
+                  "value":20
+               }
+            },
+            "spellInfo":{
+               "memorization":{
+                  "arcane":[
+                     
+                  ],
+                  "divine":[
+                     
+                  ]
+               },
+               "level":{
+                  "arcane":{
+                     "value":0,
+                     "bonus":0
+                  },
+                  "divine":{
+                     "value":0,
+                     "bonus":0
+                  }
+               },
+               "slots": {
+                  "arcane":{
+                     "value":[
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                     ],
+                     "bonus":[
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                     ]
+                  },
+                  "divine":{
+                     "value":[
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                     ],
+                     "bonus":[
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                     ]
+                  }
+               }
+            },
+            "attributes":{
+               "ac":{
+                  "value":10
+               },
+               "thaco":{
+                  "value":20
+               },
+               "hp":{
+                  "base":0,
+                  "value":0,
+                  "min":0,
+                  "max":0,
+                  "temp":0,
+                  "tempmax":0
+               },
+               "init":{
+                  "value":0,
+                  "modifier":0
+               },
+               "movement":{
+                  "value":0,
+                  "unit":"ft"
+               },
+               "vision": {
+                  "type": "",
+                  "value": 0
+               },
+               "size":"medium",
+               "identified": false
+            },
+            "details":{
+               "biography":{
+                  "value":"",
+                  "public":"",
+                  "alignment":""
+               },
+               "provisions": {
+                  "food": "",
+                  "water": ""
+               }
+            },
+            "currency":{
+               "pp":0,
+               "gp":0,
+               "ep":0,
+               "sp":0,
+               "cp":0
+            },
+            "properties":[],
+            "mods" : {}
+         },
+         "creature":{
+            "climate":"",
+            "frequency":"",
+            "organization":"",
+            "diet":"",
+            "activity":"",
+            "intelligence":"",
+            "inlair":"",
+            "treasureType":"",
+            "numberAppearing":"",
+            "movement":"",
+            "hitdice":"1",
+            "hpCalculation":"",
+            "numberAttacks":"",
+            "damage":"1d6",
+            "specialAttacks":"",
+            "specialDefenses":"",
+            "sizenote":"",
+            "acNote":"",
+            "magicresist":"",
+            "abilityNotes" :[
+               
+            ],
+            "resistances":{
+               "weapon" : {
+                  "magicpotency":0,
+                  "metals" : [
+
+                  ]
+               }
+            },
+            "morale":"",
+            "xp":{
+               "value":0
+            },
+            "details":{
+               "type":"",
+               "source":""
+            }
+         }
+      },
+      "character":{
+         "templates":[
+            "base"
+         ],
+         "details":{
+            "player":"<unknown>",
+            "age":"18",
+            "height":"5'10",
+            "weight":"150",
+            "deity":"",
+            "background":"",
+            "notes":"",
+            "race": {},
+            "classList":[
+               
+            ],
+            "xp":0,
+            "applyxp": 0
+         },
+         "attributes":{
+            "level":{
+               "value":1
+            },
+            "proficiencies":{
+               "weapon":{
+                  "value":0,
+                  "used":0,
+                  "penalty": 0
+               },
+               "skill":{
+                  "value":0,
+                  "used":0
+               }
+            }
+         }
+      },
+      "npc":{
+         "templates":[
+            "base",
+            "creature"
+         ]
+      },
+      "lootable": {
+         "templates" : [
+            "base"
+         ],
+         "lootable": true
+      }
+   },
+   "Item":{
+      "types":[
+         "item",
+         "ability",
+         "armor",
+         "background",
+         "bundle",
+         "container",
+         "class",
+         "encounter",
+         "potion",
+         "proficiency",
+         "race",
+         "spell",
+         "skill",
+         "weapon"
+      ],
+      "templates":{
+         "itemDescription":{
+            "description":"",
+            "dmonlytext":"",
+            "itemList": []
+         },
+         "itemDetails":{
+            "alias": "",
+            "attributes":{
+               "rarity": "",
+               "type":"",
+               "subtype":"",
+               "magic":false,
+               "properties": [],
+               "skillmods": [],
+               "conditionals": [],
+               "identified":true
+            },
+            "charges":{
+               "value":0,
+               "min":0,
+               "max":0,
+               "reuse":"none"
+            },
+            "location": {
+               "state": "carried",
+               "parent": ""
+            },
+            "resource": {
+               "itemId":""
+            },
+            "actions":[
+               
+            ],
+            "quantity":0,
+            "weight":0,
+            "cost" : {
+               "value": 0,
+               "currency": "gp"
+            },
+            "source": "",
+            "xp": 0
+         },
+         "itemSound":{
+            "audio":{
+               "file":"",
+               "volume": "0.5",
+               "effect":"",
+               "success":"",
+               "failure":""
+            }
+         }
+      },
+      "item":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ]
+      },
+      "rank":{
+         "level":1,
+         "thaco":20,
+         "turnLevel":0,
+         "xp":2000,
+         "hdformula":"1d6",
+         "baseMove":null,
+         "baseAC":null,
+         "title":"",
+
+         "paralyzation":20,
+         "poison": 20,
+         "death":20,
+         "rod":20,
+         "staff":20,
+         "wand":20,
+         "petrification": 20,
+         "polymorph":20,
+         "breath":20,
+         "spell":20,
+         "divine":[
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+         ],
+         "arcane":[
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+         ],
+         "casterlevel":  {
+            "arcane": 0,
+            "divine": 0
+         }
+      },
+      "class":{
+         "templates":[
+            "itemDescription"
+         ],
+         "active":true,
+         "xp": 0,
+         "xpbonus": 0,
+         "advancement":[
+            
+         ],
+         "features":{
+            "acDexFormula":"@abilities.dex.defensive",
+            "hpConFormula":"",
+            "lasthitdice":9,
+            "bonuscon": false,
+            "spellFreecast": false,
+            "focus": {
+               "major": "",
+               "minor": ""
+            }
+         },
+         "proficiencies":{
+            "penalty": -4,
+            "weapon":{
+               "starting":0,
+               "earnLevel":3
+            },
+            "skill":{
+               "starting":0,
+               "earnLevel":3
+            }
+         },
+         "skills":[
+            
+         ],
+         "abilityList": [
+
+         ],
+         "matrixTable": ""
+      },
+      "armor":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ],
+         "protection":{
+            "type":"",
+            "ac":10,
+            "modifier":0,
+            "bulk":"",
+            "points" : {
+               "min":0,
+               "max": 0,
+               "value": 0
+            }
+         },
+         "armorstyle": ""
+      },
+      "bundle":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ],
+         "currency":{
+            "pp":0,
+            "gp":0,
+            "ep":0,
+            "sp":0,
+            "cp":0
+         }
+      },      
+      "encounter":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ],
+         "npcList" : [
+            
+         ],
+         "xp": 0
+      },      
+      "weapon":{
+         "templates":[
+            "itemDescription",
+            "itemDetails",
+            "itemSound"
+         ],
+         "attack":{
+            "speed":1,
+            "type":"melee",
+            "perRound":"1/1",
+            "modifier":0,
+            "magicBonus":0,
+            "magicPotency":0,
+            "range":{
+               "short":"",
+               "medium":"",
+               "long":""
+            },
+            "weaponstyle": "",
+            "primary":false
+         },
+         "damage":{
+            "type":"slashing",
+            "normal":"1d6",
+            "large":"1d8",
+            "otherdmg":[
+               
+            ],
+            "modifier":0,
+            "magicBonus":0
+         }
+      },
+      "spell":{
+         "templates":[
+            "itemDescription",
+            "itemDetails",
+            "itemSound"
+         ],
+         "type":"Arcane",
+         "level":1,
+         "learned": false,
+         "school":"",
+         "sphere":"",
+         "range":"",
+         "components":{
+            "verbal":true,
+            "somatic":true,
+            "material":true
+         },
+         "materials":{
+            "value":null,
+            "consumed":false,
+            "cost":0,
+            "count":0
+         },
+         "durationText":"",
+         "castingTime":"",
+         "areaOfEffect":"",
+         "save":""
+      },
+      "memorization":{
+         "spellId":"",
+         "cast":false
+      },
+      "background":{
+         "templates":[
+            "itemDescription"
+         ],
+         "proficiencies":{
+            "weapon":0,
+            "skill":0
+         },
+         "abilityList": [
+
+         ]
+      },
+      "potion":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ]
+      },
+      "skill":{
+         "templates":[
+            "itemDescription",
+            "itemDetails",
+            "itemSound"
+         ],
+         "groups":"",
+         "features":{
+            "type":"decending",
+            "ability":"none",
+            "target":20,
+            "formula":"1d20",
+            "cost":1,
+            "modifiers":{
+               "formula":"",
+               "class":0,
+               "background":0,
+               "ability":0,
+               "armor":0,
+               "item":0,
+               "race":0,
+               "other":0
+            }
+         }
+      },
+      "container":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ],
+         "capacity":{
+            "value":0,
+            "weightreduction":0
+         }
+      },
+      "ability":{
+         "templates":[
+            "itemDescription"
+         ]
+      },
+      "proficiency": {
+         "templates":[
+            "itemDescription"
+         ],
+         "appliedto" :[],
+         "cost": 1,
+         "hit": "", 
+         "damage": "",
+         "speed": 0,
+         "attacks": ""
+      },
+      "race":{
+         "templates":[
+            "itemDescription",
+            "itemDetails"
+         ],
+         "abilityList": [
+
+         ]
+      },
+      "saveCheck":{
+         "saveCheck":{
+            "type":"spell",
+            "formula":""
+         }
+      },
+	  "castShapeRange":{
+			"formula":""
+		 },
+	  "castShapeProperties":{
+		  "castShapeLength":{
+			"formula":""
+		 },
+		 "castShapeWidth":{
+			"formula":""
+		 },
+		 "castShapeRadius":{
+			"formula":""
+		 },
+		 "castShapeAngle":{
+			"formula":""
+		 }
+		  
+	  },
+      "abilityCheck":{
+         "abilityCheck":{
+            "type":"none",
+            "formula":""
+         }
+      },
+      "simpleCheck":{
+         "simpleCheck":{
+            "type":"",
+            "formula":""
+         }
+      },
+      "actionEffect":{
+         "durationFormula":"",
+         "durationType":"round",
+         "changes":[
+            
+         ],
+         "key":"",
+         "mode":0,
+         "value":""
+      },
+      "action":{
+         "img":"",
+         "templates":[
+            "itemDescription"
+         ],
+         "ability":"none",
+         "type":"cast",
+         "targeting":"",
+         "successAction":"",
+         "formula":"",
+         "otherdmg":[
+            
+         ],
+         "effectList":[
+            
+         ],
+         "effect":{
+            "duration":{
+               "formula":"",
+               "type":"round"
+            },
+            "changes":[
+               
+            ]
+         },
+         "speed":0,
+         "damagetype":"slashing",
+         "resource":{
+            "type":"none",
+            "itemId":"",
+            "reusetime":"",
+            "count":{
+               "cost":1,
+               "min":0,
+               "max":1,
+               "value":0
+            }
+         },
+         "magicpotency": 0,
+         "properties":[]
+      },
+      "npclist": {
+         "id": "",
+         "name": "",
+         "img":"",
+         "count": "",
+         "pack": "",
+         "hp": 0,
+         "xp": 0
+      }
+   }
+}

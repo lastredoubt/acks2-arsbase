@@ -1,0 +1,185 @@
+.item-form {
+  font-family: $font-primary;
+}
+
+// .character {
+//   .sheet-header {
+//     flex: 0 0 37px;
+//     overflow: hidden;
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+//     margin-bottom: 2px;
+  
+//     .profile-img {
+//       flex: 0 0 100px;
+//       height: 100px;
+//       margin-right: 10px;
+//     }
+  
+//     .header-fields {
+//       flex: 1;
+//     }
+  
+//     h1.itemname {
+//       padding: 1px;
+//     }
+  
+//     h1.charname {
+//       height: 30px;
+//       padding: 0px;
+//       margin: 1px 0;
+//       border-bottom: 0;
+//       input {
+//         width: 100%;
+//         height: 100%;
+//         margin: 0;
+//       }
+//     }
+//   }
+  
+// }
+
+// .sheet nav.sheet-tabs {
+//   border: none;
+//   border-top: none;
+//   border-bottom: none;
+//   height: 34px;
+// }
+
+// .sheet nav.sheet-tabs.side {
+//   position: absolute;
+//   transform: rotate(90deg);
+//   // bottom: 220px;
+//   top: 245px;
+//   // right: -175px;
+//   right: -209px;
+//   border-top: none;
+//   height: 18px;
+//   width: 400px;
+//   z-index: -1;
+//   .item {
+//     padding: 1px 10px 0;
+//     margin-left: -5px;
+//     text-indent: 4px;
+//     line-height: 16px;
+//     background: url("/ui/parchment.jpg");
+//     border-top-right-radius: 4px;
+//     border-top-left-radius: 80px;
+//     border-top: 0;
+//     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+//     box-shadow: 0 0 6px 1px $c-dark;
+//     font-size: 14px;
+//     filter: brightness(0.9);
+//     &.active {
+//       filter: none;
+//       z-index: 1;
+//       font-weight: bold;
+//       text-shadow: none;
+//       margin-bottom: -1px;
+//     }
+//   }
+// }
+
+// on action sheet, the misc text field
+#action-sheet > section > form > section > div.short-editor > div > div {
+  min-height: 150px;
+}
+
+.editor {
+  height: 100%;
+ 
+  .editor-content {
+    min-height: 300px;
+  }
+}
+
+.tox {
+  .tox-editor-container {
+    background: $c-white;
+  }
+
+  .tox-edit-area {
+    padding: 0 4px;
+  }
+}
+
+#item-browser-sheet {
+
+  .search-filters-box {
+    background-color: rgb(199, 199, 199);
+  }
+  .item-header, .filter-titles {
+    text-transform: uppercase;
+  }
+
+  .item-browser-sheet {
+    padding: 6px;
+  }
+  
+  .filter-item-type, .filter-source {
+    flex-shrink: 1;
+  }
+
+  .item-filter-value,.item-filter-header,.filter-name, .item-weapon, .item-item, .item-wt, .item-level, .item-ac,.item-skill,.item-weapon-type {
+    margin-right: 5px;
+    white-space: nowrap ;
+    overflow: hidden ;
+    text-overflow: ellipsis ;
+  }
+
+  .filter-name {
+    flex-grow: 3;
+  }
+
+  .item-filter-header {
+    // flex-shrink: 2;
+    text-transform: uppercase;
+  }
+
+  // .item-filter-value, .item-wt, .item-level, .item-ac,.item-skill, .item-item,.item-weapon-type {
+  //   flex-shrink: 2;
+  // }
+
+  .item-filter-level, .item-filter-header-level, .item-wt, .item-cost {
+    text-align: center;
+  }
+
+  .item-list-controls {
+    flex: 0 0 53px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .rollable {
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      text-shadow: 0 0 8px red;
+    }
+  }
+
+
+  .filter-search {
+    flex-basis: 25px;
+    flex-grow: 0;
+    text-align: center;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      text-shadow: 0 0 8px red;
+    }    
+  }  
+}
+
+
+.effect-change {
+  textarea {
+    min-height: 80px;
+    min-width: 100px;
+    max-width: 200px;
+    max-height: 100px;
+ }
+}

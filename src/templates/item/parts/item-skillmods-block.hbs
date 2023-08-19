@@ -1,0 +1,29 @@
+{{#includes item.type 'item||armor||weapon||race||background||ability'}}
+    {{!-- skill modifiers for race/armor --}}
+    {{!-- <fieldset> --}}
+    {{!-- <legend>{{ localize "ARS.skillmodifiers" }} <a class="item-skill-modifier-controls create-entry" data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></legend> --}}
+    <div class="general-header">{{ localize "ARS.skillmodifiers" }} <a class="item-skill-modifier-controls create-entry"
+            data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></div>
+    <div class="item-skill-mods">
+        {{#if system.attributes.skillmods }}
+            {{#each system.attributes.skillmods as |property index|}}
+                <div class="">
+                    <li class="flexrow" data-index={{index}}>
+                        <input type="text" name="system.attributes.skillmods.{{index}}.name" value="{{property.name}}"
+                            placeholder="{{localize "ARS.placeholder"}}" />
+                        <input class="skill-mod-field" type="number" name="system.attributes.skillmods.{{index}}.value"
+                            value="{{property.value}}" data-dtype="Number" />
+                        <div class="short-field">
+                            <a class="item-skill-modifier-controls remove-property"
+                                data-tooltip="{{localize "ARS.remove" }}" data-action="remove"><i
+                                    class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </li>
+                </div>
+            {{/each}}
+        {{else}}
+            <div style="text-align:center;">{{localize "ARS.none"}}</div>
+        {{/if}}
+    </div>
+    {{!-- </fieldset> --}}
+{{/includes}}

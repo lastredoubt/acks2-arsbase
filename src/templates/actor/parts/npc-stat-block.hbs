@@ -1,0 +1,295 @@
+{{!-- stat block --}}
+<div class="npc-data-block">
+    <div>
+        <table class="npc-data-block" style="padding: 0px;margin: 0px;">
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.armorclass" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.attributes.ac.value" value="{{system.attributes.ac.value}}"
+                        data-dtype="Number" />
+                </td>
+            </tr>
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.movement" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.movement" type="text" value="{{system.movement}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.hitdice" class="resource-label">{{ localize "ARS.hitdice" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.hitdice" type="text" value="{{system.hitdice}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.hpCalculation" class="resource-label">{{ localize "ARS.hpCalculation" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.hpCalculation" type="text" value="{{system.hpCalculation}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.hp" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.attributes.hp.value" value="{{system.attributes.hp.value}}"
+                        data-dtype="Number" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    {{#if (eq @root.config.settings.systemVariant '2')}}
+                        <label for="system.attributes.thaco.value" class="resource-label">{{ localize "ARS.thaco" }} <a
+                                class="npc-thaco-calculate"><i class="fa fa-refresh"></i>
+                            </a></label>
+                    {{else}}
+                        <label for="system.matrixTable" class="resource-label"
+                            data-tooltip="Combat matrix used to determine AC hit">{{ localize "ARS.attackmatrix" }}</label>
+                    {{/if}}
+                </td>
+                <td class="npc-data-input">
+                    {{#if (eq @root.config.settings.systemVariant '2')}}
+                        <input name="system.attributes.thaco.value" type="text"
+                            value="{{system.attributes.thaco.value}}" data-dtype="Number" />
+                    {{else}}
+                        <div class="class-attack-matrix-select">
+                            <select name="system.matrixTable">
+                                {{#select system.matrixTable}}
+                                    {{#if (eq @root.config.settings.systemVariant '1')}}
+                                        <option value="monster">{{ capfirst (localize "monster") }}</option>
+                                    {{else}}
+                                        <option value="fighter">{{ capfirst (localize "fighter") }}</option>
+                                    {{/if}}
+                                    {{#each (lookup @root.config.matrix @root.config.settings.systemVariant) as |value key|}}
+                                        <option value="{{key}}">{{capfirst (localize key)}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                        </div>
+                    {{/if}}
+
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.numberAttacks" class="resource-label">{{ localize "ARS.numberAttacks" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.numberAttacks" type="text" value="{{system.numberAttacks}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.damage" class="resource-label">{{ localize "ARS.damage" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.damage" type="text" value="{{system.damage}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.specialAttacks"
+                        class="resource-label">{{ localize "ARS.specialAttacks" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.specialAttacks" type="text" value="{{system.specialAttacks}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.specialDefenses"
+                        class="resource-label">{{ localize "ARS.specialDefenses" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.specialDefenses" type="text" value="{{system.specialDefenses}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.magicresist" class="resource-label">{{ localize "ARS.magicresist"}}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.magicresist" type="text" value="{{system.magicresist}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.attributes.size" class="resource-label">{{ localize "ARS.size" }}</label>
+                </td>
+                <td style="border: none;padding: 0px;margin: 0px;">
+                    <table style="border: none;padding: 0px;margin: 0px;">
+                        <tr>
+                            <td class="npc-data-input">
+                                <input name="system.sizenote" type="text" value="{{system.sizenote}}" />
+                            </td>
+                            <td class="npc-data-input">
+                                <select class="selector" name="system.attributes.size">
+                                    {{#select system.attributes.size}}
+                                        {{#each config.sizeTypes as |name type|}}
+                                            <option value="{{type}}">{{localize name}}</option>
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.morale" class="resource-label">{{ localize "ARS.morale" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.morale" type="text" value="{{system.morale}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label for="system.xp.value" class="resource-label">{{ localize "ARS.xp" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input name="system.xp.value" type="text" value="{{system.xp.value}}" data-dtype="String" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.alignment" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <select class="selector" name="system.details.alignment">
+                        {{#select system.details.alignment}}
+                            {{#each config.alignmentTypes as |name type|}}
+                                <option value="{{type}}">{{localize name}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.numberAppearing" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.numberAppearing" value="{{system.numberAppearing}}" />
+                </td>
+            </tr>
+
+            {{#unless (eq @root.config.settings.systemVariant '2')}}
+                <tr>
+                    <td class="npc-data-label">
+                        <label class="resource-label">{{ localize "ARS.inlair" }}</label>
+                    </td>
+                    <td class="npc-data-input">
+                        <input type="text" name="system.inlair" value="{{system.inlair}}" />
+                    </td>
+                </tr>
+            {{/unless}}
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.climate" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.climate" value="{{system.climate}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.frequency" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.frequency" value="{{system.frequency}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.organization" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.organization" value="{{system.organization}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.diet" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.diet" value="{{system.diet}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.activity" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.activity" value="{{system.activity}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.intelligence" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.intelligence" value="{{system.intelligence}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.treasureType" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.treasureType" value="{{system.treasureType}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.type" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.details.type" value="{{system.details.type}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="npc-data-label">
+                    <label class="resource-label">{{ localize "ARS.source" }}</label>
+                </td>
+                <td class="npc-data-input">
+                    <input type="text" name="system.details.source" value="{{system.details.source}}" />
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>

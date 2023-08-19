@@ -1,0 +1,232 @@
+<form class="{{cssClass}} weapon-sheet" autocomplete="off">
+
+    {{!-- {{log "weapon-sheet.hbs this" this}}
+    {{log "weapon-sheet.hbs actor" actor}}
+    {{log "weapon-sheet.hbs data" data}}
+    {{log "weapon-sheet.hbs item" item}} --}}
+
+    {{> "systems/ars/templates/item/parts/item-header.hbs"}}
+
+    {{!-- Sheet Tab Navigation --}}
+    {{> "systems/ars/templates/item/parts/item-nav.hbs"}}
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+
+            <div class="item item-titles">
+                <div style="text-align: center;" class="item-header">Attack</div>
+                <div class="item-subheader weapon-attack">
+                    <div class="flexrow">
+                        <label>Type</label>
+                        <label>Speed</label>
+                        <label>Atk/Rnd</label>
+                        <label>Mod</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-input flexrow">
+                {{!-- <td colspan="1" style="width:100;text-align:center;"> --}}
+                <select class="selector" name="system.attack.type">
+                    {{#select system.attack.type}}
+                        {{#each config.weaponTypes as |name type|}}
+                            <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+                <input name="system.attack.speed" type="text" value="{{system.attack.speed}}" data-dtype="Number" />
+                <input name="system.attack.perRound" type="text" value="{{system.attack.perRound}}" />
+                <input name="system.attack.modifier" type="text" value="{{system.attack.modifier}}" />
+            </div>
+
+            {{#ifnoteq system.attack.type 'melee'}}
+                <div class="item item-titles">
+                    <div style="text-align: center;">
+                        <div class="item-header">Ranged</div>
+                    </div>
+                    {{!-- <div class="item-header-weapon flexrow"> --}}
+                    <div class="item-subheader weapon-attack flexrow">
+                        <div class="flexrow">
+                            <label>Short</label>
+                            <label>Medium</label>
+                            <label>Long</label>
+                        </div>
+                        {{#if item.actor.inventory}}
+                            <label>Ammo</label>
+                        {{else}}
+                            {{#if item.actor}}
+                                <label>{{localize "ARS.noinventory"}}</label>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="item-input flexrow">
+                    <div>
+                        <div class="flex flexrow">
+                            <input name="system.attack.range.short" type="text" value="{{system.attack.range.short}}"
+                                data-dtype="Number" />/
+                            <input name="system.attack.range.medium" type="text" value="{{system.attack.range.medium}}"
+                                data-dtype="Number" />/
+                            <input name="system.attack.range.long" type="text" value="{{system.attack.range.long}}"
+                                data-dtype="Number" />
+                        </div>
+                    </div>
+                    {{#includes system.attack.type 'ranged||thrown'}}
+                        {{#if item.actor.inventory}}
+                            <select name="system.resource.itemId">
+                                {{#select system.resource.itemId}}
+                                    <option value="">{{localize "ARS.none"}}</option>
+                                    {{#each item.actor.inventory as |item idx|}}
+                                        <option value="{{item.id}}">{{item.name}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                        {{else}}
+                            {{#if item.actor}}
+                                <label>{{localize "ARS.noinventory"}}</label>
+                            {{/if}}
+                        {{/if}}
+                    {{/includes}}
+                </div>
+            {{/ifnoteq}}
+
+            <div class="item item-titles">
+                <div style="text-align: center;">
+                    <div class="item-header">Damage</div>
+                </div>
+                {{!-- <div class="item-header-weapon flexrow"> --}}
+                <div class="item-subheader flexrow">
+                    <label>Normal</label>
+                    <label>Large</label>
+                    {{!-- <label>Mod</label> --}}
+                    <label>Type</label>
+                </div>
+            </div>
+            <div class="item-input flexrow">
+                <input name="system.damage.normal" type="text" value="{{system.damage.normal}}" />
+                <input name="system.damage.large" type="text" value="{{system.damage.large}}" />
+                {{!-- <input name="system.damage.modifier" type="text" value="{{system.damage.modifier}}" data-dtype="Number" /> --}}
+                <select class="selector" name="system.damage.type">
+                    {{#select system.damage.type}}
+                        {{#each config.weaponDamageTypes as |name type|}}
+                            <option value="{{type}}">{{localize name}}</option>
+                        {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+
+
+            <div>
+                <div class="weapon-other item-header-weapon">
+                    <label>Additional Damage Formula</label>
+                    <a class="item-control damage-other-control add-damage"><i class="fas fa-plus"></i></a>
+                </div>
+                <div class="item flexrow">
+                    {{#checklength system.damage.otherdmg 0}}
+                        <div class="weapon-damageother grid grid-3col item-header-weapon">
+                            <label>Formula</label>
+                            <label>Type</label>
+                            <label>Remove</label>
+                            {{#each system.damage.otherdmg as |dmg index| }}
+                                <input type="text" name="system.damage.otherdmg.{{index}}.formula"
+                                    value="{{dmg.formula}}" />
+                                {{!-- <input type="text" name="system.damage.otherdmg.{{index}}.type" value="{{dmg.type}}" /> --}}
+
+                                <select name="system.damage.otherdmg.{{index}}.type">
+                                    {{#select dmg.type}}
+                                        {{#each ../config.weaponDamageTypes as |name type|}}
+                                            <option value="{{type}}">{{localize name}}</option>
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                                <div class="item-controls">
+                                    <a class="item-control damage-other-control delete-damage" data-index="{{index}}"><i
+                                            class="fas fa-trash"></i></a>
+                                </div>
+                            {{/each}}
+                        </div>
+                    {{/checklength}}
+                </div>
+            </div>
+
+            {{#if item.isIdentified}}
+                <div class="item item-titles">
+                    <div style="text-align: center;">
+                        <div class="item-header">Magic</div>
+                    </div>
+                    {{!-- <div class="item-header-weapon flexrow"> --}}
+                    <div class="item-subheader flexrow">
+                        <label>Attack Mod</label>
+                        <label>Damage Mod</label>
+                        <label>Potency</label>
+                    </div>
+                </div>
+                <div class="item-input flexrow">
+                    <input name="system.attack.magicBonus" type="number" value="{{system.attack.magicBonus}}"
+                        data-dtype="Number" />
+                    <input name="system.damage.magicBonus" type="number" value="{{system.damage.magicBonus}}"
+                        data-dtype="Number" />
+                    <input name="system.attack.magicPotency" type="number" value="{{system.attack.magicPotency}}"
+                        data-dtype="Number" />
+                </div>
+
+                {{!-- <div class="item item-titles" style="text-align: center;">
+                    <div style="text-align: center;">
+                        <div class="item-header">Other</div>
+                    </div>
+                    <div class="weapon-other item-header-weapon">
+                        <label>Properties</label>
+                        <a class="general-properties-controls create-entry" data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    {{#each system.attributes.properties as |property index|}}
+                        <div class="general-properties">
+                            <li class="flexrow" data-index={{index}}>
+                                <input type="text" name="system.attributes.properties.{{index}}" value="{{property}}" />
+                                <div class="short-field">
+                                    <a class="general-properties-controls remove-property" data-tooltip="{{localize "ARS.remove" }}" data-action="remove"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </li>
+                        </div>
+                    {{/each}}
+                </div> --}}
+            {{/if}}
+
+            {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+        </div>
+
+        {{!-- attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{> "systems/ars/templates/item/parts/item-attributes.hbs"}}
+        </div>
+
+        {{!-- ACtions Tab --}}
+        {{#if item.isIdentified}}
+            <div class="tab actions" data-group="primary" data-tab="actions">
+                {{> "systems/ars/templates/item/parts/actions-block-list.hbs"}}
+            </div>
+        {{/if}}
+
+        {{!-- Effects Tab --}}
+        {{#if item.isIdentified}}
+            <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+                <div class="grouping-border">
+                    {{> "systems/ars/templates/effects/parts/active-effects.hbs"}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{!-- contents tab --}}
+        <div class="tab contents" data-group="primary" data-tab="contents">
+            <div class="contents-block">
+                {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+            </div>
+        </div>
+
+    </section>
+</form>

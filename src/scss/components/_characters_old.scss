@@ -1,0 +1,20 @@
+.character {
+  
+  .character-combat {
+    padding: 0px;
+    border: 1px groove;
+
+    .combat-section {
+      padding: 0px;
+      border-right: 1px solid;
+    }
+    .combat-section-end {
+      padding: 0px;
+    }
+
+    .combat-value {
+      font-size: 1em;
+    }
+  }
+ 
+}

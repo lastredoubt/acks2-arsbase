@@ -1,0 +1,24 @@
+{{log "chatCard-healthAdjust.hbs this" this}}
+{{!-- <fieldset class="border-top"> --}}
+{{!-- <legend>{{#if isDamage}}{{localize "ARS.chat.damage" }}{{else}}{{localize "ARS.chat.heal" }}{{/if}}</legend> --}}
+<div class="general-header">{{#if isDamage}}{{localize "ARS.chat.damage" }}{{else}}{{localize "ARS.chat.heal" }}{{/if}}
+</div>
+<div class="chatCard-hpadjustment">
+    <div class="hpadjustment {{#if isDamage}}hpdamage{{else}}hpheal{{/if}}">
+        {{#if flavor}}
+            <div class="dice-flavor" style="text-align: center;">
+                {{{flavor}}}
+            </div>
+        {{/if}}
+    </div>
+
+    {{> "systems/ars/templates/chat/parts/chatCard-dice-roll.hbs" roll=roll}}
+
+    {{#if targetToken}}
+        <div class="card-buttons undoButton" data-source-actor-id="{{sourceActorId}}"
+            data-target-token-id="{{targetToken.id}}" data-hp-adjustment="{{adjustment}}" data-is-damage={{isDamage}}>
+            <button class="undo-healthadjust" data-action="undo-healthadjust">{{localize "ARS.chat.undo"}}</button>
+        </div>
+    {{/if}}
+</div>
+{{!-- </fieldset> --}}

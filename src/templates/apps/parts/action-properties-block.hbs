@@ -1,0 +1,26 @@
+<div>
+    {{!-- <fieldset> --}}
+    {{!-- <legend>{{ localize "ARS.actions.properties" }} <a class="general-properties-controls create-entry" data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></legend> --}}
+    <div class="general-header">{{ localize "ARS.actions.properties" }} <a
+            class="general-properties-controls create-entry" data-tooltip="{{localize "ARS.add" }}"
+            data-action="create"><i class="fas fa-plus"></i></a></div>
+    <div class="general-properties-row">
+        {{#if action.properties.length }}
+            {{#each action.properties as |property|}}
+                <div class="general-properties-column">
+                    <li class="flexrow" data-index={{@index}}>
+                        <input type="text" name="properties.{{@index}}" value="{{property}}" />
+                        <div class="short-field">
+                            <a class="general-properties-controls remove-property"
+                                data-tooltip="{{localize "ARS.remove" }}" data-action="remove"><i
+                                    class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </li>
+                </div>
+            {{/each}}
+        {{else}}
+            <div style="text-align:center;">{{localize "ARS.none"}}</div>
+        {{/if}}
+    </div>
+    {{!-- </fieldset>     --}}
+</div>

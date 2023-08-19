@@ -1,0 +1,79 @@
+<form class="npc-sheet" autocomplete="off">
+    <div class="side-bar flexrow">
+        <img class="actor-lootable-portrait" src="{{actor.img}}" data-edit="img" height="64" width="64" />
+        {{#if game.user.isGM}}
+            <div><input class="actorname" name="name" type="text" value="{{actor.name}}" placeholder="Name" /></div>
+        {{else}}
+            <div class="actorname">{{actor.name}}</div>
+        {{/if}}
+    </div>
+    {{#if game.user.isGM}}
+        <div class="flexrow">
+            {{#if system.attributes.identified}}
+            {{else}}
+                <div class="flexrow" data-tooltip="Alias used when Actor not identified">
+                    <label
+                        style="flex-grow:0; margin-top:auto;margin-bottom:auto;margin-right:5px;">{{localize "ARS.alias"}}</label>
+                    <input style="flex-grow:2;" name="system.alias" type="text" value="{{system.alias}}"
+                        placeholder="Alias Name" />
+                </div>
+            {{/if}}
+            <div data-tooltip="Show Alias when not identified">
+                <input class="npc-identification" type="checkbox" name="system.attributes.identified"
+                    {{ checked system.attributes.identified }} />{{localize "ARS.identified"}}
+            </div>
+            <div data-tooltip="Is this item lootable by players">
+                <input type="checkbox" name="system.lootable" {{ checked system.lootable }} />Lootable
+            </div>
+        </div>
+    {{/if}}
+
+    <div class="npc-body">
+        {{!-- start --}}
+
+        {{#if @root.game.user.isGM}}
+            {{!-- actions for self and all items --}}
+            <div class="grouping-border">
+                {{> "systems/ars/templates/actor/parts/actions-block-list.hbs" }}
+            </div>
+        {{/if}}
+
+        <div class="grouping-border">
+            {{> "systems/ars/templates/actor/parts/inventoryList-Sorted-block.hbs" looting=true}}
+        </div>
+
+        <div class="grouping-border">
+            <div class="item-titles flexrow">
+                <div class="item-header" style="text-align: center;flex-grow:6">Coins</div>
+            </div>
+            <div class="currency flexrow">
+                {{#each system.currency as |value currency|}}
+                    <div class="grouping-border">
+                        <li class="flexrow {{#if @root.game.user.isGM}}{{else}} coin-loot{{/if}}" data-loot="true"
+                            data-source="{{actor.id}}" data-count="{{value}}" data-currency="{{currency}}">
+                            {{#if @root.game.user.isGM}}
+                                <input class="coin-value" name="system.currency.{{currency}}" type="text"
+                                    value="{{value}}" type="number" data-dtype="number" />
+                            {{else}}
+                                <div class="coin-value">{{value}}</div>
+                            {{/if}}
+                            <div class="control"><i class="fas fa-coins"></i></div>
+                            <div class="coin-type" style="font-weight: bold;text-align:center;">{{allcaps currency}}
+                            </div>
+                        </li>
+                    </div>
+                {{/each}}
+            </div>
+            {{#if @root.game.user.isGM}}
+            {{else}}
+                {{log "lootable-sheet.hbs this" this}}
+                {{!-- <button class="share-looted-coins" data-tooltip="Share all remaining coins with party"><i class="fas fa-balance-scale"></i> {{localize "ARS.currency.split" }}</button> --}}
+                <div class="button-box share-looted-coins rollable" data-tooltip="Share all remaining coins with party">
+                    <i class="fas fa-balance-scale"></i> {{localize "ARS.currency.split" }}</div>
+            {{/if}}
+
+        </div>
+        {{!-- end --}}
+
+    </div>
+</form>

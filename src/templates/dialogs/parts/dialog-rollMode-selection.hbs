@@ -1,0 +1,11 @@
+<div class="flexrow">
+  <div class="flexrow">
+    <div class="dialog-icon"><img src="icons/vtt.png" /></div>
+    <div>{{localize "ARS.dicevisibility"}}</div>
+  </div>
+  <div>
+    <select class="roll-type-select" name="rollMode">
+      {{selectOptions CONFIG.Dice.rollModes selected=defaultRollMode localize=true}}
+    </select>
+  </div>
+</div>

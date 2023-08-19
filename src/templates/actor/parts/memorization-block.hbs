@@ -1,0 +1,111 @@
+{{#if actor.hasSpellSlots}}
+    {{!-- <div class="disabled-grouping-border"> --}}
+    <div class="spells-list">
+        {{#each system.memorizations as |slotData spellType|}}
+            {{!-- <fieldset class="border-top">
+                    <legend>{{ localize "ARS.spells" }} - {{localize (concat "ARS.spellTypes." spellType)}}</legend> --}}
+            <div class="general-header">
+                {{ localize "ARS.spells" }} - {{localize (concat "ARS.spellTypes." spellType)}}
+            </div>
+            <div style="margin-bottom: 3px;" class="item-list">
+                <div class="memorization-slot general-subheader flexrow">
+                    <div style="flex-grow:2;" class="flexrow">
+                        <div style="flex: 0 0 24px;margin-right: 5px;"></div>
+                        <div class="actor-name">Name</div>
+                    </div>
+                    <div class="short-spell-field text-trunc">{{localize "ARS.level"}}</div>
+                    <div class="short-spell-field text-trunc">{{localize "ARS.status"}}</div>
+                    <div class="short-spell-field text-trunc" data-tooltip="{{localize "ARS.components"}}">
+                        {{localize "ARS.componentsAbbr"}}
+                    </div>
+                    <div class="short-spell-field text-trunc" data-tooltip="{{localize "ARS.casttime"}}">
+                        {{localize "ARS.casttimeAbbr"}}
+                    </div>
+                    <div class="long-spell-field">{{localize "ARS.range"}}</div>
+                    <div class="">{{localize "ARS.aoe"}}</div>
+                    <div class="memorization-controls"></div>
+                </div>
+                {{#each slotData.spellslots.value as |slotCount level| }}
+                    {{#if slotCount}}
+                        {{#each (lookup slotData.memslots level) as | memslot slotindex|}}
+                            <li class="memorization-slot item reveal-hidden flexrow{{#if memslot.cast}} memorization-used{{/if}}"
+                                data-control-type="memorization" data-id="{{memslot.id}}" data-uuid="{{memslot.uuid}}"
+                                data-level="{{level}}" data-index="{{slotindex}}" data-type="{{spellType}}"
+                                data-owned="{{memslot.owned}}">
+                                {{#if memslot.id}}
+                                    <div class="item-name rollable flexrow spellCard-roll" data-id="{{memslot.id}}">
+                                        {{#if (and @root.actor.needsInitiative @root.game.ars.config.settings.initiativeUseSpeed)}}
+                                            <div class="initiative-roll-speed" data-tooltip="Roll initiative"
+                                                role="button" aria-label="Roll initiative">
+                                                <i class="fas fa-dice"></i>
+                                            </div>
+                                        {{/if}}
+
+                                        <div class="item-image" aria-label="{{memslot.name}}"
+                                            style="background-image: url('{{memslot.img}}')"></div>
+                                        <div class="item-name text-trunc">{{memslot.name}}</div>
+                                    </div>
+
+
+                                    <div class="short-spell-field text-trunc">{{memslot.level}}</div>
+                                    <div class="short-spell-field text-trunc">
+                                        {{#if memslot.cast}}Used{{else}}Ready{{/if}}
+                                    </div>
+                                    <div class="short-spell-field text-trunc">
+                                        {{#if memslot.spellItem.system.components.verbal}}V{{/if}}{{#if memslot.spellItem.system.components.somatic}}S{{/if}}{{#if memslot.spellItem.system.components.material}}M{{/if}}
+                                    </div>
+                                    <div class="short-spell-field text-trunc"
+                                        data-tooltip="{{memslot.spellItem.system.castingTime}}">
+                                        {{memslot.spellItem.system.castingTime}}
+                                    </div>
+                                    <div class="long-spell-field text-trunc"
+                                        data-tooltip="{{memslot.spellItem.system.range}}">
+                                        {{memslot.spellItem.system.range}}
+                                    </div>
+                                    <div class="text-trunc" data-tooltip="{{memslot.spellItem.system.areaOfEffect}}">
+                                        {{memslot.spellItem.system.areaOfEffect}}
+                                    </div>
+                                    <div class="memorization-controls">
+                                        {{#if memslot.owned}}
+                                            <a class="item-control hidden item-edit" data-tooltip="Edit Item"><i
+                                                    class="fas fa-edit"></i></a>
+                                        {{else}}
+                                            <a class="item-control hidden item-view" data-tooltip="View Item"><i
+                                                    class="fas fa-edit"></i></a>
+                                        {{/if}}
+                                        <a class="memorization-controls memslot-remove" data-action="remove"
+                                            data-tooltip="{{ localize "ARS.clearslot" }}"><i
+                                                class="fas fa-eraser"></i></a>
+                                        <a class="memorization-controls memslot-toggle" data-action="toggle"
+                                            data-tooltip="{{ localize "ARS.resetusage" }}"><i
+                                                class="fas fa-recycle"></i></a>
+                                    </div>
+                                {{else}}
+                                    <div class="memorization-slot-empty">
+                                        {{!-- DROP SPELL OR SELECT --}}
+                                        <select class="memspell-select">
+                                            {{#select newSpellID}}
+                                                <option value="">{{localize "ARS.empty"}}
+                                                    {{localize "ARS.level"}} {{level}}
+                                                    {{localize (concat "ARS.spellTypes." spellType)}} Slot
+                                                </option>
+                                                {{#each (lookup (lookup @root.actor.spellsByLevel spellType) level) as |name id|}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                {{/each}}
+                                            {{/select}}
+                                        </select>
+                                    </div>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    {{/if}}
+                {{/each}}
+            </div>
+            {{!-- {{#if (eq spellType 'arcane')}}
+                <div class="general-footer"></div>
+            {{/if}} --}}
+            {{!-- </fieldset> --}}
+        {{/each}}
+    </div>
+    {{!-- </div> --}}
+{{/if}}

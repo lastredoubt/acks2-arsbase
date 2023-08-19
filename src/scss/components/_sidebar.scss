@@ -1,0 +1,107 @@
+.sidebar-tab {
+
+    
+      .party-tracker {
+        padding: 1px;
+        margin: 1px;
+
+        .general-header {
+            text-align: center;
+            font-weight: bolder;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255, 0, 0, 0.250) 25%, rgba(255, 0, 0, 0.250) 75%, rgba(255,255,255,0) 100%);
+            // background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgb(158, 121, 0) 25%, rgb(158, 121, 0) 75%, rgba(255,255,255,0) 100%);
+          }
+          .general-subheader {
+            text-align: center;
+            font-weight: bold;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(128, 0, 0, 0.150) 25%, rgba(128, 0, 0, 0.150) 75%, rgba(255,255,255,0) 100%);
+            // background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgb(207, 161, 10) 25%, rgb(207, 161, 10)  75%, rgba(255,255,255,0) 100%);
+          }
+          
+          .general-footer {
+            min-height: 3px;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255, 255, 0, 0.250) 10%,  rgba(255, 255, 0, 0.250) 75%, rgba(0,0,0,0) 100%);
+            // background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+          }
+    
+        input, select {
+            color: white;
+        }
+        select {
+            background-color: rgb(131, 127, 127);
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            option {
+                background-color: rgb(148, 150, 148);
+            }
+        }
+        // .party-members, .party-awards, .party-logs {
+        // }
+
+        .party-commands {
+            .boxed {
+                text-align: center;
+                font-size: 0.75rem;
+                border: 1px ridge rgb(87, 29, 29);
+                &:hover,
+                &:focus {
+                  background-color: grey;
+                  cursor: pointer;
+                }     
+
+                .time-type {
+                    display: flex; 
+                    flex-direction: column; 
+                    align-items: center; 
+                    justify-content: center;
+                }           
+
+            }
+        }
+        .party-members {
+            .entry {
+                align-items: center;
+                .member {
+                    font-size: large;
+                    font-weight: bold;
+                }
+                .henchman {
+                    color:aqua;
+                }
+                .token-image {
+                    margin: 0;
+                    flex: 0 0 32px;
+                    height: 32px;
+                    margin-right: 10px;                
+                }
+            }
+
+        }
+        .party-logs {
+            .date {
+                color: gray;
+            }
+            .log {
+                color: greenyellow;
+            }
+        }
+
+
+        .control {
+            flex-basis: 25px;
+            flex-grow: 0;
+            text-align: center;
+            font-size: 0.99em;
+        }
+
+        .party-awards {
+            .award-xp {
+                flex-shrink: 1;
+            }
+        }
+    }
+
+}

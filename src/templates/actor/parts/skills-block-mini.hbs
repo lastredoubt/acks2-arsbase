@@ -1,0 +1,20 @@
+<div class="mini-skills-list">
+    {{#if actor.skills.length}}
+        <div class="grouping-border">
+            <legend>{{localize "ARS.skills"}}</legend>
+            <div class="hud-actions">
+                <div class="mini-actions-buttons" style="--action-button-size: {{actor.skills.length}};">
+                    {{#each actor.skills as |item id|}}
+                        <li class="mini-action item with-background-image" data-id="{{item.id}}"
+                            data-type="{{item.type}}" data-tooltip="{{item.name}}"
+                            style="background-image: url('{{item.img}}')">
+                            <div class="mini-action-button action-name rollable chatCard-roll">
+                                <div class="item-name">{{item.name}}</div>
+                            </div>
+                        </li>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>

@@ -1,0 +1,122 @@
+{{> "systems/ars/templates/actor/parts/currency-block.hbs" }}
+{{#each config.inventoryTypes as |category id|}}
+    {{!-- {{#if (lookup ../actor.system (lookup ../config.inventoryTypeMaps category))}} --}}
+    <fieldset class="border-top">
+        <legend>{{ localize (concat "ARS.inventoryTypes." category) }}<a class="item-control item-create"
+                data-tooltip="Create item" data-type="{{category}}"><i class="fas fa-plus"></i></a></legend>
+        <div class="category inventory">
+
+            {{#if (lookup ../actor (lookup ../config.inventoryTypeMaps category))}}
+                <div class="item-list inventory">
+                    <div class="actor-titles">
+                        <div class="flexrow">
+                            <div class="short-field"></div>
+                            <div class="item-name-details flexrow">
+                                <div>
+                                    <div class="item-name">{{localize "ARS.Name"}}</div>
+                                </div>
+                                {{#ifeq category 'item'}}
+                                    <div class="item-location">
+                                        <div data-tooltip="{{localize "ARS.inventoryItemCarryState" }}"><i
+                                                class="fas fa-shopping-bag"></i></div>
+                                    </div>
+                                {{/ifeq}}
+                            </div>
+                            <div class="short-field"><i class="fas fa-hashtag"></i></div>
+                            <div class="short-field"><i class="fas fa-weight-hanging"></i></div>
+                            <div class="item-controls"></div>
+                        </div>
+                    </div>
+                    {{#each (lookup ../actor (lookup ../config.inventoryTypeMaps category)) as |item id|}}
+                        {{#if item.inContainer}}
+                        {{else}}
+                            <li {{#if (eq category 'weapon') }}
+                                class="item item-entry flexrow reveal-hidden weapon-card" {{else}}
+                                class="item item-entry flexrow reveal-hidden" {{/if}} data-id="{{item.id}}"
+                                data-type="{{item.type}}">
+                                {{#if (eq category 'weapon') }}
+                                    <div class="item-name flexrow rollable chatCard-roll" data-id="{{item.id}}">
+                                        <div class="item-image" role="button" data-tooltip="{{item.name}}"
+                                            style="width:24px;height:24px;background-size:100%;background-image: url('{{item.img}}')">
+                                        </div>
+                                        <div class="text-trunc">{{item.name}}</div>
+                                    </div>
+                                    <div class="item-name item-damage text-trunc">
+                                        {{item.system.damage.normal~}}
+                                        {{~#if item.system.damage.large~}}
+                                            /{{item.system.damage.large~}}
+                                            {{~/if~}}
+                                    </div>
+                                    <div class="item-name item-damage text-trunc">
+                                        {{item.system.damage.type~}}
+                                        {{~#each item.system.damage.otherdmg as |dmg|}}
+                                            /{{dmg.type~}}
+                                            {{~/each~}}
+                                    </div>
+                                {{else}}
+                                    <div class="item-image" data-id="{{item.id}}"><img src="{{item.img}}"
+                                            data-tooltip="{{item.name}}" width="24" height="24" /></div>
+                                    <div class="item-name-details flexrow">
+                                        <div class="item-name text-trunc">
+                                            <h4>{{item.name}}</h4>
+                                        </div>
+                                        {{#ifeq category 'item'}}
+                                            <div class="item-location">
+                                                <div class="item-location-controls">
+                                                    <i class="fas fa-{{lookup ../../config.locationStates.fasicons item.system.location.state}}"
+                                                        data-tooltip="{{localize (concat "ARS.locationStates." item.system.location.state)}}"></i>
+                                                </div>
+                                            </div>
+                                        {{/ifeq}}
+                                    </div>
+
+                                {{/if}}
+                                {{#if (eq category 'armor') }}
+                                    {{#includes item.system.protection.type 'armor||warding'}}
+                                        <div class="item-name item-ac">
+                                            {{localize "ARS.armorclassabbr"}} {{item.system.protection.ac~}}
+                                            {{#if item.system.protection.modifier}}
+                                                +{{~item.system.protection.modifier~}}
+                                            {{/if}}
+                                        </div>
+                                    {{/includes}}
+                                    {{#if (eq item.system.protection.type 'shield')}}
+                                        {{#if item.system.protection.ac}}
+                                            <div class="item-name item-shield">
+                                                {{localize "ARS.armorclassabbr"}} {{item.system.protection.ac~}}
+                                                {{#if item.system.protection.modifier}}
+                                                    +{{~item.system.protection.modifier~}}
+                                                {{/if}}
+                                            </div>
+                                        {{/if}}
+                                    {{/if}}
+                                    {{#includes item.system.protection.type 'ring||cloak||other'}}
+                                        {{#if item.system.protection.modifier}}
+                                            <div class="item-name item-mod">
+                                                {{~localize "ARS.mod"}} +{{item.system.protection.modifier~}}
+                                            </div>
+                                        {{/if}}
+                                    {{/includes}}
+                                {{/if}}
+                                <div class="short-field">{{#if item.system.quantity}}{{item.system.quantity}}{{/if}}
+                                </div>
+                                {{!-- <div class="short-field">{{#if item.system.weight}}{{item.system.weight}}{{/if}}</div> --}}
+                                <div class="short-field">
+                                    {{#if item.system.carriedweight}}{{item.system.carriedweight}}{{/if}}
+                                </div>
+                                <div class="item-controls">
+                                    <a class="item-control item-edit hidden" data-tooltip="Edit Item"><i
+                                            class="fas fa-edit"></i></a>
+                                    <a class="item-control item-delete hidden" data-tooltip="Delete Item"><i
+                                            class="fas fa-trash"></i></a>
+                                </div>
+                            </li>
+                        {{/if}}
+
+                    {{/each}}
+                </div>
+            {{/if}}
+    </fieldset>
+    {{!-- </ul> --}}
+    {{!-- {{/if}} --}}
+{{/each}}

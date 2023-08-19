@@ -1,0 +1,102 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <header class="sheet-header item">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" data-tooltip="{{item.name}}" />
+        <div class="header-fields">
+            <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+        </div>
+    </header>
+
+    <div class="item-header-titles flexrow">
+        <div class="item-xp">
+            <label class="resource-label">XP</label>
+        </div>
+    </div>
+    <div class="item-header-input flexrow">
+        <div class="item-xp">
+            <input type="text" name="system.xp" value="{{system.xp}}" />
+        </div>
+    </div>
+
+    <nav class="sheet-tabs" data-group="primary">
+        <div class="tab-items flexrow">
+            <a class="item" data-tab="main">Main</a>
+            <a class="item" data-tab="description">Description</a>
+            {{#if item.system.itemList.length}}
+                <a class="item" data-tab="contents">{{localize "ARS.contents"}}</a>
+            {{/if}}
+        </div>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Main Tab --}}
+        <div class="tab main" data-group="primary" data-tab="main">
+            <div class="item-encounter">
+                <section>
+                    <div class="item-list">
+                        <div class="general-header">
+                            <div class="flexrow item-header">
+                                <div class="npc-image"></div>
+                                <span>Creatures</span>
+                                <div class="npc-controls">
+                                </div>
+                            </div>
+                        </div>
+                        {{#if system.npcList}}
+                            <div class="general-subheader">
+                                <div class="item npc flexrow">
+                                    <div class="resource-number-field" style="font-size: 1.01em;"
+                                        data-tooltip="Number or dice formula">#</div>
+                                    <div class="item-image"></div>
+                                    <div class="item-name ">Name</div>
+                                    <div class="npc-xp">XP</div>
+                                    <div class="item-controls"></div>
+                                </div>
+                            </div>
+                            {{#each system.npcList as |npc index|}}
+                                <li class="item npc flexrow" data-type="count" {{#if npc.pack}}data-pack="{{npc.pack}}"
+                                    {{/if}} data-id="{{npc.id}}" data-index="{{index}}">
+                                    <div class="resource-number-field"><input class="encounter-npc-count" type="text"
+                                            value="{{npc.count}}" data-dtype="text" /></div>
+                                    <div class="item-image"><img src="{{npc.img}}" data-tooltip="{{npc.name}}"
+                                            width="24" height="24" /></div>
+                                    <div class="item-name text-trunc">{{npc.name}}</div>
+                                    <div class="npc-xp">{{#if npc.xp}}{{npc.xp}}{{else}}0{{/if}}</div>
+                                    <div class="item-controls">
+                                        <a class="npc-control npc-refresh" data-tooltip="Refresh NPC"><i
+                                                class="fas fa-sync"></i></a>
+                                        <a class="npc-control npc-edit" data-tooltip="Edit NPC"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a class="npc-control npc-delete" data-tooltip="Delete NPC"><i
+                                                class="fas fa-trash"></i></a>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        {{else}}
+                            <div class="item flexrow item-header">
+                                <div class="item-name">EMPTY</div>
+                            </div>
+                        {{/if}}
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            <div class="grouping-border">
+                {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+            </div>
+        </div>
+
+
+        {{!-- contents tab --}}
+        <div class="tab contents" data-group="primary" data-tab="contents">
+            <div class="contents-block">
+                {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+            </div>
+        </div>
+
+    </section>
+</form>

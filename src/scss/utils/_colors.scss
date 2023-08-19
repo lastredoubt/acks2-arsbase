@@ -1,0 +1,45 @@
+$c-white: #fff;
+$c-black: #000;
+$c-dark: rgba(0, 0, 0, 0.7);
+$c-mid: rgba(0, 0, 0, 0.250);
+$c-subheader: rgba(0, 0, 0, 0.150);
+
+.fa-times, .fa-minus, .fa-asterisk, .fa-exclamation-triangle {
+    color:red;
+}
+.fa-plus, .fa-check-circle, .fa-scroll, .fa-thumbs-up {
+    color:green;
+}
+
+
+$goldenrod-color: #DAA520;
+
+$default-background-color: #775b12;
+$default-color: black;
+
+$background-dark: #f9edc9;
+$background-light: #f8f6ee;
+
+// $tab-background-color: #c7c7c7;
+$tab-background-color: #775b12;
+
+$tab-text-color: white;
+$tab-focus-color: black;
+$tab-border-color: black;
+
+$background-tab-focus: lightgray;
+
+// $tab-active-radial1:rgba(255, 255, 255, 0);
+// $tab-active-radial2:rgba(68, 68, 68, 0.514);
+// $tab-active-radial3:rgba(253, 253, 253, 0.288);
+
+$tab-active-radial1:#d1d1cfa9;
+$tab-active-radial2:#92918f62;
+$tab-active-radial3:#f9edc96b;
+
+// $tab-active-color: white;
+// $tab-active-color: #ddcb9d;
+$tab-active-color: white;
+// $tab-active-shadow-color:black;
+$tab-active-shadow-color:rgb(71, 71, 71);
+

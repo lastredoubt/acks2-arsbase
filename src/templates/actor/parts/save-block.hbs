@@ -1,0 +1,26 @@
+{{!-- saves --}}
+<fieldset class="border-top  title-label save-border save-stats">
+    <legend>{{ localize "ARS.saves" }}</legend>
+    {{!-- <div class="title-label">{{ localize "ARS.saves" }}</div> --}}
+    <div class="save-box">
+        {{#each system.saves as |save key|}}
+            <div class="save-quadrant">
+                <li class="flexcol save">
+                    <div class="save-check rollable save-label" data-save-type="{{key}}" data-target="{{save.value}}"
+                        data-label="{{ localize (concat "ARS.saveTypes." key) }}"
+                        data-tooltip="{{ localize (concat "ARS.saveTypes." key) }}">
+                        {{ localize (concat "ARS.saveTypes.abbr." key) }}
+                    </div>
+                    <input class="save-value" name="system.saves.{{key}}.value" type="number" value="{{save.value}}"
+                        data-dtype="Number" />
+                </li>
+            </div>
+        {{/each}}
+        {{#if isNPC}}
+            <div></div>
+            <div class="saves-recalculate rollable" data-tooltip="Recalculate saves based on current hit dice value"><i
+                    class="fas fa-recycle"></i></div>
+        {{/if}}
+    </div>
+</fieldset>
+{{!-- end saves --}}

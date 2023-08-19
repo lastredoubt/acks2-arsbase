@@ -1,0 +1,76 @@
+{
+  "id": "ars",
+  "title": "Advanced Roleplaying System (ARS)",
+  "description": "System for playing OSRIC or other classic advanced roleplay games in FoundryVTT",
+  "version": "2023.06.02",
+  "esmodules": ["module/ars.js"],
+  "styles": ["ars.css"],
+  "socket": true,
+  "background": "systems/ars/assets/system/tileset.jpg",
+  "gridDistance": 10,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "attributes.hp",
+  "secondaryTokenAttribute": "attributes.ac",
+  "initiative": "1d10",
+  "url": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system",
+  "bugs": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/issues",
+  "manifest": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/raw/main/src/system.json",
+  "download": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/raw/main/package/v2023.06.02/ars-v2023.06.02.zip",
+  "license": "LICENSE.md",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11.300"
+  },
+  "authors": [
+    {
+      "name": "ADnD Mike",
+      "email": "adnd.mike@gmail.com",
+      "discord": "Celestian#0854",
+      "flags": {}
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    }
+  ],
+  "media": [
+    {
+      "type": "cover",
+      "url": "systems/ars/assets/system/tileset.jpg"
+    },
+    {
+      "type": "setup",
+      "url": "systems/ars/assets/system/tileset.jpg"
+    }
+  ],
+  "packs": [
+    {
+      "name": "ruleset-documentation",
+      "label": "Ruleset Documentation",
+      "system": "ars",
+      "path": "packs/ruleset-documentation.db",
+      "type": "JournalEntry",
+      "flags": {},
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "relationships": {
+    "recommends": [
+      {
+        "id": "osric-compendium",
+        "type": "module",
+        "compatibility": {
+          "minimum": "23.05.29",
+          "verified": "23.05.29"
+        }
+      }
+    ]
+  }
+}

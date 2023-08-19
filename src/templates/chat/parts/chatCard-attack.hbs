@@ -1,0 +1,62 @@
+{{!-- {{ log "chat/chatCard-attack.hbs this" this }} --}}
+
+
+<div class="sheet-card attack-card">
+    {{!-- <fieldset class="border-top"> --}}
+    {{!-- <legend>{{localize "ARS.chat.attack" }}</legend> --}}
+    <div class="general-header">{{localize "ARS.chat.attack" }}</div>
+    <div class="attackResult {{#if succeded}}hitSuccess{{else}}hitFailed{{/if}}">
+        <div style="text-align: center;">
+            {{#if flavor}}
+                <div style="text-align: center;" class="dice-flavor attack-flavor">
+                    {{{flavor}}}
+                </div>
+            {{/if}}
+            <div class="attack-text">
+                {{#if config.settings.autohitfail}}
+                    {{#if succeded}}
+                        {{#if critical}}
+                            <b>{{ localize "ARS.critical" }}</b> {{localize "ARS.armorclassabbr"}} {{hitnumber}}
+                        {{else}}
+                            {{localize "ARS.hit"}} {{localize "ARS.armorclassabbr"}} {{hitnumber}}
+                        {{/if}}
+                    {{else}}
+                        {{#if fumble}}
+                            <b>{{localize "ARS.fumbled"}}</b>
+                        {{else}}
+                            {{localize "ARS.missed"}}
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                    {{#if succeded}}
+                        {{localize "ARS.hit"}} {{localize "ARS.armorclassabbr"}} {{hitnumber}}
+                    {{else}}
+                        {{localize "ARS.missed"}}
+                    {{/if}}
+                {{/if}}
+            </div>
+            <div class="gm-only-view attack-hit-details">
+                {{localize "ARS.target"}} {{localize "ARS.armorclassabbr"}} {{targetnumber}}
+                {{#if succeded}}
+                    {{localize "ARS.hit"}}
+                {{else}}
+                    {{localize "ARS.missed"}}
+                {{/if}}
+                {{#if (or (eq @root.config.settings.systemVariant '0') (eq @root.config.settings.systemVariant '1'))}}
+                    {{!-- matrix cap is AC 11 so it will only ever show missed by 1 if its above AC 10 so lets just say missed --}}
+                    {{#ifnoteq hitnumber 11}} by {{difference}}{{/ifnoteq}}
+                {{else}}
+                    by {{difference}}
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+    {{!-- </fieldset> --}}
+
+    {{> "systems/ars/templates/chat/parts/chatCard-dice-roll.hbs" roll=roll}}
+
+    {{#if (eq weapon.type 'weapon')}}
+        {{> "systems/ars/templates/chat/parts/chatCard-weapon.hbs" owner=owner item=weapon sourceToken=source.token sourceActor=source config=config}}
+    {{/if}}
+</div>

@@ -1,0 +1,832 @@
+{
+    "ARS": {
+        "ActorName": "Character Name",
+        "Audio": "Audio",
+        "ActiveEffectOverrideWarning": "This value is being modified by an Active Effect and cannot be edited. Disable the effect to edit it.",
+        "COMBAT": {
+            "casting": "Casting State",
+            "delay": "Delay actor turn to end of round",
+            "targetCombatant": "Target this combatant"
+        },
+        "CharacterName": "Character Name",
+        "NPCName": "NPC Name",
+        "Name": "Name",
+        "NewItem": "New {itemType}",
+        "abilities": "Abilities",
+        "ability": "Ability",
+        "abilityFields": {
+            "all": {
+                "percent": {
+                    "label": "%"
+                }
+            },
+            "cha": {
+                "loyalty": "Loyalty Base",
+                "max": "Max Henchmen",
+                "reaction": "Reaction Adj"
+            },
+            "con": {
+                "hp": "Hit Points",
+                "poison": "Poison Adj",
+                "regen": "Regeneration",
+                "shock": "System Shock",
+                "survival": "Res. Survival"
+            },
+            "dex": {
+                "defensive": "Def. Adj",
+                "missile": "Missile Adj",
+                "reaction": "Reaction Adj"
+            },
+            "int": {
+                "chance": "Learn Chance",
+                "imm": "Immunity",
+                "languages": "# Languages",
+                "level": "Spell Level",
+                "max": "Max Spells"
+            },
+            "str": {
+                "allow": "Carry",
+                "bendbars": "Bend Bars",
+                "dmg": "Damage Adj",
+                "encumbrance": {
+                    "heavy": "(Enc: Heavy)",
+                    "light": "(Enc: Light)",
+                    "max": "(Enc: Overloaded)",
+                    "moderate": "(Enc: Moderate)",
+                    "severe": "(Enc: Severe)",
+                    "unencumbered":"(Unencumbered)"
+                },
+                "hit": "Hit Adj",
+                "open": "Open Doors",
+                "press": "Max Press"
+            },
+            "wis": {
+                "bonus": "Spell Bonuses",
+                "failure": "Spell Failure",
+                "imm": "Immunity",
+                "magic": "Magic Adj"
+            }
+        },
+        "abilityTypes": {
+            "cha": "Charisma",
+            "chaabbr": "Cha",
+            "con": "Constitution",
+            "conabbr": "Con",
+            "dex": "Dexterity",
+            "dexabbr": "Dex",
+            "int": "Intelligence",
+            "intabbr": "Int",
+            "none": "None",
+            "str": "Strength",
+            "strabbr": "Str",
+            "wis": "Wisdom",
+            "wisabbr": "Wis"
+        },
+        "actions": {
+            "abilityTypes": {
+                "dex": "Dexterity",
+                "none": "None",
+                "str": "Strength"
+            },
+            "actionsTitle": "Actions",
+            "castshape": {
+                "template": "Template",
+                "fillColor": "Color",
+				"inRangeColor": "In Range Color",
+				"outOfRangeColor": "Out Of Range Color",
+				"targetSelection": "Target",
+                "range": "Range",				
+                "target": "Target",
+				"conetype": "Type",
+                "shape": "Shape"
+            },
+            "create": "Create new action",
+            "duration": {
+                "type": {
+                    "day": "Day",
+                    "hour": "Hour",
+                    "round": "Round",
+                    "turn": "Turn"
+                }
+            },
+            "effect_modes": {
+                "0": "Custom",
+                "1": "Multiply",
+                "2": "Add",
+                "3": "Downgrade",
+                "4": "Upgrade",
+                "5": "Override",
+                "add": "Add",
+                "custom": "Custom",
+                "downgrade": "Downgrade",
+                "multiply": "Multiply",
+                "override": "Override",
+                "upgrade": "Upgrade"
+            },
+            "group": {
+                "create": "Create action in this group"
+            },
+            "properties": "Properties",
+            "propertieshelp": "Comma delimited list of custom properties",
+            "type": {				
+                "cast": "Cast",
+                "castmelee": "Cast-MeleeTouch",
+                "castranged": "Cast-RangeTouch",
+                "castshape": "Shape",
+				"damage": "Damage",
+                "effect": "Effect",
+                "heal": "Heal",
+                "melee": "Melee",
+                "ranged": "Ranged",
+                "thrown": "Thrown",
+                "use": "Use"
+            },
+            "viewsource": "View source of action"
+        },
+        "activity": "Activity",
+        "actorsheet": {
+            "general": {
+                "nonweapon": "Non-Weapon",
+                "nonweaponused": "Used",
+                "penalty": "Penalty",
+                "proficiency": "Proficiency",
+                "profslots": "Proficiency Slots",
+                "weapon": "Weapon",
+                "weaponused": "Used"
+            }
+        },
+        "add": "Add",
+        "age": "Age",
+        "alias": "Alias",
+        "alignment": "Alignment",
+        "alignmentTypes": {
+            "ce": "Chaotic Evil",
+            "cg": "Chaotic Good",
+            "cn": "Chaotic Neutral",
+            "le": "Lawful Evil",
+            "lg": "Lawful Good",
+            "ln": "Lawful Neutral",
+            "n": "Neutral",
+            "ne": "Neutral Evil",
+            "ng": "Neutral Good"
+        },
+        "aoe": "AOE",
+        "apply": "Apply",
+        "areaofeffect": "Area of Effect",
+        "areyousure": "Are you sure you want to delete this?",
+        "armorBulk" : {
+            "none":"None",
+            "fairly": "Fairly",
+            "bulky": "Bulky",
+            "heavy": "Heavy"
+        },
+        "armorTypes": {
+            "armor": "Armor",
+            "cloak": "Cloak",
+            "other": "Other",
+            "ring": "Ring",
+            "shield": "Shield",
+            "warding": "Warding"
+        },
+        "armorclass": "Armor Class",
+        "armorclassabbr": "AC",
+        "armorstyle": "Armor Style (Weapon v Armor)",
+        "askattackmod": "Attack Modifier",
+        "askdamagemod": "Damage Modifier",
+        "attackmatrix": "Attack Matrix",
+        "audio": {
+            "failure": "Audio for Failure",
+            "file": "Audio File",
+            "hit": "Audio for Hit",
+            "miss": "Audio for Miss",
+            "success": "Audio for Success",
+            "volume": "Volume"
+        },
+        "aura": {
+            "permissions": {
+                "all": "All",
+                "gm": "GM",
+                "limited": "Limited",
+                "observer": "Observer",
+                "owner": "Owner"
+            }
+        },
+        "background": "Background",
+        "basehitpoints": "Base Hit Points",
+        "cancel": "Cancel",
+        "casttime": "Cast Time",
+        "casttimeAbbr": "CT",
+        "characterdescription": "Character Description",
+        "chat": {
+            "ability": "Ability",
+            "attack": "Attack",            
+			"cast": "Cast",
+			"castshape": "Place Template",
+            "castshapeToolTip": "Create appropriate visual AOE spell template",
+            "check": "Ability Check",
+            "crit": "Critical",
+            "damage": "Damage",
+            "effect": "Effect",
+            "fumble": "Fumble",
+            "heal": "Heal",
+            "save": "Save",
+            "situational": "Situation Adjustment",			
+            "skill": "Skill",
+            "undo": "Undo",
+            "use": "Use"
+        },
+        "chatCard": {
+            "ChatContextDamage": "Apply Damage",
+            "ChatContextDoubleDamage": "Apply Double Damage",
+            "ChatContextHalfDamage": "Apply Half Damage",
+            "ChatContextHealing": "Apply Healing"
+        },
+        "choose": "Choose",
+        "class": {
+            "addlevel": "Add level",
+            "addrank": "Add rank to class for advancement",
+            "classTitle": "Class",
+            "delete": "Delete class",
+            "edit": "Edit class",
+            "removelevel": "Remove level",
+            "removerank": "Remove rank",
+            "subitemtypes": {
+                "ability": "Abilities",
+                "proficiency": "Proficiency",
+                "skill": "Skills"
+            },
+            "toggleactive": "Toggle Active or Deactivate state for class"
+        },
+        "classes": "Classes",
+        "classname": "Class",
+        "clearslot": "Remove spell from slot",
+        "climate": "Climate",
+        "close": "Close",
+        "coins": "Coins",
+        "combat": "Combat",
+        "combatSelections": {
+            "acLocation": "Target AC",
+            "acLocationDetails": "Targeted AC, other modifiers need to be applied separately if applicable",
+            "damageStyle": "Damage style"
+        },
+        "combatname": "Combat",
+        "components": "Components",
+        "componentsAbbr": "CMP",
+        "conditionals": "Conditionals",
+        "confirm": "Confirmation Required",
+        "consumed": {
+            "charged": "charges",
+            "item": "ammunition"
+        },
+        "contents": "Contents",
+        "cost": "Cost",
+        "critical": "Critical",
+        "criticaled": "Criticaled",
+        "current": "Current",
+        "currency": {
+            "abbr": {
+                "cp": "CP",
+                "ep": "EP",
+                "gp": "GP",
+                "pp": "PP",
+                "sp": "SP"
+            },
+            "cp": "Copper Pieces",
+            "ep": "Electrum Pieces",
+            "gp": "Gold Pieces",
+            "insufficient": "Insufficient funds",
+            "pp": "Platinum Pieces",
+            "short": {
+                "cp": "Copper",
+                "ep": "Electrum",
+                "gp": "Gold",
+                "pp": "Platinum",
+                "sp": "Silver"
+            },
+            "sp": "Silver Pieces",
+            "split": "Split all coins with party"
+        },
+        "damage": "Damage",
+        "damageAdjustments": {
+            "double": "Dice x2",
+            "half": "Half",
+            "max": "Maximum",
+            "normal": "Normal",
+            "x2": "x2",
+            "x3": "x3",
+            "x4": "x4",
+            "x5": "x5",
+            "x6": "x6"
+        },
+        "damageTypes": {
+            "acid": "Acid",
+            "bludgeoning": "Bludgeoning",
+            "cold": "Cold",
+            "fire": "Fire",
+            "force": "Force",
+            "gas": "Gas",
+            "lightning": "Lightning",
+            "necrotic": "Necrotic",
+            "none": "None",
+            "piercing": "Piercing",
+            "poison": "Poison",
+            "radiant": "Radiant",
+            "slashing": "Slashing"
+        },
+        "dailyfoodwater": "Daily",
+        "defensestyle": {
+            "normal": "Normal",
+            "rear": "Rear (NO-DEX/NO-SHIELD)",
+            "shieldless": "No-Shield"
+        },
+        "deity": "Deity",
+        "description": "Description",
+        "details": "Details",
+        "dicevisibility": "Dice Visibility",
+        "diet": "Diet",
+        "dmdescription": "DM Description",
+        "effects": "Effects",
+        "empty": "Empty",
+        "equipment": "Equipment",
+        "exp": "Experience",
+        "failed": "Failed",
+        "failure": "Failure",
+        "food":"Food",
+        "frequency": "Frequency",
+        "fumble": "Fumble",
+        "fumbled": "Fumbled",
+        "general": "General",
+        "height": "Height",
+        "hit": "Hit",
+        "hitdice": "Hit Dice",
+        "hitpoints": "Hit Points",
+        "hp": "HP",
+        "hpCalculation": "HP Calculation",
+        "hpbase": "Base HP",
+        "hpmax": "Max HP",
+        "id": "Advanced Roleplay System",
+        "identified": "Identified",
+        "importtools": {
+            "addmarkup": "Add Markup to Imported Description",
+            "expected": {
+                "npctext": "Keywords per line i.e. 'ARMOR CLASS: 5' or 'SIZE: Small', un-matched text added to description",
+                "statblock": "NPC name: AC 5; HD 3;hp 12;THACO 18;Dmg 1d6;SZ: M 5';INT low;AL N; MV 6;XP 200"
+            }
+        },
+        "init": "INIT",
+        "initiative": "Initiative",
+        "inlair": "Lair Probability",
+        "intelligence": "Intelligence",
+        "inventoryItemCarryState": "Item carried, not-carried or equipped",
+        "inventoryTypeMaps": {
+            "ability": "abilityList",
+            "armor": "armors",
+            "background": "backgrounds",
+            "class": "classes",
+            "container": "containers",
+            "item": "gear",
+            "potion": "potions",
+            "proficiency": "proficiencies",
+            "race": "race",
+            "skill": "skills",
+            "spell": "spells",
+            "weapon": "weapons"
+        },
+        "inventoryTypes": {
+            "ability": "Abilities",
+            "armor": "Armor",
+            "background": "Background",
+            "class": "Class",
+            "container": "Containers",
+            "item": "Items",
+            "potion": "Potions",
+            "proficiency": "Proficiency",
+            "race": "Race",
+            "skill": "Skills",
+            "spell": "Spells",
+            "weapon": "Weapons"
+        },
+        "itemattributes": "Item Attributes",
+        "itembrowser": {
+            "attack": {
+                "type": "Type"
+            },
+            "attributes": {
+                "rarity": "Rarity",
+                "subtype": "Subtype",
+                "type": "Type"
+            },
+            "cost": "Cost",
+            "damage": {
+                "large": "Lg Dmg",
+                "normal": "Damage",
+                "type": "Dmg Type"
+            },
+            "features": {
+                "ability": "Ability",
+                "cost": "Cost",
+                "modifiers": {
+                    "formula": "Modifier"
+                }
+            },
+            "groups": "Groups",
+            "level": "Level",
+            "protection": {
+                "ac": "AC",
+                "type": "Type"
+            },
+            "school": "School",
+            "sphere": "Sphere",
+            "type": "Type",
+            "weight": "Weight"
+        },
+        "itemcharges": "Charges",
+        "key": "Key",
+        "kit": "Kit",
+        "learned": "Learned",
+        "notlearned": "Not-Learned",
+        "level": "Level",
+        "loadingItems": "Loading Item Data",
+        "loadingItemBrowser": "Loading Item Browser Data",
+        "location": "Location",
+        "locationStates": {
+            "carried": "Carried",
+            "equipped": "Equipped",
+            "nocarried": "Not Carried"
+        },
+        "longrest": "Long Rest",
+        "magic": "Magic",
+        "magicresist": "Magic Resist",
+        "matrix": {
+            "hitroll": "ROLL",
+            "hitrolltip": "Attack roll required to hit target armorclass",
+            "matrixTitle": "Combat Matrix",
+            "targetac": "AC",
+            "targetactip": "Target armor class"
+        },
+        "max": "Max",
+        "memorize": "Memorize",
+        "metalprotections": {
+            "full": "Full",
+            "halve": "Halve"
+        },
+        "missed": "Missed",
+        "mod": "Mod",
+        "mode": "Mode",
+        "modifier": "Modifier",
+        "morale": "Morale",
+        "move": "Move",
+        "movebase": "Move Base",
+        "movement": "Movement",
+        "no": "No",
+        "noinventory": "No inventory found",
+        "none": "None",
+        "none-selected": "Click to Select",
+        "normal": "Normal",
+        "notes": "Notes",
+        "npcdescription": "NPC Description",
+        "numberAppearing": "Number Appearing",
+        "numberAttacks": "# Attacks",
+        "organization": "Organization",
+        "origin": "Origin",
+        "party": {
+            "addcharacter": "Add",
+            "awards": "Awards",
+            "cancel": "Cancel",
+            "description": "Description",
+            "destination": "Destination",
+            "logs": "Logs",
+            "members": "Members",
+            "nonewmembers": "No Other Characters",
+            "party": "Party"
+        },
+        "patron": "Patron",
+        "placeholder": "Enter field",
+        "proficiencies": "Proficiencies",
+        "proficiency": "Proficiency",
+        "properties": "Properties",
+        "race": "Race",
+        "range": "Range",
+        "rarity": "Rarity",
+        "rear": "Rear",
+        "remove": "Remove",
+        "resetusage": "Toggle spell slot used/unused",
+        "resistTypes": {
+            "immune": "Immunity",
+            "magicpotency": "Magic Potency",
+            "perdice": "Per-Dice Modification",
+            "resist": "Resist",
+            "vulnerable": "Vulnerable"
+        },
+        "resources": {
+            "charged": "Charged",
+            "item": "Item",
+            "maximum": "Maximum",
+            "minimum": "Minimum",
+            "none": "No Resource",
+            "powered": "Powered item",
+            "reuse": "Reuse",
+            "used": "Used"
+        },
+        "reusetime": {
+            "daily": "Daily",
+            "monthly": "Monthly",
+            "none": "None",
+            "weekly": "Weekly"
+        },
+        "roll": "Roll",
+        "save": "Save",
+        "saveTypes": {
+            "abbr": {
+                "breath": "Breath",
+                "death": "Death",
+                "paralyzation": "Para",
+                "petrification": "Petri",
+                "poison": "Poison",
+                "polymorph": "Poly",
+                "rod": "Rod",
+                "spell": "Spell",
+                "staff": "Staff",
+                "wand": "Wand"
+            },
+            "breath": "Breath",
+            "death": "Death",
+            "paralyzation": "Paralyzation",
+            "petrification": "Petrification",
+            "poison": "Poison",
+            "polymorph": "Polymorph",
+            "rod": "Rod",
+            "spell": "Spell",
+            "staff": "Staff",
+            "wand": "Wand"
+        },
+        "saves": "Saves",
+        "select": "Select",
+        "sex": "Sex",
+        "sheet": {
+            "actor": {
+                "actor": "Actor",
+                "character": "Character",
+                "lootable": "Lootable",
+                "npc": "NPC"
+            }
+        },
+        "shielddefense": "SHLD",
+        "size": "Size",
+        "sizeTypes": {
+            "gargantuan": "Gargantuan",
+            "huge": "Huge",
+            "large": "Large",
+            "medium": "Medium",
+            "small": "Small",
+            "tiny": "Tiny"
+        },
+        "skillTypes": {
+            "ascending": "Ascending",
+            "decending": "Descending"
+        },
+        "skillcost": "Proficiency cost",
+        "skillmodifiers": "Skill Modifers",
+        "skills": "Skills",
+        "slotsperlevel": "Spell-Slots-Per-Level",
+        "source": "Source",
+        "specialAttacks": "Special Attacks",
+        "sa": "SA",
+        "specialDefenses": "Special Defenses",
+        "sd": "SD",
+        "spell": "Spell",
+        "spellTypes": {
+            "arcane": "Arcane",
+            "divine": "Divine"
+        },
+        "spells": "Spells",
+        "status": "Status",
+        "submit": "Submit",
+        "subtype": "Subtype",
+        "succeded": "Succeded",
+        "success": "Success",
+        "successAction": {
+            "halve": "Half-Damage",
+            "none": "Nothing",
+            "remove": "Remove Target"
+        },
+        "tabs": {
+            "attributes": "Attributes",
+            "combat": "Combat",
+            "description": "Description",
+            "details": "Details",
+            "items": "Gear",
+            "main": "Main",
+            "notes": "Notes",
+            "proficiencies": "Proficiencies"
+        },
+        "target": "Target",
+		"targetShape":{	
+			"none": "None",
+			"cone": "Cone",
+			"circle": "Circle",
+			"ray": "Ray",
+            "ray2": "Centered Rectangle",
+			"rectangle": "Rectangle"
+		},
+		"targetShapeConeType":{	
+			"angle": "Angle",
+			"ratio": "Ratio"
+		},
+		"targetShapeSelection":{
+			"none": "None",
+            "all": "All",    
+			"self": "Self",
+			"hostile": "Hostile",
+			"friendly": "Friendly"
+		},
+		"targetShapeRange":"Range",
+		
+        "targeting": {
+            "self": "Self",
+            "target": "Target"
+        },
+        "thaco": "THACO",
+        "thacolongform": "To-Hit AC0",
+        "time": {
+            "longrest": "Camp",
+            "round": "Round",
+            "turn": "Turn",
+            "hour":"Hour",
+            "day": "Day",
+            "custom": "Custom"
+        },
+        "title": "Advanced Roleplaying System",
+        "total": "Total",
+        "treasureType": "Treasure Type",
+        "type": "Type",
+        "unidentified": "Unidentified",
+        "unknown": "Unknown",
+        "unknownAction": "Takes Action",
+        "unknownActor": "Unknown Actor",
+        "unknownItem": "Unknown Item",
+        "uses": "uses",
+        "value": "Value",
+        "vision": "Vision",
+        "volume": "Volume",
+        "water": "Water",
+        "weapon": "Weapon",
+        "weaponType": "Weapon Type",
+        "weaponTypes": {
+            "melee": "Melee",
+            "ranged": "Ranged",
+            "thrown": "Thrown"
+        },
+        "weapons": "Weapons",
+        "weaponstyle": "Weapon Style (Weapon v Armor)",
+        "weight": "Weight",
+        "xp": "XP",
+        "yes": "Yes"
+    },
+    "CHAT": {
+        "ApplyDamage": "Apply Damage to Current Target",
+        "ApplyHalfDamage": "Apply 1/2 Damage to Current Target",
+        "ApplyQuarterDamage": "Apply 1/4 Damage to Current Target"
+    },
+    "EFFECT": {
+        "charge": "Charge",
+        "concealed25": "25% Concealed",
+        "concealed50": "50% Concealed",
+        "concealed75": "75% Concealed",
+        "concealed90": "90% Concealed",
+        "cover25": "25% Cover",
+        "cover50": "50% Cover",
+        "cover75": "75% Cover",
+        "cover90": "90% Cover",
+        "encumbrance-heavy": "Heavy Encumbrance",
+        "encumbrance-light": "Light Encumbrance",
+        "encumbrance-moderate": "Moderate Encumbrance",
+        "encumbrance-severe": "Severe Encumbrance"
+    },
+    "OWNERSHIP.HintFolder": "Set permissions for all Documents in this folder and sub-folders",
+    "SETTINGS": {
+        "InitiativeAscending": "Ascending",
+        "InitiativeAscendingTT": "Should initiative use ascending (low to high) order?",
+        "audioPlayTriggers": "Play Triggers",
+        "audioPlayTriggersTT": "Play save/check (success/failures), attack (hit/miss) and death sound triggers",
+        "audioTriggerCast": "Cast Spell",
+        "audioTriggerCastTT": "Audio played on cast",
+        "audioTriggerCheckFail": "Check Fail",
+        "audioTriggerCheckFailTT": "Audio played on check/save failure",
+        "audioTriggerCheckSuccess": "Check Success",
+        "audioTriggerCheckSuccessTT": "Audio played on check/save success",
+        "audioTriggerDeath": "Death/Defeated",
+        "audioTriggerDeathTT": "Audio played when actor dies",
+        "audioTriggerMeleeCrit": "Melee Critital",
+        "audioTriggerMeleeCritTT": "Audio played on melee attack critical",
+        "audioTriggerMeleeHit": "Melee Hit",
+        "audioTriggerMeleeHitTT": "Audio played on melee attack hit",
+        "audioTriggerMeleeMiss": "Melee Miss",
+        "audioTriggerMeleeMissTT": "Audio played on melee attack miss",
+        "audioTriggerRangeCrit": "Ranged Critital",
+        "audioTriggerRangeCritTT": "Audio played on ranged attack critical",
+        "audioTriggerRangeHit": "Ranged Hit",
+        "audioTriggerRangeHitTT": "Audio played on ranged attack hit",
+        "audioTriggerRangeMiss": "Ranged Miss",
+        "audioTriggerRangeMissTT": "Audio played on ranged attack miss",
+        "audioTriggersVolume": "Volume",
+        "audioTriggersVolumeTT": "Volume adjustments for save/check (success/failure), attack (hit/miss) and death sound triggers",
+        "autoCheck": "Check on success",
+        "autoCheckTT": "Should saves or ability checks be automatically rolled if a hit is scored?",
+        "autoDamage": "Damage on success",
+        "autoDamageTT": "Should damage be automatically rolled if a hit is scored?",
+        "automateEncumbrance": "Auto: Encumbrance",
+        "automateEncumbranceTT": "Add status effects when a characters exceeds encumbrance values",
+        "automateLighting": "Auto: Lighting",
+        "automateLightingTT": "If this option is disabled the lighting ActiveEffects will be ignored",
+        "automateVision": "Auto: Vision",
+        "automateVisionTT": "If this option is disabled the vision ActiveEffects will be ignored",
+        "combatAutomateRangeMods": "Range",
+        "combatAutomateRangeModsTT": "Apply modifiers to S/M/L range weapon attacks using distance between source and target token",
+        "consumeFoodWater":"Auto: Consume food/water",
+        "consumeFoodWaterTT":"On long rest consume food and water (prompt for selection if needed)",
+        "ctShowOnlyVisible": "Show only Visible",
+        "ctShowOnlyVisibleTT": "Player can only see tokens in Combat Tracker that can be seen with their character in scene",
+        "debugMode": "Log: Debug Mode",
+        "debugModeTT": "Additional console log output, view using F12",
+        "encumbranceIncludeCoin": "Encumbrace: Coin Weight",
+        "encumbranceIncludeCoinTT": "Include coins in calculation of actor encumbrance values",
+        "floatingHudStaticPosition": "HUD: Static Position",
+        "floatingHudStaticPositionTT": "Floating HUD position is lower, left otherwise below token selected",
+        "identificationActor": "Identification: Actor",
+        "identificationActorTT": "Unidentified actor's name will be masked",
+        "identificationItem": "Identification: Item",
+        "identificationItemTT": "Unidentified item's name will be masked",
+        "initRoundSound": "On Round",
+        "initRoundSoundTT": "Play sound to all players when a new round starts",
+        "initSideVSide": "Side versus Side",
+        "initSideVSideTT": "When enabled roll initiative for each side only",
+        "initTurnSound": "On Turn",
+        "initTurnSoundTT": "Play sound to player when it is their turn",
+        "initVolumeSound": "Volume",
+        "initVolumeSoundTT": "Volume used for sounds played during initiative triggers",
+        "initiativeFormula": "Dice formula",
+        "initiativeFormulaTT": "Formula of the dice rolls for initative.",
+        "initiativeUseSpeed": "Use speed factor and cast times",
+        "initiativeUseSpeedTT": "Using spell or weapon will trigger initiative roll including cast time or speed factor.",
+        "itemBrowserMargin": "Item Browser: Margin %",
+        "itemBrowserMarginTT": "Cost multiplier (-100 to 100) applied to Item Browser entries (default 0)",
+        "nPCNumberedName": "NPC: Number Tokens",
+        "nPCNumberedNameTT": "NPC tokens will have a unique random number appended to it's name for reference",
+        "npcLootable": "NPC: Loot Dead",
+        "npcLootableTT": "Characters loot dead npcs by clicking on the dead npc token",
+        "panOnInitiative": "Initiative: Pan on Turn",
+        "panOnInitiativeTT": "When it's your turn, pan to your token in the scene",
+        "rollInitEachRound": "Re-roll",
+        "rollInitEachRoundTT": "Enable to re-roll initiative each round, otherwise only when combat begins.",
+        "systemVariant": {
+            "0": "Standard",
+            "1": "Variant 1",
+            "2": "Variant 2"
+        },
+        "systemVariantLabel": "Variant",
+        "systemVariantTT": "System Variants: Standard, 1 or 2 (changes to systems such as, but not limited to, initiative, ability charts)",
+        "useAutoHitFailDice": "Miss/Hit",
+        "useAutoHitFailDiceTT": "On a natural dice roll of 1 mis/fail fumble, on 20 hit/crit",
+        "useArmorDamage": "Armor Damage",
+        "useArmorDamageTT": "Armor takes 1 point of damage per dice rolled, broken at 0 (only works when using Variant 2)",
+        "weaponVarmor": "Weapon versus Armor",
+        "weaponVarmorTT": "Apply attack modifiers considering weapon type versus armor type"
+    },
+    "TOKEN.AuraColor": "Color",
+    "TOKEN.AuraColorTT": "Color of aura.",
+    "TOKEN.AuraDistance": "Distance",
+    "TOKEN.AuraDistanceTT": "Distance from center to edge of aura.",
+    "TOKEN.AuraEnabled": "Enabled",
+    "TOKEN.AuraEnabledTT": "Enable or disable aura.",
+    "TOKEN.AuraOpacity": "Opacity",
+    "TOKEN.AuraOpacityTT": "Opacity of the aura.",
+    "TOKEN.AuraPermission": "Permission",
+    "TOKEN.AuraPermissionTT": "Who can see the aura.",
+    "TOKEN.AuraSquare": "Square",
+    "TOKEN.AuraSquareTT": "Enable for square shaped aura.",
+    "TOKEN.HeaderAuras": "Auras",
+    "TYPES": {
+        "Actor": {
+            "character": "Player Character",
+            "lootable": "Lootable",
+            "npc": "Non-Player Character"
+        },
+        "Item": {
+            "ability": "Ability",
+            "armor": "Armor",
+            "background": "Background",
+            "bundle": "Bundle",
+            "class": "Class",
+            "container": "Container",
+            "encounter": "Encounter",
+            "item": "Item",
+            "potion": "Potion",
+            "proficiency": "Proficiency",
+            "race": "Race",
+            "skill": "Skill",
+            "spell": "Spell",
+            "weapon": "Weapon"
+        }
+    }
+}

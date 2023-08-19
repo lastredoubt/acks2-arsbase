@@ -1,0 +1,8 @@
+{{!-- {{log "actions-block-inventory.hbs actor" actor}} --}}
+{{#if actor.actionInventory}}
+  {{#each actor.actionInventory as |item id|}}
+    {{#if item.system.actions}}
+      {{> "systems/ars/templates/apps/parts/actions-block.hbs" actor=../actor actions=item.system.actions actionList=item.system.actionList item=item}}
+    {{/if}}
+  {{/each}}
+{{/if}}

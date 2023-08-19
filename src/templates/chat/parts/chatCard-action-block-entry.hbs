@@ -1,0 +1,186 @@
+{{!-- {{log "chatCard-action-block-entry.hbs this" this}} --}}
+
+{{!-- <fieldset> --}}
+{{!-- <legend>{{ actionGroupData.data.name }}</legend> --}}
+<div class="general-header">{{ actionGroupData.data.name }}</div>
+{{#if actionGroupData.description}}
+    <div class="chatCard-description">
+        <div style="display: block" class="chatCard-description-short">
+            {{{ actionGroupData.description }}}
+        </div>
+        <div style="display: none" class="chatCard-description-full">
+            {{{ actionGroupData.description }}}
+        </div>
+        {{#if actionGroupData.description}}
+            <div class="chatCard-expand-view"><i class="fas fa-expand-alt"></i></div>
+        {{/if}}
+        {{!-- <div class="chatCard-expand-view"><i class="fas fa-compress-alt"></i></div> --}}
+    </div>
+{{/if}}
+
+<div class="flexcol">
+    {{#each actionGroupData.actions as |action index|}}
+        {{!-- {{#each actions as |action index|}}
+            {{log "chatCard-actions-block.hbs action" action}} --}}
+
+
+        <div class="actionChat-list" data-owner-id="{{@root.owner}}" data-source-actor-id="{{@root.sourceActor.id}}"
+            data-source-token-id="{{@root.sourceToken.id}}" data-item-id="{{@root.item.id}}"
+            data-action-id="{{action.index}}">
+
+            {{#if (eq action.type 'use')}}
+                <button class="chatCard-button" class="chatCard-button" data-action="use-roll">
+                    <div class="flexrow">
+                        <div class="action-icon"><img src="{{action.img}}" data-tooltip="{{action.name}}" /></div>
+                        <div class="center-text">{{localize "ARS.chat.use"}}</div>
+                    </div>
+                </button>
+            {{/if}}
+
+            {{#if (eq action.type 'castshape')}}
+                <button class="chatCard-button" class="chatCard-button" data-action="cast-shape-template">
+                    <div class="flexrow">
+                        <div class="action-icon"><img src="{{action.img}}" data-tooltip="{{action.name}}" /></div>
+                        <div class="center-text text-trunc" data-tooltip="{{localize "ARS.chat.castshapeToolTip"}}">
+                            {{localize "ARS.chat.castshape"}}{{#if action.misc}} ( {{action.misc}} ){{/if}}
+                        </div>
+                    </div>
+                </button>
+            {{/if}}
+
+
+            {{#if (eq action.type 'cast')}}
+                <button class="chatCard-button" class="chatCard-button" data-action="cast-roll">
+                    <div class="flexrow">
+                        <div class="action-icon"><img src="{{action.img}}" data-tooltip="{{action.name}}" /></div>
+                        <div class="center-text text-trunc">{{localize "ARS.chat.cast"}}
+                            {{#if (eq action.saveCheck.type 'none')}}{{else}} (versus
+                                {{localize (concat "ARS.saveTypes." action.saveCheck.type)}}
+                                {{#if action.saveCheck.formula}}{{action.saveCheck.formula}}{{/if}}){{/if}}
+                        </div>
+                    </div>
+                </button>
+            {{/if}}
+
+            {{#includes action.type 'melee||ranged||thrown'}}
+                <button class="chatCard-button" data-action="action-attack-roll">
+                    <div class="flexrow">
+                        {{!-- <img class="actionImage" src="{{action.img}}" data-tooltip="{{action.name}}" width="24"height="24" /> --}}
+                        <div class="action-icon">
+                            <img src="{{action.img}}" data-tooltip="{{action.name}}" />
+                        </div>
+                        <div class="center-text text-trunc">{{localize "ARS.chat.attack"}}</div>
+                    </div>
+                </button>
+            {{/includes}}
+
+            {{#if (eq action.type 'damage')}}
+                <button class="chatCard-button" data-action="action-damage-roll" data-tooltip="
+                                    {{#if action.formulaEvaluated}}
+                                    {{ action.formulaEvaluated }}
+                                    {{else}}
+                                    {{action.formula}}
+                                    {{/if}}
+                                    {{#if (eq action.damagetype 'none')}}
+                                    {{else}}/{{ action.damagetype }}
+                                    {{/if}}">
+                    <div style="min-width:0;flex-shrink:0;" class="flexrow">
+                        <div class="short-field">
+                            <img class="" src="{{action.img}}" data-tooltip="{{action.name}}" />
+                        </div>
+                        <div class="center-text text-trunc">
+                            {{localize "ARS.chat.damage"}} (
+                            {{#if action.misc}}
+                                {{{action.misc}}}
+                            {{else}}
+                                {{#if action.formulaEvaluated}}
+                                    {{ action.formulaEvaluated }}
+                                {{else}}
+                                    {{action.formula}}
+                                {{/if}}
+                                {{#if (eq action.damagetype 'none')}}
+                                {{else}}/{{ action.damagetype }}
+                                {{/if}}
+                            {{/if}}
+                            )
+                        </div>
+                    </div>
+                </button>
+
+            {{/if}}
+
+            {{#if (eq action.type 'heal')}}
+                <button class="chatCard-button" data-action="action-heal-roll">
+                    <div class="flexrow">
+                        <div class="action-icon">
+                            <img class="" src="{{action.img}}" data-tooltip="{{action.name}}" />
+                        </div>
+                        <div class="center-text text-trunc"
+                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                            {{localize "ARS.chat.heal"}} ({{#if action.formulaEvaluated}}
+                                {{ action.formulaEvaluated }}
+                            {{else}}{{action.formula}}{{/if}})
+                        </div>
+                    </div>
+
+                </button>
+            {{/if}}
+
+            {{#if (eq action.type 'effect')}}
+                {{!-- {{log "action.effect.tooltip" action}} --}}
+                <button class="chatCard-button text-trunc" data-action="action-effect-roll"
+                    data-tooltip="{{action.effect.toolTip}}">
+                    <div class="flexrow">
+                        <div class="short-field">
+                            <img class="" src="{{action.img}}" data-tooltip="{{action.name}}" />
+                        </div>
+                        <div class="center-text text-trunc">{{localize "ARS.chat.effect"}}
+                            ({{#if action.misc}}{{{action.misc}}}{{else}}{{{action.effect.changes.0.key}}}{{/if}})</div>
+                    </div>
+
+
+                </button>
+            {{/if}}
+
+            {{#includes action.type 'cast||melee||ranged||thrown'}}
+                {{#if (eq action.abilityCheck.type 'none')}}
+                    {{!-- Do nothing --}}
+                {{else}}
+                    <button class="chatCard-button" data-action="ability-roll">
+                        <div class="flexrow">
+                            <div class="action-icon">
+                                <img src="{{action.img}}" data-tooltip="{{action.name}}" />
+                            </div>
+                            <div class="center-text text-trunc">{{localize "ARS.chat.check"}} versus
+                                {{localize (concat "ARS.abilityTypes." action.abilityCheck.type)}}
+                            </div>
+                        </div>
+                    </button>
+                {{/if}}
+            {{/includes}}
+        </div>
+
+        {{#includes action.type 'cast||melee||ranged||thrown'}}
+            {{#if (eq action.saveCheck.type 'none')}}
+                {{!-- Do nothing --}}
+            {{else}}
+                <div class="text-trunc" data-owner-id="{{@root.owner}}" data-source-actor-id="{{@root.sourceActor.id}}"
+                    data-source-token-id="{{@root.sourceToken.id}}" data-item-id="{{@root.item.id}}"
+                    data-action-id="{{action.index}}">
+                    <button data-action="save-roll">
+                        <div class="flexrow">
+                            <div class="action-icon"><img src="{{action.img}}" data-tooltip="{{action.name}}" /></div>
+                            <div class="center-text text-trunc">{{localize "ARS.chat.save"}} vrs
+                                {{localize (concat "ARS.saveTypes." action.saveCheck.type)}}
+                                {{#if action.saveCheck.formula}}{{action.saveCheck.formula}}{{/if}}
+                            </div>
+                        </div>
+
+                    </button>
+                </div>
+            {{/if}}
+        {{/includes}}
+
+    {{/each}}
+</div>
+{{!-- </fieldset> --}}

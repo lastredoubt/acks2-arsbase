@@ -1,0 +1,97 @@
+* {
+  // margin: 0;
+  // padding: 0;
+  // box-sizing: border-box;
+  // color: $default-color;
+}
+
+.hidden {
+  display: none;
+}
+
+// ol, ul, li {
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0px;
+// }
+// ol, ul {
+//   padding-bottom: 2px;
+// }
+
+
+.grouping-border {
+  border: 2px groove;
+  padding: 1px;
+  margin: 6px;
+}
+
+fieldset.border-top {
+  border: none;
+  border-top: 1px solid #000;
+}
+
+fieldset.no-border, fieldset.border-none {
+  border:none;
+}
+
+fieldset.border-bottom {
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+fieldset {
+  border: 1px solid #000;
+  padding-top: 3px;
+  margin: 1px;
+  margin-top: 2px;
+}
+
+legend {
+  font-weight: 600;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;  
+}
+
+.general-header {
+  text-align: center;
+  font-weight: bolder;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, $c-mid 25%, $c-mid 75%, rgba(255,255,255,0) 100%);
+  // background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgb(158, 121, 0) 25%, rgb(158, 121, 0) 75%, rgba(255,255,255,0) 100%);
+}
+.general-subheader {
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, $c-subheader 25%, $c-subheader 75%, rgba(255,255,255,0) 100%);
+  // background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgb(207, 161, 10) 25%, rgb(207, 161, 10)  75%, rgba(255,255,255,0) 100%);
+}
+
+.general-footer {
+  min-height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+  // background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+}
+
+.button-box {
+  background-color: rgba(206, 162, 67, 0.514);
+  border: 3px outset grey;
+}
+// this is the css for inline-roll clickables 
+// a.inline-roll {
+//   margin: 5px;
+// }
+
+.playerlist-trade-button {
+  line-height: inherit;
+  font-size: 0.85rem;
+  width: calc(100% - 0.5rem);
+  margin: 0.25rem;
+  background: rgba(60, 60, 60, 0.6);
+  border: 1px solid black;
+  color: white;
+}

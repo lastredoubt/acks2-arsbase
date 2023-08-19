@@ -1,0 +1,174 @@
+{{log "character-sheet.hbs this-->" this}}
+
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="character">
+        <header class="sheet-header character">
+            <div class="header-fields">
+                <h1 class="character-name"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+                </h1>
+            </div>
+            {{#if game.user.isGM}}
+                <i data-tooltip="Clone Character to NPC" style="flex-basis: 15px;flex-grow: 0;margin-bottom:40px;"
+                    class="clone-covert-actor fa-solid fa-dna"></i>
+            {{/if}}
+            <img class="profile-img" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}" />
+        </header>
+
+        <nav class="sheet-tabs" data-group="primary">
+            <div class="tabs flexrow">
+
+                <a class="item tab-item" data-tab="main">
+                    <div class="icon-text-container">
+                        <i class="fas fa-dice-d20"></i>
+                        <span>{{localize "ARS.tabs.main"}}</span>
+                    </div>
+                </a>
+
+
+                <a class="item tab-item" data-tab="combat">
+                    <div class="icon-text-container">
+                        <i class="fas fa-swords"></i>
+                        <span>{{localize "ARS.tabs.combat"}}</span>
+                    </div>
+                </a>
+
+                <a class="item tab-item" data-tab="items">
+                    <div class="icon-text-container">
+                        <i class="fas fa-backpack"></i>
+                        <span>{{localize "ARS.tabs.items"}}</span>
+                    </div>
+                </a>
+
+                <a class="item tab-item" data-tab="proficiencies">
+                    <div class="icon-text-container">
+                        <i class="fas fa-fist-raised"></i>
+                        <span>{{localize "ARS.tabs.proficiencies"}}</span>
+                    </div>
+                </a>
+
+                <a class="item tab-item" data-tab="details">
+                    <div class="icon-text-container">
+                        <i class="fas fa-search"></i>
+                        <span>{{localize "ARS.tabs.details"}}</span>
+                    </div>
+                </a>
+
+                <a class="item tab-item" data-tab="description">
+                    <div class="icon-text-container">
+                        <i class="fas fa-file-alt"></i>
+                        <span>{{localize "ARS.tabs.description"}}</span>
+                    </div>
+                </a>
+
+                {{!-- <a class="item" data-tab="main"><i class="fas fa-dice-d20"></i> {{localize "ARS.tabs.main"}}</a> --}}
+                {{!-- <a class="item" data-tab="combat"><i class="fas fa-swords"></i> {{localize "ARS.tabs.combat"}}</a> --}}
+                {{!-- <a class="item" data-tab="items"><i class="fas fa-backpack"></i> {{localize "ARS.tabs.items"}}</a> --}}
+                {{!-- <a class="item" data-tab="proficiencies"><i class="fas fa-ruler"></i> {{localize "ARS.tabs.proficiencies"}}</a> --}}
+                {{!-- <a class="item" data-tab="details"><i class="fas fa-search"></i> {{localize "ARS.tabs.details"}}</a> --}}
+                {{!-- <a class="item" data-tab="description"><i class="fas fa-file-alt"></i>{{localize "ARS.tabs.description"}}</a> --}}
+            </div>
+        </nav>
+
+        <section class="sheet-body">
+
+            {{!-- Main Tab --}}
+            <div class="tab main" data-group="primary" data-tab="main">
+                {{> "systems/ars/templates/actor/tabs/character-sheet-tab-main.hbs" }}
+            </div>
+            {{!-- end main tab --}}
+
+            {{!-- Combat Tab --}}
+            <div class="tab combat" data-group="primary" data-tab="combat">
+                {{> "systems/ars/templates/actor/tabs/tab-combat.hbs" }}
+            </div>
+            {{!-- end combat tab --}}
+
+            {{!-- Gear/Owned Items Tab --}}
+            <div class="tab items" data-group="primary" data-tab="items">
+                <div class="gear-block">
+                    {{> "systems/ars/templates/actor/parts/currency-block.hbs" }}
+                    {{!-- <div class="general-footer"></div> --}}
+                    <div style="margin-bottom: 3px;">
+                        {{> "systems/ars/templates/actor/parts/daily-consume.hbs" }}
+                    </div>
+                    {{!-- <div class="general-footer"></div> --}}
+                    {{> "systems/ars/templates/actor/parts/inventoryList-Sorted-block.hbs"}}
+                </div>
+            </div>
+
+            {{!-- Proficiencies Tab --}}
+            <div class="tab proficiencies" data-group="primary" data-tab="proficiencies">
+                <div class="proficiencies-block">
+                    {{> "systems/ars/templates/actor/parts/itemsByTypeList-block.hbs" itemsByTypeList=config.academicTypes}}
+                </div>
+                {{!-- skills --}}
+                {{!-- {{#if actor.skills}} --}}
+                <div class="skill-block">
+                    {{> "systems/ars/templates/actor/parts/skills-block.hbs"}}
+                </div>
+                {{!-- {{/if}} --}}
+            </div>
+
+
+            {{!-- details Tab --}}
+            <div class="tab details" data-group="primary" data-tab="details">
+                {{!-- <fieldset>
+                    <legend>{{ localize "ARS.effects" }}</legend> --}}
+                <div class="general-header">{{ localize "ARS.effects" }}</div>
+                <div style="margin-bottom: 5px;">
+                    {{> "systems/ars/templates/effects/parts/active-effects.hbs"}}
+                </div>
+                {{!-- <div class="general-footer"></div> --}}
+                {{!-- </fieldset> --}}
+
+                <div class="race-background-block">
+                    {{> "systems/ars/templates/actor/parts/itemsByTypeList-block.hbs" itemsByTypeList=config.detailsItemTypes}}
+                </div>
+
+                {{> "systems/ars/templates/actor/parts/classlist-block.hbs"}}
+
+                {{> "systems/ars/templates/actor/parts/character-general-block.hbs"}}
+
+            </div>
+            {{!-- end details Tab --}}
+
+
+            {{!-- Description/Notes Tab--}}
+            <div class="tab description" data-group="primary" data-tab="description">
+                {{!-- <fieldset class="border-top ">
+                    <legend>{{ localize "ARS.characterdescription" }}</legend> --}}
+                <div class="general-header">{{ localize "ARS.characterdescription" }}</div>
+                <div class="desc-block flexrow">
+                    <label class="desc-label">{{ localize "ARS.age" }}</label>
+                    <input class="desc-value" type="text" name="system.details.age" value="{{system.details.age}}" />
+                    <label class="desc-label">{{ localize "ARS.sex" }}</label>
+                    <input class="desc-value" type="text" name="system.details.sex" value="{{system.details.sex}}" />
+                    <label class="desc-label">{{ localize "ARS.deity" }}</label>
+                    <input class="desc-value" name="system.details.deity" type="text"
+                        value="{{system.details.deity}}" />
+                </div>
+
+                <div class="desc-block flexrow">
+                    <label class="desc-label">{{ localize "ARS.height" }}</label>
+                    <input class="desc-value" type="text" name="system.details.height"
+                        value="{{system.details.height}}" />
+                    <label class="desc-label">{{ localize "ARS.weight" }}</label>
+                    <input class="desc-value" type="text" name="system.details.weight"
+                        value="{{system.details.weight}}" />
+                    <label class="desc-label">{{ localize "ARS.patron" }}</label>
+                    <input class="desc-value" name="system.details.patron" type="text"
+                        value="{{system.details.patron}}" />
+                </div>
+
+                {{!-- <fieldset>
+                        <legend>{{ localize "ARS.notes" }}</legend> --}}
+                <div class="general-header">{{ localize "ARS.notes" }}</div>
+                {{> "systems/ars/templates/actor/parts/description.hbs"}}
+
+                {{!-- </fieldset> --}}
+                {{!-- </fieldset> --}}
+            </div>
+
+        </section>
+    </div>
+</form>

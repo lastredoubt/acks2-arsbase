@@ -1,0 +1,69 @@
+.window-app {
+  font-family: $font-primary;
+  // background-image: url(ui/Paperbrown.PNG) !important;
+  // background-color: $default-background-color;
+  // background-image: linear-gradient(to bottom right, $background-dark, $background-light) !important;
+  // background-size: cover;
+}
+
+.window-content {
+  // background-image: url(ui/parchment02_light.png) !important;
+  // background-image: url(ui/parchment.jpg) !important;
+  // background-image: linear-gradient(to bottom right, $background-dark, $background-light) !important;
+  // background-size: cover;
+}
+
+.character {
+  // background-image: url(ui/Paperbrown.PNG) !important;
+  // background-image: url(ui/parchment.jpg) !important;
+  // background-image: linear-gradient(to bottom right, $background-dark, $background-light) !important;
+  // background-size: cover;
+}
+
+// #outerContainer #mainContainer {
+//   height:100% !important;
+// }
+.sheet nav.sheet-tabs, .sheet-header nav.sheet-tabs{
+  // background-color: $default-background-color !important;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, $default-background-color 20%, $default-background-color 65%, rgba(255,255,255,0) 100%);
+  color: $tab-text-color;
+
+  .tab-items, .tabs {
+    text-align: center;
+    // align-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .item {
+    border: 1px groove $tab-border-color;
+    // border-radius: 5px;
+    align-content: center;
+    padding: 2px;
+    margin: 2px;
+
+    &:hover,
+    &:focus {
+      color: $tab-focus-color;
+      text-shadow: none;
+      background-color: $background-tab-focus;
+      cursor: pointer;
+    }
+  }
+
+  .item.active {
+      border: 1px groove $tab-active-shadow-color;
+      text-shadow: 2px 2px $tab-active-shadow-color;
+      color: $tab-active-color;
+      background-image: radial-gradient($tab-active-radial1, $tab-active-radial2, $tab-active-radial3);
+  }
+
+}
+
+// this is the background on various/most windows
+
+// .window-app .window-content {
+// 	background: url(ui/textured_paper.png) repeat;
+//   // background: white;
+// }
+

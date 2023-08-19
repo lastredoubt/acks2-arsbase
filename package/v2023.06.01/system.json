@@ -1,0 +1,63 @@
+{
+  "id": "ars",
+  "title": "Advanced Roleplaying System (ARS)",
+  "description": "System for playing OSRIC or other classic advanced roleplay games in FoundryVTT",
+  "version": "2023.06.01",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11.300"
+  },
+  "socket": true,
+  "authors": [
+    {
+      "name": "ADnD Mike",
+      "email": "adnd.mike@gmail.com",
+      "discord": "Celestian#0854",
+      "flags": {}
+    }
+  ],
+  "esmodules": ["module/ars.js"],
+  "styles": ["ars.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    }
+  ],
+  "background": "systems/ars/assets/system/tileset.jpg",
+  "media": [
+    {
+      "type": "cover",
+      "url": "systems/ars/assets/system/tileset.jpg"
+    },
+    {
+      "type": "setup",
+      "url": "systems/ars/assets/system/tileset.jpg"
+    }
+  ],
+  "gridDistance": 10,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "attributes.hp",
+  "secondaryTokenAttribute": "attributes.ac",
+  "initiative": "1d10",
+  "packs": [
+    {
+      "name": "ruleset-documentation",
+      "label": "Ruleset Documentation",
+      "system": "ars",
+      "path": "packs/ruleset-documentation.db",
+      "type": "JournalEntry",
+      "flags": {},
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "url": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system",
+  "manifest": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/raw/main/src/system.json",
+  "download": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/raw/main/package/v2023.06.01/ars-v2023.06.01.zip",
+  "license": "LICENSE.md"
+}

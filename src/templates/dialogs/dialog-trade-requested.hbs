@@ -1,0 +1,15 @@
+<div class="trade-request-dialog">
+    <p>{{tradeUser.name}} asks if you are interested in a trade?</p>
+    {{#if customerUser.isGM}}
+        <div>Select Token that you will be trading as:</div>
+        <div>
+            <select id="gm-selected-token">
+                {{#select gm-selected-token}}
+                    {{#each tokens as |token id|}}
+                        <option value="{{token.id}}">{{localize token.name}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+    {{/if}}
+</div>

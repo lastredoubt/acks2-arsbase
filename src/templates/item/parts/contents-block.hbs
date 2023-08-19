@@ -1,0 +1,38 @@
+{{!-- {{log "contents-block.hbs item" item}}
+{{log "contents-block.hbs this" this}}
+{{log "contents-block.hbs system" system}} --}}
+<div class="item-list">
+    <div class="item-titles">
+        <div class="item-header">
+            <span>{{localize "ARS.contents" }}</span>
+        </div>
+    </div>
+    {{#if system.itemList.length}}
+        <div class="item flexrow general-subheader">
+            <div class="short-field" style="font-size: 1.01em;" data-tooltip="Quantity">#</div>
+            <div class="item-image"></div>
+            <div class="item-name">Name</div>
+        </div>
+    {{/if}}
+    {{!-- {{#each system.itemList as |subitem index|}} --}}
+    {{!-- {{#each item.contains as |subitem index|}} --}}
+    {{#each system.itemList as |subitem index|}}
+        {{!-- {{log "contents-block.hbs==============?" subitem}}     --}}
+        <li class="item flexrow" data-type="quantity" data-uuid="{{subitem.uuid}}" data-id="{{subitem.id}}"
+            data-index="{{index}}">
+            <div class="short-field"><input class="item-subitem-quantity" type="number" value="{{subitem.quantity}}"
+                    data-dtype="Number" placeholder="1" /></div>
+            <div class="item-image"><img src="{{subitem.img}}" data-tooltip="{{subitem.name}}" width="24" height="24" />
+            </div>
+            <div class="text-trunc">{{subitem.name}}</div>
+            <div class="item-controls">
+                <a class="item-control item-takeout" data-tooltip="Remove from container"><i
+                        class="fas fa-sign-out-alt"></i></a>
+                {{#if @root.item.isOwned}}
+                    <a class="item-control item-edit" data-tooltip="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" data-tooltip="Delete Item"><i class="fas fa-trash"></i></a>
+                {{/if}}
+            </div>
+        </li>
+    {{/each}}
+</div>

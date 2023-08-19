@@ -1,0 +1,118 @@
+{{log "item-header.hbs" this}}
+
+<header class="sheet-header item">
+    <img id="drag-link" class="profile-img" src="{{item.img}}" data-edit="img" data-tooltip="{{item.name}}" />
+    <div style="flex-grow: 3;" class="header-fields">
+        <h1 class="itemname">
+            {{#if item.isIdentified}}
+                <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+            {{else}}
+                {{#if item.isOwner}}
+                    {{#if item.notIdentified}}
+                        <input class="item-edit-alias allow-owner-edit" name="system.alias" type="text"
+                            value="{{item.alias}}" placeholder="{{localize "ARS.unknownItem"}}" />
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </h1>
+    </div>
+</header>
+
+{{log "item-header.hbs" item}}
+
+<div>
+    <div class="item">
+
+        {{#includes item.type 'class||ability||skill||proficiency||bundle||encounter'}}
+            {{else}}
+                <div class="item-magic-checks">
+                    {{#if item.isOwned}}
+                        {{#if (eq item.type 'spell')}}
+                            {{#if item.isScroll}}
+                            {{else}}
+                                <div><input type="checkbox" name="system.learned" {{ checked system.learned }} /></div>
+                                <div class="item-check-label">{{localize "ARS.learned"}}</div>
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                    {{#if isGM}}
+                        {{#if system.attributes.identified}}
+                        {{else}}
+                            <div class="flexrow" data-tooltip="Alias used when item not identified">
+                                <label
+                                    style="flex-grow:0; margin-top:auto;margin-bottom:auto;margin-right:5px;">{{localize "ARS.alias"}}</label><input
+                                    style="flex-grow:2;" name="system.alias" type="text" value="{{system.alias}}"
+                                    placeholder="Item Alias Name" />
+                            </div>
+                        {{/if}}
+                        <div><input type="checkbox" name="system.attributes.identified"
+                                {{ checked system.attributes.identified }} /></div>
+                        <div class="item-check-label">{{localize "ARS.identified"}}</div>
+                        <div><input type="checkbox" name="system.attributes.magic"
+                                {{ checked system.attributes.magic }} /></div>
+                        <div class="item-check-label">{{localize "ARS.magic"}}</div>
+                    {{/if}}
+                </div>
+        {{/includes}}
+
+
+        {{#includes item.type 'item||container||armor||weapon||potion||spell'}}
+            <div class="item-titles">
+                <div class="flexrow item-header">
+                    <div class="item-quantity short-number">
+                        <label class="resource-label">Quantity</label>
+                    </div>
+                    <div class="item-weight short-number">
+                        <label class="resource-label">Weight</label>
+                    </div>
+                    <div class="item-cost longer-number">
+                        {{#if item.isIdentified}}
+                            <label class="resource-label">Cost</label>
+                        {{else}}
+                            <div></div>
+                        {{/if}}
+                    </div>
+                    {{#if isGM}}
+                        {{#if item.system.attributes.magic}}
+                            <div class="item-header item-xp">
+                                <label class="resource-label">XP</label>
+                            </div>
+                        {{/if}}
+                    {{/if}}
+
+                </div>
+            </div>
+            <div class="item-header-input flexrow">
+                <div class="item-quantity short-number">
+                    <input type="text" name="system.quantity" value="{{system.quantity}}" data-dtype="Number" />
+                </div>
+                <div class="item-weight short-number">
+                    <input type="text" name="system.weight" value="{{system.weight}}" data-dtype="Number" />
+                </div>
+                <div class="flexrow item-cost longer-number">
+                    {{#if item.isIdentified}}
+                        <input class="longer-number" type="number" name="system.cost.value"
+                            value="{{system.cost.value}}" data-dtype="Number" />
+                        <select class="selector short-text" name="system.cost.currency">
+                            {{#select system.cost.currency}}
+                                {{#each config.currencyAbbrv as |name type|}}
+                                    <option value="{{type}}">{{localize name}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+                    {{else}}
+                        <div></div>
+                    {{/if}}
+                </div>
+                {{#if isGM}}
+                    {{#if item.system.attributes.magic}}
+                        <div class="item-xp">
+                            <input type="text" name="system.xp" value="{{system.xp}}" />
+                        </div>
+                    {{/if}}
+                {{/if}}
+            </div>
+        {{/includes}}
+    </div>
+
+</div>

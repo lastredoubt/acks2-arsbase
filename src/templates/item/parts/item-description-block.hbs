@@ -1,0 +1,27 @@
+{{!-- {{#if item.system.attributes }}
+    {{#if item.system.attributes.identified }}
+        {{editor content=system.description target="system.description" button=true owner=owner editable=editable}}
+    {{else}}
+        {{#if isGM}}
+            {{editor content=system.description target="system.description" button=true owner=owner editable=editable}}
+        {{/if}}
+    {{/if}}
+{{else}}
+    {{editor content=system.description target="system.description" button=true owner=owner editable=editable}}
+{{/if}} --}}
+
+{{!-- {{log "item-description-block.hbs data" data}} --}}
+{{#if item.isIdentified}}
+    {{!-- <fieldset> --}}
+    {{!-- <legend>{{ localize "ARS.description" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.description" }}</div>
+    {{editor enrichedBiography target="system.description" button=true editable=editable}}
+    {{!-- </fieldset> --}}
+{{/if}}
+{{#if isGM}}
+    {{!-- <fieldset> --}}
+    {{!-- <legend>{{ localize "ARS.dmdescription" }}</legend> --}}
+    <div class="general-header">{{ localize "ARS.dmdescription" }}</div>
+    {{editor enrichedDMOnly target="system.dmonlytext" button=true editable=editable}}
+    {{!-- </fieldset> --}}
+{{/if}}

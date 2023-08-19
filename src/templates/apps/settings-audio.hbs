@@ -1,0 +1,170 @@
+{{log "settings-audio.hbs" this}}
+
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <div class="settings-audio">
+
+        <fieldset>
+            <legend>Audio Settings</legend>
+
+            <fieldset>
+                <legend>Initiative</legend>
+                {{#if isGM}}
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.initRoundSound"}}</label>
+                        <div class="form-fields">
+                            <input type="checkbox" name="playRoundSound" data-dtype="Boolean"
+                                {{ checked playRoundSound }}><input type="text" name="initRoundSound"
+                                value="{{initRoundSound}}" data-dtype="String"
+                                style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.initRoundSoundTT"}}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.initTurnSound"}}</label>
+                        <div class="form-fields">
+                            <input type="checkbox" name="playTurnSound" data-dtype="Boolean"
+                                {{ checked playTurnSound }}><input type="text" name="initTurnSound"
+                                value="{{initTurnSound}}" data-dtype="String"
+                                style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.initTurnSoundTT"}}</p>
+                    </div>
+                {{/if}}
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.initVolumeSound"}}</label>
+                    <div class="form-fields">
+                        <input type="range" name="initVolumeSound" data-dtype="Number" value="{{initVolumeSound}}"
+                            min="0" max="1" step="0.1">
+                        <span class="range-value">{{initVolumeSound}}</span>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.initVolumeSoundTT"}}</p>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Triggers</legend>
+                {{#if isGM}}
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioPlayTriggers"}}</label>
+                        <div class="form-fields">
+                            <input type="checkbox" name="audioPlayTriggers" data-dtype="Boolean"
+                                {{ checked audioPlayTriggers }}>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioPlayTriggersTT"}}</p>
+                    </div>
+                {{/if}}
+                <div class="form-group">
+                    <label>{{localize "SETTINGS.audioTriggersVolume"}}</label>
+                    <div class="form-fields">
+                        <input type="range" name="audioTriggersVolume" data-dtype="Number"
+                            value="{{audioTriggersVolume}}" min="0" max="1" step="0.1">
+                        <span class="range-value">{{audioTriggersVolume}}</span>
+                    </div>
+                    <p class="notes">{{localize "SETTINGS.audioTriggersVolumeTT"}}</p>
+                </div>
+
+                {{#if isGM}}
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerCast"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerCast" value="{{audioTriggerCast}}" data-dtype="String"
+                                style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerCastTT"}}</p>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerCheckSuccess"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerCheckSuccess" value="{{audioTriggerCheckSuccess}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerCheckSuccessTT"}}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerCheckFail"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerCheckFail" value="{{audioTriggerCheckFail}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerCheckFailTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerMeleeHit"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerMeleeHit" value="{{audioTriggerMeleeHit}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerMeleeHitTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerMeleeMiss"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerMeleeMiss" value="{{audioTriggerMeleeMiss}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerMeleeMissTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerMeleeCrit"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerMeleeCrit" value="{{audioTriggerMeleeCrit}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerMeleeCritTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerRangeHit"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerRangeHit" value="{{audioTriggerRangeHit}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerRangeHitTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerRangeMiss"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerRangeMiss" value="{{audioTriggerRangeMiss}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerRangeMissTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerRangeCrit"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerRangeCrit" value="{{audioTriggerRangeCrit}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerRangeCritTT"}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "SETTINGS.audioTriggerDeath"}}</label>
+                        <div class="form-fields">
+                            <input type="text" name="audioTriggerDeath" value="{{audioTriggerDeath}}"
+                                data-dtype="String" style="flex-basis: unset; flex-grow: 1;"><i
+                                class="file-picker fas fa-file-import fa-fw"></i>
+                        </div>
+                        <p class="notes">{{localize "SETTINGS.audioTriggerDeathTT"}}</p>
+                    </div>
+                {{/if}}
+            </fieldset>
+
+        </fieldset>
+
+        <button type="submit" name="submit"><i class="fas fa-save"></i>{{localize "Submit"}}</button>
+    </div>
+</form>

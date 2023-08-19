@@ -1,0 +1,165 @@
+{{log "npc-sheet.hbs" this}}
+
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <div class="npc">
+
+    {{!-- Sheet Header --}}
+    <header class="npc-sheet-header flexrow">
+      <img id="drag-link" class="npc-profile-img" src="{{actor.img}}" data-edit="img" data-tooltip="{{actor.name}}"
+        height="64" width="64" />
+      {{#if game.user.isGM}}
+        <i data-tooltip="Clone NPC to Character" style="flex-basis: 15px;flex-grow: 0;margin-bottom:40px;"
+          class="clone-covert-actor fa-solid fa-dna"></i>
+      {{/if}}
+
+      <div class="npc-header-fields">
+        <div><input class="actorname" name="name" type="text" value="{{actor.name}}" placeholder="Name" /></div>
+      </div>
+    </header>
+    <div class="flexrow">
+      {{#if system.attributes.identified}}
+      {{else}}
+        <div class="flexrow" data-tooltip="Alias used when Actor not identified">
+          <label
+            style="flex-grow:0; margin-top:auto;margin-bottom:auto;margin-right:5px;">{{localize "ARS.alias"}}</label><input
+            style="flex-grow:2;" name="system.alias" type="text" value="{{system.alias}}" placeholder="Alias Name" />
+        </div>
+      {{/if}}
+      <div><input class="npc-identification" type="checkbox" name="system.attributes.identified"
+          {{ checked system.attributes.identified }} />{{localize "ARS.identified"}}</div>
+    </div>
+
+    <nav class="sheet-tabs" data-group="primary">
+      <div class="tab-items flexrow">
+
+        <a class="item tab-item" data-tab="main">
+          <div class="icon-text-container">
+            <i class="fas fa-dice-d20"></i>
+            <span>{{localize "ARS.tabs.main"}}</span>
+          </div>
+        </a>
+
+        <a class="item tab-item" data-tab="attributes">
+          <div class="icon-text-container">
+            <i class="fas fa-diagnoses"></i>
+            <span>{{localize "ARS.tabs.attributes"}}</span>
+          </div>
+        </a>
+
+        <a class="item tab-item" data-tab="combat">
+          <div class="icon-text-container">
+            <i class="fas fa-swords"></i>
+            <span>{{localize "ARS.tabs.combat"}}</span>
+          </div>
+        </a>
+
+        <a class="item tab-item" data-tab="items">
+          <div class="icon-text-container">
+            <i class="fas fa-backpack"></i>
+            <span>{{localize "ARS.tabs.items"}}</span>
+          </div>
+        </a>
+
+        <a class="item tab-item" data-tab="proficiencies">
+          <div class="icon-text-container">
+            <i class="fas fa-fist-raised"></i>
+            <span>{{localize "ARS.tabs.proficiencies"}}</span>
+          </div>
+        </a>
+
+        <a class="item tab-item" data-tab="details">
+          <div class="icon-text-container">
+            <i class="fas fa-search"></i>
+            <span>{{localize "ARS.tabs.details"}}</span>
+          </div>
+        </a>
+
+        <a class="item tab-item" data-tab="description">
+          <div class="icon-text-container">
+            <i class="fas fa-file-alt"></i>
+            <span>{{localize "ARS.tabs.description"}}</span>
+          </div>
+        </a>
+
+      </div>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+      {{!-- Main --}}
+      <div class="tab main" data-group="primary" data-tab="main">
+        <table>
+          <tr>
+            <td>
+              <div>
+                {{> "systems/ars/templates/actor/parts/npc-stat-block.hbs"}}
+              </div>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+
+      {{!-- Attributes --}}
+      <div class="tab attributes" data-group="primary" data-tab="attributes">
+        <div class="ability-save-grid">
+          {{!-- ability scores --}}
+          {{> "systems/ars/templates/actor/parts/abilityScore-block.hbs"}}
+
+          {{!-- saves --}}
+          {{> "systems/ars/templates/actor/parts/save-block.hbs"}}
+
+        </div>
+      </div>
+
+      {{!-- Combat --}}
+      <div class="tab combat" data-group="primary" data-tab="combat">
+        {{> "systems/ars/templates/actor/tabs/tab-combat.hbs" }}
+      </div>
+
+
+      {{!-- Gear/Owned Items Tab --}}
+      <div class="tab items" data-group="primary" data-tab="items">
+        <div class="gear-block">
+          {{> "systems/ars/templates/actor/parts/currency-block.hbs" }}
+          {{> "systems/ars/templates/actor/parts/inventoryList-Sorted-block.hbs"}}
+        </div>
+      </div>
+
+      {{!-- Proficiencies Tab --}}
+      <div class="tab proficiencies" data-group="primary" data-tab="proficiencies">
+        <div class="proficiencies-block">
+          {{> "systems/ars/templates/actor/parts/itemsByTypeList-block.hbs" itemsByTypeList=config.academicTypes}}
+        </div>
+        {{!-- skills --}}
+        {{!-- {{#if actor.skills}} --}}
+        <div class="skill-block">
+          {{> "systems/ars/templates/actor/parts/skills-block.hbs"}}
+        </div>
+        {{!-- {{/if}} --}}
+      </div>
+
+      {{!-- Details tab --}}
+      <div class="tab details" data-group="primary" data-tab="details">
+        <fieldset>
+          <legend>{{ localize "ARS.effects" }}</legend>
+          {{> "systems/ars/templates/effects/parts/active-effects.hbs"}}
+        </fieldset>
+
+        <div class="race-background-block">
+          {{> "systems/ars/templates/actor/parts/itemsByTypeList-block.hbs" itemsByTypeList=config.detailsItemTypes}}
+        </div>
+
+        {{> "systems/ars/templates/actor/parts/classlist-block.hbs"}}
+        {{> "systems/ars/templates/actor/parts/character-general-block.hbs"}}
+      </div>
+
+      {{!-- description tab --}}
+      <div class="tab description" data-group="primary" data-tab="description">
+        <label>{{ localize "ARS.npcdescription" }}</label>
+        {{> "systems/ars/templates/actor/parts/description.hbs"}}
+      </div>
+    </section>
+
+  </div>
+</form>

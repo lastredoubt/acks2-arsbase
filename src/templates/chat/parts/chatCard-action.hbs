@@ -1,0 +1,25 @@
+<div class="sheet-card" style="background: rgb(240, 239, 209);">
+
+    {{!-- {{log "DEBUG chatCard-action.hbs message-->" message}}
+    {{log "DEBUG chatCard-action.hbs THIS-->" this}}
+    {{log "DEBUG chatCard-action.hbs config-->" config}}
+    {{log "DEBUG chatCard-action.hbs data-->" data}}
+    {{log "DEBUG chatCard-action.hbs actions-->" actions}}
+    {{log "DEBUG chatCard-action.hbs actionGroup-->" actionGroup}}
+    {{log "DEBUG chatCard-action.hbs actionGroupData-->" actionGroupData}} --}}
+
+    <div class="action-card item">
+        <div class="non-owner-only-view">
+            {{localize "ARS.unknownAction"}}
+        </div>
+        <div class="owner-only-view">
+            <div class="action-name" data-type="item" data-id="{{item.id}}">
+                <div class="secure-name">{{#if item.name}}{{item.name}}{{/if}}</div>
+            </div>
+            <div class="card-buttons chatCard-action">
+                {{> "systems/ars/templates/chat/parts/chatCard-actions-block.hbs" config=system.config }}
+            </div>
+        </div>
+    </div>
+</div>
+</div>

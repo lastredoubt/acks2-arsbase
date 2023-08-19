@@ -1,0 +1,495 @@
+{{log "class-sheet.hbs" this}}
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="item item-sheet">
+
+        {{> "systems/ars/templates/item/parts/item-header.hbs"}}
+        {{!-- 
+        {{log "class-sheet, actor---->" actor}} 
+        {{log "class-sheet, item---->" item}} 
+        {{log "class-sheet, data---->" data}} 
+        {{log "class-sheet, this---->" this}} 
+        {{log "class-sheet, isGM---->" isGM}}    --}}
+
+
+        <nav class="sheet-tabs" data-group="primary">
+            <div class="tab-items flexrow">
+                <a class="item" data-tab="main">Main</a>
+                <a class="item" data-tab="advancement">Advancement</a>
+                <a class="item" data-tab="abilities">Abilities</a>
+                <a class="item" data-tab="description">Description</a>
+                {{#if item.system.itemList.length}}
+                    <a class="item" data-tab="contents">{{localize "ARS.contents"}}</a>
+                {{/if}}
+            </div>
+        </nav>
+
+        <section class="sheet-body">
+            {{!-- Main Tab --}}
+            <div class="tab grouping-border" data-group="primary" data-tab="main">
+                {{#if item.isOwned}}
+                    <div class="item-titles">
+                        <div class="item-subheader flexrow flex-text-center">
+                            <div style="flex: 0 0 50px;" class="class-active checkbox">Active</div>
+                            <div style="flex: 0 0 100px;" class="class-bonus-xp">XP Bonus</div>
+                            <div style="flex-grow: 2;" class="class-earned-xp">XP Earned</div>
+                        </div>
+                    </div>
+                    <div class="flexrow">
+                        <input style="flex: 0 0 50px;margin:3px 0px;" type="checkbox" name="system.active"
+                            data-tooltip="{{ localize "ARS.class.toggleactive" }}" {{ checked system.active }} />
+                        <div style="flex: 0 0 100px;" class="flex-text-center"
+                            data-tooltip="Bonus percent XP earned when experience applied"><input name="system.xpbonus"
+                                type="number" value="{{system.xpbonus}}" {{#if isGM}}{{else}}readonly{{/if}} /></div>
+                        <div style="flex-grow: 2;" class="flex-text-center"><input name="system.xp" type="number"
+                                value="{{system.xp}}" {{#if isGM}}{{else}}readonly{{/if}} /></div>
+                    </div>
+
+                    <div class="item-titles">
+                        <div class="item-header" align="center">Advancement</div>
+                    </div>
+                    <div class="item-titles">
+                        <div class="item-subheader flexrow text-trunc flex-text-center">
+                            <div class="class-level">Level</div>
+                            <div class="class-hprolled">HP</div>
+                        </div>
+                    </div>
+                    <div class="class-advancement-header">
+                        {{#each item.system.advancement as |advance index| }}
+                            <li class="flexrow" data-index={{index}}>
+                                <div class="class-level flex-text-center">
+                                    <input name="system.advancement.{{index}}.level" type="number"
+                                        value="{{advance.level}}" {{#unless ../isGM}}readonly{{/unless}} />
+                                </div>
+                                <div class="class-hprolled flex-text-center">
+                                    <input name="system.advancement.{{index}}.hp" type="number" value="{{advance.hp}}"
+                                        {{#unless ../isGM}}readonly{{/unless}} />
+                                </div>
+                            </li>
+                        {{/each}}
+                    </div>
+                {{/if}}
+
+                <div class="item-titles">
+                    <div class="item-header" align="center">Proficiencies</div>
+                </div>
+                <div class="item-titles">
+                    <div class="item-subheader flexrow flex-text-center">
+                        <div class="class-weaponprofs-start text-trunc" data-tooltip="Non-proficiency penalty">Penalty
+                        </div>
+                        <div class="class-weaponprofs-start text-trunc">Initial Weapon</div>
+                        <div class="class-weaponprofs-start text-trunc">Gained Weapon</div>
+                    </div>
+                </div>
+                <li class="flexrow">
+                    <div class="class-weaponprofs-start">
+                        <input name="system.proficiencies.penalty" type="text" value="{{system.proficiencies.penalty}}"
+                            data-dtype="Number" />
+                    </div>
+                    <div class="class-weaponprofs-start">
+                        <input name="system.proficiencies.weapon.starting" type="text"
+                            value="{{system.proficiencies.weapon.starting}}" data-dtype="Number" />
+                    </div>
+                    <div class="class-weaponprofs-start">
+                        <input name="system.proficiencies.weapon.earnLevel" type="text"
+                            value="{{system.proficiencies.weapon.earnLevel}}" data-dtype="Number" />
+                    </div>
+                </li>
+
+
+                <div class="item-titles">
+                    <div class="item-subheader flexrow flex-text-center">
+                        <div class="class-weaponprofs-start text-trunc">Starting Non-Weapon</div>
+                        <div class="class-weaponprofs-start text-trunc">Gained Non-Weapon</div>
+                    </div>
+                </div>
+
+                <li class="flexrow">
+                    <div class="class-weaponprofs-start">
+                        <input name="system.proficiencies.skill.starting" type="text"
+                            value="{{system.proficiencies.skill.starting}}" data-dtype="Number" />
+                    </div>
+                    <div class="class-weaponprofs-start">
+                        <input name="system.proficiencies.skill.earnLevel" type="text"
+                            value="{{system.proficiencies.skill.earnLevel}}" data-dtype="Number" />
+                    </div>
+                </li>
+
+                <div class="item-titles">
+                    <div class="class-rank-header">
+                        <div class="item-header" align="center">Calculations</div>
+                    </div>
+                    <div class="item-subheader flexrow flex-text-center">
+                        <div class="flex2 class-weaponprofs-start text-trunc">AC</div>
+                        <div class="flex2 class-weaponprofs-start text-trunc">HP</div>
+                        <div class="flexshrink1 class-weaponprofs-start text-trunc"
+                            data-tooltip="Last level to apply constitution bonuses in hitpoint calculations">Last HD
+                        </div>
+                        <div class="flexshrink1 class-weaponprofs-start text-trunc"
+                            data-tooltip="Use warrior style constitution bonuses">Bonus HP</div>
+                        <div class="flexshrink1 class-weaponprofs-start text-trunc"
+                            data-tooltip="Disable wisdom bonus spell slots for higher wisdom">No Wisdom</div>
+                    </div>
+                </div>
+
+                <div class="class-rank-header">
+                    <li class="flexrow ">
+                        <div class="flex2 class-features-dex">
+                            <input name="system.features.acDexFormula"
+                                data-tooltip="Formula for dexterity defensive application" type="text"
+                                value="{{system.features.acDexFormula}}" />
+                        </div>
+                        <div class="flex2 class-features-con">
+                            <input name="system.features.hpConFormula"
+                                data-tooltip="Formula used instead of standard bonus rule" type="text"
+                                value="{{system.features.hpConFormula}}" />
+                        </div>
+                        <div class="flexshrink1 class-features-lasthd">
+                            <input name="system.features.lasthitdice" type="text"
+                                value="{{system.features.lasthitdice}}" data-dtype="Number" />
+                        </div>
+                        <div class="flexshrink1 class-features-bonuscon" style="text-align: center;">
+                            <input type="checkbox" name="system.features.bonuscon"
+                                {{ checked system.features.bonuscon }} />
+                        </div>
+                        <div class="flexshrink1 class-features-bonuswis" style="text-align: center;">
+                            <input type="checkbox" name="system.features.wisSpellBonusDisabled"
+                                {{ checked system.features.wisSpellBonusDisabled }} />
+                        </div>
+                    </li>
+                </div>
+
+                <div class="item-titles">
+                    <div class="class-rank-header">
+                        <div class="item-header" data-tooltip="Typically used for priest and/or specialty priests"
+                            align="center">Focuses</div>
+                    </div>
+                    <div class="item-subheader flexrow flex-text-center">
+                        <div class="class-focus text-trunc">Major</div>
+                        <div class="class-focus text-trunc">Minor</div>
+                    </div>
+                </div>
+                <div class="class-rank-header">
+                    <li class="flexrow ">
+                        <div class="class-features-major">
+                            <input name="system.features.focus.major" type="text"
+                                value="{{system.features.focus.major}}" />
+                        </div>
+                        <div class="class-features-minor">
+                            <input name="system.features.focus.minor" type="text"
+                                value="{{system.features.focus.minor}}" />
+                        </div>
+                    </li>
+                </div>
+
+                {{#if (or (eq @root.config.settings.systemVariant '1') (eq @root.config.settings.systemVariant '0'))}}
+                    <div class="class-attack-matrix">
+                        <div class="item-titles">
+                            <div class="class-rank-header">
+                                <div class="item-header" data-tooltip="Matrix Tables" align="center">Attack Matrix</div>
+                            </div>
+                            <div class="item-subheader flexrow flex-text-center">
+                                <div class="class-focus text-trunc">Table Selection</div>
+                            </div>
+                        </div>
+                        <div class="class-rank-header">
+                            <li class="flexrow ">
+                                <div class="class-attack-matrix-select">
+                                    <select name="matrixTable">
+                                        {{#select system.matrixTable}}
+                                            <option value="">{{ localize "None" }}</option>
+                                            {{#each (lookup @root.config.matrix @root.config.settings.systemVariant) as |value key|}}
+                                                <option value="{{key}}">{{capfirst (localize key)}}</option>
+                                            {{/each}}
+                                        {{/select}}
+                                    </select>
+                                </div>
+                            </li>
+
+                            {{#if item.system.matrixTable}}
+                                <div class="flexcol">
+                                    <div class="flexcol">
+                                        <span align="center"><b>AC</b></span>
+                                        <div style="font-weight:bolder" class="flexrow">
+                                            <div></div>
+                                            <div>-10</div>
+                                            <div>-9</div>
+                                            <div>-8</div>
+                                            <div>-7</div>
+                                            <div>-6</div>
+                                            <div>-5</div>
+                                            <div>-4</div>
+                                            <div>-3</div>
+                                            <div>-2</div>
+                                            <div>-1</div>
+                                            <div>0</div>
+                                            <div>1</div>
+                                            <div>2</div>
+                                            <div>3</div>
+                                            <div>4</div>
+                                            <div>5</div>
+                                            <div>6</div>
+                                            <div>7</div>
+                                            <div>8</div>
+                                            <div>9</div>
+                                            <div>10</div>
+                                        </div>
+                                        <div class="flexrow">
+                                            <div style="flex-grow:0;font-size:0.75em"><b>LVL</b></div>
+                                        </div>
+                                        {{#each (lookup (lookup @root.config.matrix @root.config.settings.systemVariant) @root.item.system.matrixTable)}}
+                                            <div class="flexrow">
+                                                <div><b>{{@key}}</b></div>
+                                                {{#each this }}
+                                                    <div>{{this}}</div>
+                                                {{/each}}
+                                            </div>
+                                        {{/each}}
+                                        <div class="flexrow">
+                                            <span align="center"><b>Roll</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+            {{!-- end of main tab --}}
+
+
+            {{!-- Advancement --}}
+            <div class="tab" data-group="primary" data-tab="advancement">
+                <div class="item-titles">
+                    <div class="item-header" align="center">Advancement
+                        <a class="rank-controls create-rank" data-tooltip="{{ localize "ARS.class.addrank" }}"
+                            data-action="create"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <div class="item-subheader class-advancement flexrow text-trunc flex-text-center">
+                        <div class="class-level text-trunc">Level</div>
+                        <div class="class-thaco text-trunc">THACO</div>
+                        <div class="class-xp text-trunc">XP Needed</div>
+                        <div class="class-hdformula text-trunc">HD</div>
+                        <div class="class-move  text-trunc">Move</div>
+                        <div class="class-ac text-trunc">AC</div>
+                        <div class="class-turn text-trunc">Turn Rank</div>
+                        <div class="class-title text-trunc">Title</div>
+                        <div class="class-remove-rank-control short-field"></div>
+                    </div>
+                </div>
+                <div class="class-rank-header">
+                    {{#each item.system.ranks as |rank index| }}
+                        <li class="flexrow" data-index={{index}}>
+                            <div class="class-level">
+                                <input name="system.ranks.{{index}}.level" type="text" value="{{rank.level}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-thaco">
+                                <input name="system.ranks.{{index}}.thaco" type="text" value="{{rank.thaco}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-xp">
+                                <input name="system.ranks.{{index}}.xp" type="text" value="{{rank.xp}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-hdformula">
+                                <input name="system.ranks.{{index}}.hdformula" type="text" value="{{rank.hdformula}}" />
+                            </div>
+                            <div class="class-move">
+                                <input name="system.ranks.{{index}}.move" type="text" value="{{rank.move}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-ac">
+                                <input name="system.ranks.{{index}}.ac" type="text" value="{{rank.ac}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-turn">
+                                <input name="system.ranks.{{index}}.turnLevel" type="text" value="{{rank.turnLevel}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-title">
+                                <input name="system.ranks.{{index}}.title" type="text" value="{{rank.title}}" />
+                            </div>
+                            <div class="class-rank-remove short-field">
+                                <a class="rank-controls remove-rank"
+                                    data-tooltip="{{ localize "ARS.class.removerank" }}" data-action="remove"><i
+                                        class="fas fa-times"></i></a>
+                            </div>
+                        </li>
+                    {{/each}}
+                </div>
+
+                <div class="class-ranks-header item-titles">
+                    <div class="class-rank-header">
+                        <div class="item-header " align="center">Saves</div>
+                    </div>
+                    <div class="item-subheader flexrow text-trunc flex-text-center">
+                        <div class="class-level">Level</div>
+                        <div class="class-paralyzation text-trunc">{{localize "ARS.saveTypes.paralyzation"}}</div>
+                        <div class="class-poison text-trunc">{{localize "ARS.saveTypes.poison"}}</div>
+                        <div class="class-death text-trunc">{{localize "ARS.saveTypes.death"}}</div>
+                        <div class="class-rod text-trunc">{{localize "ARS.saveTypes.rod"}}</div>
+                        <div class="class-staff text-trunc">{{localize "ARS.saveTypes.staff"}}</div>
+                        <div class="class-wand text-trunc">{{localize "ARS.saveTypes.wand"}}</div>
+                        <div class="class-petrification text-trunc">{{localize "ARS.saveTypes.petrification"}}</div>
+                        <div class="class-polymorph text-trunc">{{localize "ARS.saveTypes.polymorph"}}</div>
+                        <div class="class-breath text-trunc">{{localize "ARS.saveTypes.breath"}}</div>
+                        <div class="class-spell text-trunc">{{localize "ARS.saveTypes.spell"}}</div>
+                    </div>
+                </div>
+                <div class="class-rank-header">
+                    {{#each item.system.ranks as |rank index| }}
+                        <li class="flexrow" data-index={{index}}>
+                            <div class="class-level">
+                                <label>{{rank.level}}</label>
+                            </div>
+                            <div class="class-paralyzation">
+                                <input name="system.ranks.{{index}}.paralyzation" type="text"
+                                    value="{{rank.paralyzation}}" data-dtype="Number" />
+                            </div>
+                            <div class="class-poison">
+                                <input name="system.ranks.{{index}}.poison" type="text" value="{{rank.poison}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-death">
+                                <input name="system.ranks.{{index}}.death" type="text" value="{{rank.death}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-rod">
+                                <input name="system.ranks.{{index}}.rod" type="text" value="{{rank.rod}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-staff">
+                                <input name="system.ranks.{{index}}.staff" type="text" value="{{rank.staff}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-wand">
+                                <input name="system.ranks.{{index}}.wand" type="text" value="{{rank.wand}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-petrification">
+                                <input name="system.ranks.{{index}}.petrification" type="text"
+                                    value="{{rank.petrification}}" data-dtype="Number" />
+                            </div>
+                            <div class="class-polymorph">
+                                <input name="system.ranks.{{index}}.polymorph" type="text" value="{{rank.polymorph}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-breath">
+                                <input name="system.ranks.{{index}}.breath" type="text" value="{{rank.breath}}"
+                                    data-dtype="Number" />
+                            </div>
+                            <div class="class-spell">
+                                <input name="system.ranks.{{index}}.spell" type="text" value="{{rank.spell}}"
+                                    data-dtype="Number" />
+                            </div>
+                        </li>
+                    {{/each}}
+                </div>
+
+                <div class="class-ranks-header item-titles">
+                    <div class="class-rank-header">
+                        <div class="item-header" align="center">Arcane Spell Slots</div>
+                    </div>
+                    <div class="item-subheader flexrow text-trunc flex-text-center">
+                        <div class="class-level">Level</div>
+                        <div class="class-casterlevel  text-trunc">Caster Level</div>
+                        <div class="class-spell-level0">0</div>
+                        <div class="class-spell-level1">1</div>
+                        <div class="class-spell-level2">2</div>
+                        <div class="class-spell-level3">3</div>
+                        <div class="class-spell-level4">4</div>
+                        <div class="class-spell-level5">5</div>
+                        <div class="class-spell-level6">6</div>
+                        <div class="class-spell-level7">7</div>
+                        <div class="class-spell-level8">8</div>
+                        <div class="class-spell-level9">9</div>
+                    </div>
+                </div>
+                <div class="class-rank-header">
+                    {{#each item.system.ranks as |rank index| }}
+                        <li class="flexrow">
+                            <div class="class-level">
+                                <label>{{rank.level}}</label>
+                            </div>
+
+                            <div class="class-spell-casterlevel-arcane">
+                                <input name="system.ranks.{{index}}.casterlevel.arcane" type="text"
+                                    value="{{rank.casterlevel.arcane}}" data-dtype="Number" />
+                            </div>
+                            {{#each rank.arcane as |arcaneRank aindex|}}
+                                <div class="class-spell-levelx">
+                                    <input name="system.ranks.{{index}}.arcane.{{aindex}}" type="text"
+                                        value="{{arcaneRank}}" data-dtype="Number" />
+                                </div>
+                            {{/each}}
+                        </li>
+                    {{/each}}
+                </div>
+
+                <div class="class-ranks-header item-titles">
+                    <div class="class-rank-header">
+                        <div class="item-header" align="center">Divine Spell Slots</div>
+                    </div>
+                    <div class="item-subheader flexrow text-trunc flex-text-center">
+                        <div class="class-level">Level</div>
+                        <div class="class-casterlevel  text-trunc">Caster Level</div>
+                        <div class="class-spell-level0">0</div>
+                        <div class="class-spell-level1">1</div>
+                        <div class="class-spell-level2">2</div>
+                        <div class="class-spell-level3">3</div>
+                        <div class="class-spell-level4">4</div>
+                        <div class="class-spell-level5">5</div>
+                        <div class="class-spell-level6">6</div>
+                        <div class="class-spell-level7">7</div>
+                    </div>
+                </div>
+                <div class="class-rank-header">
+                    {{#each item.system.ranks as |rank index| }}
+                        <li class="flexrow">
+                            <div class="class-level">
+                                <label>{{rank.level}}</label>
+                            </div>
+                            <div class="class-spell-casterlevel-divine">
+                                <input name="system.ranks.{{index}}.casterlevel.divine" type="text"
+                                    value="{{rank.casterlevel.divine}}" data-dtype="Number" />
+                            </div>
+                            {{#each rank.divine as |divineRank aindex|}}
+                                <div class="class-spell-levelx">
+                                    <input name="system.ranks.{{index}}.divine.{{aindex}}" type="text"
+                                        value="{{divineRank}}" data-dtype="Number" />
+                                </div>
+                            {{/each}}
+
+                        </li>
+                    {{/each}}
+                </div>
+            </div>
+            {{!-- end advancement tab --}}
+
+            {{!-- abilities tab --}}
+            <div class="tab" data-group="primary" data-tab="abilities">
+                <div class="abilities-block">
+                    {{> "systems/ars/templates/item/parts/subitem-ability-block.hbs"}}
+                </div>
+            </div>
+
+            {{!-- description tab --}}
+            <div class="tab" data-group="primary" data-tab="description">
+                <div class="class-item-description">
+                    {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+                </div>
+            </div>
+            {{!-- end description tab --}}
+
+
+            {{!-- contents tab --}}
+            <div class="tab contents" data-group="primary" data-tab="contents">
+                <div class="contents-block">
+                    {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+                </div>
+            </div>
+
+        </section>
+    </div>
+    {{!-- end item sheet --}}
+</form>

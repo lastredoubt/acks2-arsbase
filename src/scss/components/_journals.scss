@@ -1,0 +1,49 @@
+// CSS for Journal entries
+
+.journal-sheet {
+}
+
+article.journal-entry-page, .editor {
+    background: white;
+
+    box-sizing: content-box;
+    border-width: 5px;
+    border-style: inset;
+    border-image: linear-gradient(to right, #ad9a64d0, #f3c64b52);
+    border-image-slice: 1;
+    padding: 5px;
+    // margin-left: 115px;
+    // margin-right: 15px;
+    // margin: 20px;
+
+    section.journal-page-content, .editor-content {
+    // 	background: url(ui/textured_paper.png) repeat;
+    margin: 20px;
+
+    
+        img {
+            border: 5px groove;
+        }
+        h1 {
+            border-bottom: 3px double black;
+            color: rgb(204, 3, 3);
+        }
+        h2 {
+            border-bottom: 3px double black;
+            color: rgb(146, 3, 3);
+        }
+        h3 {
+            color: rgb(7, 118, 245);
+            // color: rgb(138, 7, 245);
+            // float: left;
+            // margin-right: 15px;
+        }
+        h4 {
+            color: rgb(7, 118, 245);
+            // color: rgb(104, 1, 145);
+            // float: left;
+            // margin-right: 15px;
+        }
+    }
+    
+}

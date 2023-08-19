@@ -1,0 +1,13 @@
+{{!-- {{log "chatCard-actions-block.hbs this" this}} --}}
+
+{{!-- {{#each actionGroups as |actionGroup index|}} --}}
+
+{{!-- during a memorization slot cast we want to show every action even if different groups --}}
+{{#if slotCast}}
+    {{#each actionGroups as |actionGroup index|}}
+        {{>"systems/ars/templates/chat/parts/chatCard-action-block-entry.hbs" actionGroupData=actionGroup}}
+    {{/each}}
+{{else}}
+    {{>"systems/ars/templates/chat/parts/chatCard-action-block-entry.hbs"}}
+{{/if}}
+{{!-- {{/each}} --}}

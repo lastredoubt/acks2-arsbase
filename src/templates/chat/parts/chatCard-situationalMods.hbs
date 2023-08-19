@@ -1,0 +1,19 @@
+<div class="combat-situationals flexrow">
+    {{#if hasMelee}}
+    <div class="attack-left">
+        <div class="attack-mod" >
+            <div class="situation" data-tooltip="Situational attack modifier">ATK</div>
+            <input name="attack-situation" type="text" value="0" type="number" data-dtype="number" />
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if hasDamage}}
+    <div class="damage-right">
+        <div class="damage-mod" >
+            <div class="situation" data-tooltip="Situational damage modifier">DMG</div>
+            <input name="damage-situation" type="text" value="0" type="number" data-dtype="number" />
+        </div>
+    </div>
+    {{/if}}
+</div>

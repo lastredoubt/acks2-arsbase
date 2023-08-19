@@ -1,0 +1,48 @@
+<form class="npc-sheet dead" autocomplete="off">
+
+    <div class="side-bar flexrow">
+        <img class="actor-lootable-portrait" src="{{actor.img}}" data-edit="img" height="64" width="64" />
+        <div class="actorname">Looting {{actor.name}}</div>
+    </div>
+
+    <div class="npc-body lootable">
+        {{!-- start --}}
+
+        <div class="grouping-border">
+            {{log "npc-loot-sheet.hbs this" this}}
+
+            {{> "systems/ars/templates/actor/parts/inventoryList-Sorted-block.hbs" looting=true}}
+        </div>
+
+        <div class="grouping-border">
+            <div class="item-titles flexrow">
+                <div class="item-header" style="text-align: center;">Coins</div>
+                {{!-- <div class="button-box share-looted-coins" data-tooltip="Share all remaining coins with party">Split<i class="fas fa-balance-scale"></i></div> --}}
+            </div>
+            <div class="currency flexrow">
+                {{#each system.currency as |value currency|}}
+                    <div class="grouping-border">
+                        <li class="coin-loot flexrow" data-loot="true" data-source="{{actor.id}}" data-count="{{value}}"
+                            data-currency="{{currency}}">
+                            <div class="coin-value" style="flex-grow: 3;">{{value}}</div>
+                            <div class="control"><i class="fas fa-coins"></i></div>
+                            <div class="coin-type" style="font-weight: bold;text-align:center;">{{allcaps currency}}
+                            </div>
+                        </li>
+                    </div>
+                {{/each}}
+            </div>
+            {{#if @root.game.user.isGM}}
+            {{else}}
+                <div class="button-box rollable share-looted-coins" data-tooltip="Share all remaining coins with party">
+                    <i class="fas fa-balance-scale"></i> {{localize "ARS.currency.split" }}
+                </div>
+            {{/if}}
+        </div>
+
+        {{!-- end --}}
+
+
+
+    </div>
+</form>

@@ -1,0 +1,50 @@
+{{#if actor.classes}}
+    {{!-- <fieldset class="border-top">
+        <legend>{{ localize "ARS.class.classTitle" }} </legend> --}}
+
+    <div class="general-header">{{ localize "ARS.class.classTitle" }}</div>
+    <div class="class-list">
+        <div style="text-align: center;" class="general-subheader flexrow">
+            <div style="flex: 0 0 24px;" class="short-field"></div>
+            <div class="class-active">Active</div>
+            <div class="class-name">Name</div>
+            <div class="class-level">Level</div>
+            <div class="class-xp" data-tooltip="{{localize "ARS.exp"}}">Earned / Next</div>
+            {{!-- <div class="class-xp">Next</div> --}}
+            <div class="class-controls"></div>
+            <div class="item-controls"></div>
+        </div>
+        {{#each actor.classes as |item id|}}
+            {{!-- {{log "actor/classlist-block.hbs item----------->" item}} --}}
+            <li style="align-items:center;text-align: center;" class="class item flexrow" data-id="{{item.id}}">
+
+                <div class="short-field"><img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24" />
+                </div>
+                <div class="class-active">
+                    {{#if item.system.active}}Yes{{else}}No{{/if}}
+                </div>
+                <div class="class-name">{{item.name}}</div>
+                <div class="class-advancement-level">{{item.classDetails.level}}</div>
+                <div class="class-level-exp">{{item.system.xp}} / {{item.classDetails.neededxp}}</div>
+                {{!-- <div class="class-level-exp">{{item.classDetails.neededxp}}</div> --}}
+                <div class="class-controls flex-text-center flexrow">
+                    <div style="border: 1px outset;" data-tooltip="{{ localize "ARS.class.addlevel" }}"
+                        class="class-control class-addlevel" data-action="addlevel">
+                        <a><i class="fas fa-plus"></i></a>
+                    </div>
+                    <div style="border: 1px outset;" data-tooltip="{{ localize "ARS.class.removelevel" }}"
+                        class="class-control class-removelevel" data-action="removelevel">
+                        <a><i class="fas fa-minus"></i></a>
+                    </div>
+                </div>
+                <div class="item-controls">
+                    <a class="item-control item-edit" data-tooltip="{{ localize "ARS.class.edit" }}"><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" data-tooltip="{{ localize "ARS.class.delete" }}"><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </li>
+        {{/each}}
+    </div>
+    {{!-- </fieldset> --}}
+{{/if}}

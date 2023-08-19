@@ -1,0 +1,34 @@
+{{log "dialog-get-attack.hbs" this}}
+<form>
+
+  {{#if flavor}}<b>{{{flavor}}}</b>{{/if}}
+
+  <div class="flexrow">
+    <div class="flexrow">
+      <div class="dialog-icon"><img src="icons/weapons/swords/swords-short.webp"
+          data-tooltip="{{localize "ARS.askattackmod"}}" /></div>
+      <div>{{localize "ARS.modifier"}}</div>
+    </div>
+
+    <div>
+      <input name="modifier" type="text" value="{{#if defmod}}{{defmod}}{{else}}{{/if}}" data-dtype="Number" />
+    </div>
+  </div>
+
+  <div class="flexrow">
+
+    <div class="flexrow">
+      <div class="dialog-icon"><img src="icons/skills/targeting/crosshair-bars-yellow.webp"
+          data-tooltip="{{localize "ARS.combatSelections.acLocation"}}" /></div>
+      {{localize "ARS.combatSelections.acLocation"}}
+    </div>
+    <div>
+      <select name="acLocation">
+        {{selectOptions CONFIG.ARS.attackLocations selected=ac-location localize=true}}
+      </select>
+    </div>
+  </div>
+
+  {{> "systems/ars/templates/dialogs/parts/dialog-rollMode-selection.hbs" }}
+
+</form>

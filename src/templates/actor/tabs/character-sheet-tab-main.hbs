@@ -1,0 +1,43 @@
+<div class="flexcol">
+    <div class="flexrow">
+        <div><label>{{ localize "ARS.classname" }}</label></div>
+        <div class="resource">{{#if system.classname}}{{system.classname}}{{else}}No Class{{/if}}</div>
+        <div><label>{{ localize "ARS.race" }}</label></div>
+        <div class="resource">{{#if @root.actor.racename}}{{@root.actor.racename}}{{else}}No Race{{/if}}</div>
+    </div>
+    <div class="flexrow">
+        <div><label>{{ localize "ARS.alignment" }}</label></div>
+        <select class="resource selector" name="system.details.alignment">
+            {{#select system.details.alignment}}
+                {{#each config.alignmentTypes as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+        <div><label>{{ localize "ARS.background" }}</label></div>
+        <div class="resource">{{#if system.backgroundname}}{{system.backgroundname}}{{else}}No Background{{/if}}</div>
+    </div>
+
+    <div class="flexrow">
+        <div><label>{{ localize "ARS.size" }}</label></div>
+        <select class="resource selector" name="system.attributes.size">
+            {{#select system.attributes.size}}
+                {{#each config.sizeTypes as |name type|}}
+                    <option value="{{type}}">{{localize name}}</option>
+                {{/each}}
+            {{/select}}
+        </select>
+        <div></div>
+        <div style="flex-grow:2;"></div>
+    </div>
+
+
+</div>
+
+<div class="ability-save-grid">
+    {{!-- ability scores --}}
+    {{> "systems/ars/templates/actor/parts/abilityScore-block.hbs"}}
+
+    {{!-- saves --}}
+    {{> "systems/ars/templates/actor/parts/save-block.hbs"}}
+</div>

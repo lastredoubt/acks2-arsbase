@@ -1,0 +1,47 @@
+<div class="items-list effects-list">
+    {{#each effects as |section sid|}}
+        {{!-- <div {{#if section.effects.length}}class="effect-list-types"{{/if}}> --}}
+        {{!-- {{log "active-effects.hbs  section" section}}
+        {{log "active-effects.hbs  sid" sid}} --}}
+        <li class="general-subheader flexrow" data-effect-type="{{section.type}}">
+            <div style="flex-grow:2;" class="effect-name flexrow">{{localize section.label}}</div>
+            <div class="effect-source">Source</div>
+            <div class="effect-source">Duration</div>
+            <div class="item-controls effect-controls flexrow">
+                <a class="effect-control" data-action="create" data-tooltip='Create'> <i class="fas fa-plus"></i>Add</a>
+            </div>
+        </li>
+
+        <div class="item-list">
+            {{#each section.effects as |effect|}}
+
+                {{#if effect.isVisible}}
+                    {{!-- {{log "active-effects.hbs effect" effect}}
+            {{log "active-effects.hbs sourceName" effect.sourceName}} --}}
+
+                    <li class="item effect flexrow" data-effect-id="{{effect.id}}">
+                        <div class="item-name effect-name flexrow">
+                            <img class="item-image" src="{{effect.icon}}" />
+                            <div class="text-trunc">{{effect.name}}</div>
+                        </div>
+                        <div class="effect-source text-trunc">{{effect.sourceName}}</div>
+                        <div class="effect-source text-trunc">{{effect.duration.label}}</div>
+                        <div class="item-controls effect-controls flexrow">
+                            <a class="effect-control" data-action="toggle" data-tooltip='Toggle'>
+                                <i style="margin-right:5px;"
+                                    class="fas {{#if effect.disabled}}fa-toggle-off{{else}}fa-toggle-on{{/if}}"></i>
+                            </a>
+                            <a class="effect-control" data-action="edit" data-tooltip='Edit'>
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="effect-control" data-action="delete" data-tooltip='Delete'>
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </div>
+        {{!-- </div> --}}
+    {{/each}}
+</div>

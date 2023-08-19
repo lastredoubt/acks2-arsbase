@@ -1,0 +1,46 @@
+{{!-- {{log "memorization-block-mini.hbs actor" actor}}
+{{log "memorization-block-mini.hbs system" system}}
+{{log "memorization-block-mini.hbs hasSpellSlots" hasSpellSlots}} --}}
+
+<div class="mini-spells-list">
+    {{#if actor.hasSpellSlots}}
+    <div class="grouping-border">
+        <legend>{{localize "ARS.spells"}}</legend>
+        <div class="spells-list">
+            {{!-- <div class="mini-actions-buttons"> --}}
+                {{#each system.memorizations as |slotData spellType|}}
+                {{!-- {{log "memorization-block-mini.hbs slotData" slotData}} 
+                {{log "memorization-block-mini.hbs spellType" spellType}} --}}
+                    {{!-- <div class="actor-titles">
+                        <div class="item-header memorization-titles" style="background-color:white; text-align:center;height:50px">{{localize (concat "ARS.spellTypes." spellType)}}</div>
+                    </div> --}}
+                    <div class="hud-actions">
+                        <div class="mini-actions-buttons" style="--action-button-size: {{slotData.totalSlots}};">
+                            {{#each slotData.spellslots.value as |slotCount level| }}
+                                {{#if slotCount}}
+                                    {{!-- {{log "memorization-block-mini.hbs slotCount" slotCount}} --}}
+                                        {{#each (lookup slotData.memslots level) as | memslot slotindex|}}
+                                        {{!-- {{log "memorization-block-mini.hbs memslot" memslot}} --}}
+                                            {{#if memslot.cast}}
+                                            {{else}}
+                                                {{#if memslot.id}}
+                                                    <li class="mini-action item with-background-image memorization-slot flexrow"
+                                                        data-control-type="memorization" data-uuid="{{memslot.uuid}}" data-id="{{memslot.id}}" data-level="{{level}}"
+                                                        data-index="{{slotindex}}" data-type="{{spellType}}" data-owned="{{memslot.owned}}" data-tooltip="{{memslot.name}}" style="background-image: url('{{memslot.img}}')">
+                                                            <div class="mini-action-button action-name item-name rollable spellCard-roll" data-id="{{memslot.id}}" >
+                                                                <div class="item-name" >{{memslot.name}}</div>
+                                                            </div>
+                                                    </li>
+                                                {{/if}}
+                                            {{/if}}
+                                        {{/each}}
+                                {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/each}}
+            {{!-- </div> --}}
+        </div>    
+    </div>
+    {{/if}}
+</div>

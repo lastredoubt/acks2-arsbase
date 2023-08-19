@@ -1,0 +1,11 @@
+<form>
+  {{#if flavor}}<b>{{{flavor}}}</b>{{/if}}
+  <div class="flexrow">
+    <b>{{question}}</b>
+    <div>
+      <input name="modifier" type="text" value="{{#if defmod}}{{defmod}}{{else}}{{/if}}" min="{{min}}" max="{{max}}"
+        data-dtype="Number" />
+    </div>
+  </div>
+  {{> "systems/ars/templates/dialogs/parts/dialog-rollMode-selection.hbs" }}
+</form>

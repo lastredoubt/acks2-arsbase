@@ -1,0 +1,19 @@
+<div class="sheet-card" style="background: rgba(219, 192, 133, 0.74);">
+    {{!-- {{log "chatCard-action-effectApplied.hbs EFFECT" effect}}
+    {{log "chatCard-action-effectApplied.hbs sourceActor" sourceActor}}
+    {{log "chatCard-action-effectApplied.hbs targetActor" targetActor}}
+    {{log "chatCard-action-effectApplied.hbs targetToken" targetToken}} --}}
+
+    <div class="card-buttons action-effect-card item" data-source-actor-id="{{sourceActor.id}}"
+        data-target-token-id="{{targetToken.id}}" data-effect-id="{{effect.id}}">
+        <div class="action-image">
+            <img src="{{action.img}}" data-tooltip="{{action.name}}" width="48" height="48" />
+        </div>
+        <div class="action-description-applied">
+            {{{action.name}}} applied to <div style="display: inline" class="secure-name">{{targetToken.name}}</div> successfully.
+        </div>
+        <button class="undo-action" data-action="undo-action-effect">
+            {{localize "ARS.chat.undo"}} 
+        </button>
+    </div>
+</div>

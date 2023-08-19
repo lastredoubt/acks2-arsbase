@@ -1,0 +1,28 @@
+// Import utilities.
+@import 'utils/colors';
+@import 'utils/typography';
+@import 'utils/mixins';
+@import 'utils/variables';
+
+/* Global styles */
+@import 'global/general';
+@import 'global/window';
+@import 'global/grid';
+@import 'global/flex';
+
+/* Styles limited to ars sheets */
+// .ars {
+  @import 'components/actors';
+  @import 'components/actions';
+  @import 'components/dialog';
+  @import 'components/forms';
+  @import 'components/resource';
+  @import 'components/items';
+  @import 'components/npcs';
+  @import 'components/characters';
+  @import 'components/chatCard';
+  @import 'components/tables';
+  @import 'components/sidebar';
+  @import 'components/journals';
+  @import 'components/apps';
+// }

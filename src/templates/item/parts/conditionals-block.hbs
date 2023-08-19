@@ -1,0 +1,36 @@
+{{!-- {{#includes item.type 'item||armor||weapon||race||background||ability'}} --}}
+{{!-- conditionals  --}}
+{{!-- <fieldset> --}}
+{{!-- <legend>{{ localize "ARS.conditionals" }} <a class="item-conditionals-controls create-entry" data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></legend> --}}
+<div class="general-header">{{ localize "ARS.conditionals" }} <a class="item-conditionals-controls create-entry"
+        data-tooltip="{{localize "ARS.add" }}" data-action="create"><i class="fas fa-plus"></i></a></div>
+<div class="item-conditionals">
+    {{#if system.attributes.conditionals }}
+        <div class="flexrow">
+            <div>Key</div>
+            <div>Value</div>
+            <div class="short-field"></div>
+        </div>
+        {{#each system.attributes.conditionals as |property index|}}
+            <div class="">
+                <li class="flexrow" data-index={{index}}>
+                    <input type="text" name="system.attributes.conditionals.{{index}}.key" value="{{property.key}}"
+                        placeholder="{{localize "ARS.placeholder"}}" />
+
+                    <input type="text" name="system.attributes.conditionals.{{index}}.value" value="{{property.value}}"
+                        placeholder="{{localize "ARS.placeholder"}}" />
+
+                    <div class="short-field">
+                        <a class="item-conditionals-controls remove-conditional"
+                            data-tooltip="{{localize "ARS.remove" }}" data-action="remove"><i
+                                class="fas fa-trash-alt"></i></a>
+                    </div>
+                </li>
+            </div>
+        {{/each}}
+    {{else}}
+        <div style="text-align:center;">{{localize "ARS.none"}}</div>
+    {{/if}}
+</div>
+{{!-- </fieldset> --}}
+{{!-- {{/includes}} --}}

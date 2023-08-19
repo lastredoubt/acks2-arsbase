@@ -1,0 +1,105 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- {{log "proficiency-sheet, actor---->" actor}} 
+    {{log "proficiency-sheet, item---->" item}} 
+    {{log "proficiency-sheet, data---->" data}} 
+    {{log "proficiency-sheet, this---->" this}}  --}}
+
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" data-tooltip="{{item.name}}" />
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+        </div>
+    </header>
+
+
+    <nav class="sheet-tabs" data-group="primary">
+        <div class="tab-items flexrow">
+            <a class="item" data-tab="main">Main</a>
+            <a class="item" data-tab="conditionals">Conditionals</a>
+            {{!-- <a class="item" data-tab="effects">Effects</a> --}}
+            <a class="item" data-tab="description">Description</a>
+        </div>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        <div class="tab" data-group="primary" data-tab="main">
+            <div class="grouping-border">
+                <div class="item-titles">
+                    <div class="item-header">
+                        <div class="flexrow">
+                            <div class="short-field" data-tooltip="Proficiency Cost">$</div>
+                            <div class="">Hit</div>
+                            <div class="">Damage</div>
+                            <div class="" data-tooltip="Speedfactor">Speed</div>
+                            <div class="" data-tooltip="Number of attacks"># Attacks</div>
+                        </div>
+                    </div>
+                    <div class="flexrow">
+                        <div class="short-field"> <input type="number" name="system.cost" value="{{system.cost}}"
+                                data-dtype="Number" /> </div>
+                        <div class=""> <input type="text" name="system.hit" value="{{system.hit}}" /> </div>
+                        <div class=""> <input type="text" name="system.damage" value="{{system.damage}}" /> </div>
+                        <div class=""> <input type="number" name="system.speed" value="{{system.speed}}"
+                                data-dtype="Number" /> </div>
+                        <div class=""> <input type="text" name="system.attacks" value="{{system.attacks}}" /> </div>
+                    </div>
+                </div>
+                <div class="item-titles">
+                    <div class="item-header">
+                        <div class="flexrow">
+                            <div class="" data-tooltip="Select weapons this proficiency applies to">Applied To
+                                <a class="proficiency-controls create-proficiency"
+                                    data-tooltip="{{ localize "ARS.class.add" }}" data-action="create"><i
+                                        class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {{#each system.appliedto as |value index|}}
+                        <li class="flexrow" data-index="{{index}}">
+                            <select name="system.appliedto.{{index}}.id">
+                                {{#select value.id}}
+                                    <option value="">{{localize "ARS.none"}}</option>
+                                    {{#each ../actor.weapons as |item idx|}}
+                                        <option value="{{item.id}}">{{item.name}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+                            <div class="class-rank-remove short-field">
+                                <a class="proficiency-controls remove-appliedto"
+                                    data-tooltip="{{ localize "ARS.class.remove" }}" data-action="remove"><i
+                                        class="fas fa-minus"></i></a>
+                            </div>
+                        </li>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        {{!-- Conditionals Tab --}}
+        <div class="tab" data-group="primary" data-tab="conditionals">
+            <div class="grouping-border">
+                {{> "systems/ars/templates/item/parts/conditionals-block.hbs"}}
+            </div>
+        </div>
+
+        {{!-- Effects Tab --}}
+        {{!-- <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+            <div class="grouping-border">
+                {{> "systems/ars/templates/effects/parts/active-effects.hbs"}}
+            </div>            
+        </div>
+ --}}
+
+        {{!-- Description tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{!-- Description --}}
+            <div class="proficiency-description">
+                {{editor enrichedBiography target="system.description" button=true editable=editable}}
+            </div>
+        </div>
+
+    </section>
+</form>

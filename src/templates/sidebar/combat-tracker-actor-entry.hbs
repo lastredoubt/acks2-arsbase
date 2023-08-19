@@ -1,0 +1,72 @@
+{{!-- {{log "combat-tracker-actor-entry.hbs" this}} --}}
+{{!-- {{log "combat-tracker-actor-entry.hbs user" user}}
+{{log "combat-tracker-actor-entry.hbs turn" turn}}
+{{log "combat-tracker-actor-entry.hbs cturn" cturn}} --}}
+
+{{!-- {{log "combat-tracker-actor-entry.hbs this.combatant.token>>>" this.combatant.token}} --}}
+
+<li class="combatant actor directory-item flexrow {{this.css}}" data-combatant-id="{{this.id}}">
+    <img class="token-image" data-src="{{this.img}}" data-tooltip="{{this.name}}" />
+    <div class="token-name flexcol">
+
+        <h4
+            style="white-space: normal; overflow: visible;color:{{#if (eq this.combatant.token.disposition 1)}}greenyellow{{else if (eq this.combatant.token.disposition -1)}}orange{{else}}white{{/if}}">
+            {{this.name}}
+        </h4>
+
+        <div class="combatant-controls flexrow">
+
+            {{#if @root.user.isGM}}
+                <a class="combatant-control {{#if this.hidden}}active{{/if}}" data-tooltip="COMBAT.ToggleVis"
+                    data-control="toggleHidden"><i class="fas fa-eye-slash"></i></a>
+
+                <a class="combatant-control {{#if this.defeated}}active{{/if}}" data-tooltip="COMBAT.ToggleDead"
+                    data-control="toggleDefeated"><i class="fas fa-skull"></i></a>
+            {{/if}}
+            {{#if this.canPing}}
+                <a class="combatant-control" data-tooltip="COMBAT.PingCombatant" data-control="pingCombatant">
+                    <i class="fas fa-wifi"></i>
+                </a>
+                <a class="combatant-control" data-tooltip="{{localize 'ARS.COMBAT.targetCombatant'}}"
+                    data-control="targetCombatant">
+                    <i class="fa-solid fa-bullseye-arrow"
+                        style="color: {{#if this.combatant.token.object.isTargeted}}rgb(184, 87, 87){{else}}green{{/if}};"></i></a>
+            {{/if}}
+            {{#if this.owner}}
+                <a class="combatant-control {{#if this.combatant.flags.ars.initCasting}}active{{/if}}"
+                    data-tooltip="{{localize 'ARS.COMBAT.casting'}}" {{#if @root.user.isGM}}data-control="toggleCasting"
+                    {{/if}}><i class="fas fa-magic"></i></a>
+                {{#if this.active}}
+                    <a class="combatant-control" data-tooltip="{{localize 'ARS.COMBAT.delay'}}"
+                        data-control="delayTurn">
+                        <i class="fas fa-hourglass-end" style="color: white;"></i></a>
+                {{/if}}
+            {{/if}}
+
+
+            <div class="token-effects">
+                {{#each this.effects}}
+                    <img class="token-effect" src="{{this}}" />
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    {{#if this.hasResource}}
+        <div class="token-resource">
+            <span class="resource">{{this.resource}}</span>
+        </div>
+    {{/if}}
+
+    <div class="token-initiative">
+        {{#if this.hasRolled}}
+            {{#if this.owner}}
+                <span class="initiative">{{this.initiative}}</span>
+            {{else}}
+                <span class="initiative"><i class="fas fa-question"></i></span>
+            {{/if}}
+        {{else if this.owner}}
+            <a class="combatant-control roll" data-tooltip="COMBAT.InitiativeRoll" data-control="rollInitiative"></a>
+        {{/if}}
+    </div>
+</li>

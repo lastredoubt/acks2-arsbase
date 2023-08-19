@@ -1,0 +1,23 @@
+<div class="mini-weapon-list">
+    {{#if actor.weapons.length}}
+        <div class="grouping-border">
+            <legend>{{localize "ARS.weapons"}}</legend>
+            <div class="hud-actions">
+                <div class="mini-actions-buttons" style="--action-button-size: {{actor.weapons.length}};">
+                    {{#each actor.weapons as |item id|}}
+                        {{#if item.notAmmo}}
+                            <li class="mini-action item flexrow weapon-combat with-background-image"
+                                data-control-type="weapon" data-id="{{item.id}}" data-type="{{item.type}}"
+                                data-tooltip="{{item.name}}" style="background-image: url('{{item.img}}')">
+                                <div class="mini-action-button action-name rollable flexrow chatCard-roll"
+                                    data-id="{{item.id}}">
+                                    <div class="item-name">{{item.name}}</div>
+                                </div>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>

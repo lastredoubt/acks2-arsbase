@@ -1,0 +1,49 @@
+{{log "item-sheet.hbs" this}}
+<form class="{{cssClass}}" autocomplete="off">
+    {{!-- {{log "item-sheet.hbs, data----------->" data}}
+    {{log "item-sheet.hbs, item----------->" item}} --}}
+
+    {{> "systems/ars/templates/item/parts/item-header.hbs"}}
+
+    {{!-- Sheet Tab Navigation --}}
+    {{> "systems/ars/templates/item/parts/item-nav.hbs"}}
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+        </div>
+
+        {{!-- attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{> "systems/ars/templates/item/parts/item-attributes.hbs"}}
+        </div>
+
+        {{!-- ACtions Tab --}}
+        {{#if item.isIdentified}}
+            <div class="tab actions" data-group="primary" data-tab="actions">
+                {{> "systems/ars/templates/item/parts/actions-block-list.hbs"}}
+            </div>
+        {{/if}}
+
+        {{!-- Effects Tab --}}
+        {{#if item.isIdentified}}
+            <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+                <div class="grouping-border">
+                    {{> "systems/ars/templates/effects/parts/active-effects.hbs"}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{!-- contents tab --}}
+        <div class="tab contents" data-group="primary" data-tab="contents">
+            <div class="contents-block">
+                {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+            </div>
+        </div>
+
+
+    </section>
+</form>

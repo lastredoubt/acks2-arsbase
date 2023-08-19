@@ -1,0 +1,18 @@
+{{!-- {{log "actions-block-inventory.hbs actor" actor}}
+{{log "actions-block-inventory.hbs data" data}}
+{{log "actions-block-inventory.hbs actionList" actionList}} --}}
+{{!-- <fieldset class="border-top"> --}}
+{{!-- <legend>{{ localize "ARS.actions.actionsTitle" }}<a class="item-control action-controls action-create"
+            data-tooltip="{{ localize "ARS.actions.create" }}" data-action="create"><i class="fas fa-plus"></i></a>
+    </legend> --}}
+<div class="general-header">
+    {{ localize "ARS.actions.actionsTitle" }}<a class="item-control action-controls action-create"
+        data-tooltip="{{ localize "ARS.actions.create" }}" data-action="create"><i class="fas fa-plus"></i>
+</div>
+<div class="action-block">
+    <div class="actions">
+        {{> "systems/ars/templates/apps/parts/actions-block.hbs" actor=actor actions=system.actions actionList=system.actionList showActionHeader=true }}
+        {{> "systems/ars/templates/actor/parts/actions-block-inventory.hbs"}}
+    </div>
+</div>
+{{!-- </fieldset> --}}

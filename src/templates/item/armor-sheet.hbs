@@ -1,0 +1,112 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{> "systems/ars/templates/item/parts/item-header.hbs"}}
+
+    {{!-- Sheet Tab Navigation --}}
+    {{> "systems/ars/templates/item/parts/item-nav.hbs"}}
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+
+        <div class="tab" data-group="primary" data-tab="description">
+
+            <div class="armor-header">
+                <li class="armors-header flexrow">
+                    <div class="type-type">Type</div>
+                    <div class="armor-ac">AC</div>
+                    <div class="armor-mod">Modifier</div>
+                    {{#if (or (eq @root.config.settings.systemVariant '1') (eq @root.config.settings.systemVariant '0'))}}
+                        <div class="armor-bulk">Bulk</div>
+                    {{/if}}
+                    {{#if (eq @root.config.settings.systemVariant '2')}}
+                        {{#if @root.config.settings.useArmorDamage}}
+                            <div class="armor-dp">DP Max</div>
+                            <div class="armor-dp">DP Current</div>
+                        {{/if}}
+                    {{/if}}
+                </li>
+            </div>
+            {{!-- {{log "armor-sheet.hbs THIS" this}}
+            {{log "armor-sheet.hbs ITEM" item}}
+            {{log "armor-sheet.hbs DATA" data}} --}}
+            <div class="armors-list">
+                <li class="armors-list-data flexrow">
+                    <div class="type-type">
+                        <select class="selector" name="system.protection.type">
+                            {{#select system.protection.type}}
+                                {{#each config.armorTypes as |name type|}}
+                                    <option value="{{type}}">{{localize name}}</option>
+                                {{/each}}
+                            {{/select}}
+                        </select>
+
+                    </div>
+                    <div class="type-ac">
+                        <input name="system.protection.ac" type="text" value="{{system.protection.ac}}"
+                            data-dtype="Number" />
+                    </div>
+                    <div class="type-mod">
+                        <input name="system.protection.modifier" type="text" value="{{system.protection.modifier}}"
+                            data-dtype="Number" />
+                    </div>
+                    {{#if (or (eq @root.config.settings.systemVariant '1') (eq @root.config.settings.systemVariant '0'))}}
+                        <div class="type-bulk">
+                            <select class="selector" name="system.protection.bulk">
+                                {{#select system.protection.bulk}}
+                                    {{#each config.armorBulk as |name type|}}
+                                        <option value="{{type}}">{{localize name}}</option>
+                                    {{/each}}
+                                {{/select}}
+                            </select>
+
+                        </div>
+                    {{/if}}
+                    {{#if (eq @root.config.settings.systemVariant '2')}}
+                        {{#if @root.config.settings.useArmorDamage}}
+                            <div class="type-dmgpoints-max">
+                                <input name="system.protection.points.max" type="text"
+                                    value="{{system.protection.points.max}}" data-dtype="Number" />
+                            </div>
+                            <div class="type-dmgpoints-value">
+                                <input name="system.protection.points.value" type="text"
+                                    value="{{system.protection.points.value}}" data-dtype="Number" />
+                            </div>
+                        {{/if}}
+                    {{/if}}
+                </li>
+            </div>
+
+            {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+        </div>
+
+        {{!-- attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{> "systems/ars/templates/item/parts/item-attributes.hbs"}}
+        </div>
+
+        {{!-- ACtions Tab --}}
+        {{#if item.isIdentified}}
+            <div class="tab actions" data-group="primary" data-tab="actions">
+                {{> "systems/ars/templates/item/parts/actions-block-list.hbs"}}
+            </div>
+        {{/if}}
+
+        {{!-- Effects Tab --}}
+        {{#if item.isIdentified}}
+            <div class="tab effects flexcol" data-group="primary" data-tab="effects">
+                <div class="grouping-border">
+                    {{> "systems/ars/templates/effects/parts/active-effects.hbs"}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{!-- contents tab --}}
+        <div class="tab contents" data-group="primary" data-tab="contents">
+            <div class="contents-block">
+                {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+            </div>
+        </div>
+
+    </section>
+</form>

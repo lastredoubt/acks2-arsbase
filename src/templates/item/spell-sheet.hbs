@@ -1,0 +1,143 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <div class="item-spell">
+
+        {{> "systems/ars/templates/item/parts/item-header.hbs"}}
+
+        {{!-- Sheet Tab Navigation --}}
+        {{> "systems/ars/templates/item/parts/item-nav.hbs"}}
+
+        {{!-- Sheet Body --}}
+        <section class="sheet-body">
+
+            {{!-- Description Tab --}}
+            <div class="tab" data-group="primary" data-tab="description">
+
+                <div class="spell-details flexrow flex2">
+                    <div class="flexrow">
+                        <div class="spell-details-block">
+                            <div class="spell-left-side flexrow">
+                                <div class="">
+                                    {{!-- {{#ifeq system.type 'arcane'}} --}}
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">School</div>
+                                        <div class="spell-school spell-details-input">
+                                            <input name="system.school" type="text" value="{{system.school}}" />
+                                        </div>
+                                    </div>
+                                    {{!-- {{/ifeq}} --}}
+                                    {{#ifeq system.type 'divine'}}
+                                        <div class="flexrow">
+                                            <div class="spell-details-label">Sphere</div>
+                                            <div class="spell-sphere spell-details-input" style="flex-grow: 2;">
+                                                <input name="system.sphere" type="text" value="{{system.sphere}}" />
+                                            </div>
+                                        </div>
+                                    {{/ifeq}}
+
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Level</div>
+                                        <div class="spell-details-input">
+                                            <input name="system.level" type="number" value="{{system.level}}"
+                                                data-dtype="Number" />
+                                        </div>
+                                    </div>
+
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Range</div>
+                                        <div class="spell-details-input">
+                                            <input name="system.range" type="text" value="{{system.range}}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Duration</div>
+                                        <div class="spell-details-input">
+                                            <input name="system.durationText" type="text"
+                                                value="{{system.durationText}}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="flexrow">
+                                        <div class="spell-start">AoE</div>
+                                        <div class="spell-details-input ">
+                                            <input name="system.areaOfEffect" type="text"
+                                                value="{{system.areaOfEffect}}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spell-details-block">
+                            <div class="spell-right-side flexrow">
+                                <div>
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Type</div>
+                                        <div class="spell-details-input">
+                                            <input name="system.type" type="text" value="{{system.type}}" />
+                                        </div>
+                                    </div>
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Cast Time</div>
+                                        <div class="spell-details-input">
+                                            <input name="system.castingTime" type="text"
+                                                value="{{system.castingTime}}" />
+                                        </div>
+                                    </div>
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Save</div>
+                                        <div class="spell-details-input">
+                                            <input name="system.save" type="text" value="{{system.save}}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="flexrow">
+                                        <div class="spell-details-label">Components</div>
+                                        <div class="spell-details-input">
+                                            <div class="spell-component-grid" style="width: 40px;">
+                                                <div class="spell-component">V</div>
+                                                <div class="spell-component">S</div>
+                                                <div class="spell-component">M</div>
+                                                <input class="spell-component" name="system.components.verbal"
+                                                    type="checkbox" {{checked system.components.verbal}} />
+                                                <input class="spell-component" name="system.components.somatic"
+                                                    type="checkbox" {{checked system.components.somatic}} />
+                                                <input class="spell-component" name="system.components.material"
+                                                    type="checkbox" {{checked system.components.material}} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {{> "systems/ars/templates/item/parts/item-description-block.hbs"}}
+            </div>
+
+            {{!-- attributes Tab --}}
+            <div class="tab attributes" data-group="primary" data-tab="attributes">
+                {{> "systems/ars/templates/item/parts/item-attributes.hbs"}}
+            </div>
+
+            {{!-- ACtions Tab --}}
+            {{#if item.isIdentified}}
+                <div class="tab actions" data-group="primary" data-tab="actions">
+                    {{> "systems/ars/templates/item/parts/actions-block-list.hbs"}}
+                </div>
+            {{/if}}
+
+            {{!-- contents tab --}}
+            <div class="tab contents" data-group="primary" data-tab="contents">
+                <div class="contents-block">
+                    {{> "systems/ars/templates/item/parts/contents-block.hbs"}}
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</form>
