@@ -459,26 +459,14 @@ ARS.metalprotections = {
 
 ARS.alignmentTypes = {
     "n": "ARS.alignmentTypes.n",
-    "ng": "ARS.alignmentTypes.ng",
-    "ne": "ARS.alignmentTypes.ne",
-    "cn": "ARS.alignmentTypes.cn",
-    "cg": "ARS.alignmentTypes.cg",
-    "ce": "ARS.alignmentTypes.ce",
-    "ln": "ARS.alignmentTypes.ln",
-    "lg": "ARS.alignmentTypes.lg",
-    "le": "ARS.alignmentTypes.le"
+    "l": "ARS.alignmentTypes.l",
+    "c": "ARS.alignmentTypes.c"
 };
 
 ARS.alignmentLongNameMap = {
     "n": "neutral",
-    "ng": "neutralgood",
-    "ne": "neutralevil",
-    "cn": "chaoticevil",
-    "cg": "chaoticgood",
-    "ce": "chaotieneutral",
-    "ln": "lawfulneutral",
-    "lg": "lawfulgood",
-    "le": "lawfulevil"
+    "l": "lawful",
+    "c": "chaotic"
 };
 
 ARS.sizeTypes = {

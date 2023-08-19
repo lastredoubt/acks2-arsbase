@@ -93,7 +93,7 @@ Hooks.once('init', async function () {
 
   // default initiative
   CONFIG.Combat.initiative = {
-    formula: "1d10",
+    formula: "1d6",
     decimals: 2
   };
 
