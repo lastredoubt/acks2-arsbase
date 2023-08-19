@@ -1,25 +1,24 @@
 {
-  "id": "ars",
-  "title": "Advanced Roleplaying System (ARS)",
-  "description": "System for playing OSRIC or other classic advanced roleplay games in FoundryVTT",
-  "version": "2023.08.06",
-  "esmodules": ["module/ars.js"],
-  "styles": ["ars.css"],
+  "id": "acks2",
+  "title": "Adventurer Conqueror King System",
+  "description": "System for playing ACKS2 in FoundryVTT, based on ASR",
+  "version": "0.01a",
+  "esmodules": ["module/acks2.js"],
+  "styles": ["acks2.css"],
   "socket": true,
   "background": "systems/ars/assets/system/tileset.jpg",
-  "gridDistance": 10,
+  "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "attributes.hp",
   "secondaryTokenAttribute": "attributes.ac",
-  "initiative": "1d10",
+  "initiative": "1d6",
   "url": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system",
   "bugs": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/issues",
   "manifest": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/raw/main/src/system.json",
   "download": "https://gitlab.com/foundryprojects/systems/advanced-roleplay-system/-/raw/main/package/v2023.08.06/ars-v2023.08.06.zip",
   "license": "LICENSE.md",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11.306"
+    "minimum": "11"
   },
   "authors": [
     {
