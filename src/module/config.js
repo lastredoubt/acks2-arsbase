@@ -700,6 +700,29 @@ ARS.selectEffectKeys.sort(utilitiesManager.sortByRecordName);
 
 ARS.strengthTable = {}
 // Strength[abilityScore]={hit adj, dam adj, weight allow, max press, open doors, bend bars, light enc, moderate enc, heavy enc, severe enc, max enc}
+/*------  ACKS MODS
+This is the table for case zero, which we are using for default ACKs
+
+Strength (STR): As the name implies, this attribute measures the character's raw physical power. 
+Strength is a key attribute for assassins, barbarians, dwarven vaultguards, elven spellswords, and fighters. 
+
+Apply the attribute bonus or penalty for Strength to all
+    _attack throws_  in melee
+    _damage rolls_ in melee (hand-to-hand) combat. 
+
+Note that a penalty here will not reduce damage from a successful attack below one point, 
+unless the target is otherwise invulnerable to the attack (see the Adventures chapter for details). 
+
+Strength also aids in opening doors, smashing cates, and so on; apply 4x the bonus
+or penalty to all Dungeon Bashing throws, e.g. ± 4/8/12.
+
+attack bonus is             str.hit     (0)
+dmg bonus is                str.dmg     (1)
+dungeon_bashing maps to     str.open    (4)
+    (NOTE, double bonus/penalty)
+    (NOTE - we can actually apply this to a roll now?)
+
+*/
 ARS.strengthTable["0"] = {
     0: [
         "ARS.abilityFields.str.hit",
@@ -716,22 +739,24 @@ ARS.strengthTable["0"] = {
     ],
     1: [-3, -1, -35, 0, "1(0)", 0, 1, 36, 71, 115],
     2: [-3, -1, -35, 0, "1(0)", 0, 1, 36, 71, 115],
-    3: [-3, -1, -35, 0, "1(0)", 0, 1, 36, 71, 115],
-    4: [-2, -1, -25, 0, "1(0)", 0, 11, 46, 81, 125],
-    5: [-2, -1, -25, 0, "1(0)", 0, 11, 46, 81, 125],
-    6: [-1, 0, -15, 0, "1(0)", 0, 21, 56, 91, 135],
-    7: [-1, 0, -15, 0, "1(0)", 0, 21, 56, 91, 135],
-    8: [0, 0, 0, 0, "1-2(0)", 1, 36, 71, 106, 150],
-    9: [0, 0, 0, 0, "1-2(0)", 1, 36, 71, 106, 150],
-    10: [0, 0, 0, 0, "1-2(0)", 2, 36, 71, 106, 150],
-    11: [0, 0, 0, 0, "1-2(0)", 2, 36, 71, 106, 150],
-    12: [0, 0, 10, 0, "1-2(0)", 4, 46, 81, 116, 160],
-    13: [0, 0, 10, 0, "1-2(0)", 4, 46, 81, 116, 160],
-    14: [0, 0, 20, 0, "1-2(0)", 7, 56, 91, 126, 170],
-    15: [0, 0, 20, 0, "1-2(0)", 7, 56, 91, 126, 170],
-    16: [0, 1, 35, 0, "1-3(0)", 10, 71, 106, 141, 185],
-    17: [1, 1, 50, 0, "1-3(0)", 13, 86, 121, 156, 200],
-    18: [1, 2, 75, 0, "1-3(0)", 16, 111, 146, 181, 225],
+    //NO VALUES UNDER 3 IN ACKS
+    3: [-3, -3, -35, 0, -12, 0, 1, 36, 71, 115],
+    4: [-2, -2, -25, 0, -8, 0, 11, 46, 81, 125],
+    5: [-2, -2, -25, 0, -8, 0, 11, 46, 81, 125],
+    6: [-1, -1, -15, 0, -4, 0, 21, 56, 91, 135],
+    7: [-1, -1, -15, 0, -4, 0, 21, 56, 91, 135],
+    8: [-1, -1, 0, 0, -4, 1, 36, 71, 106, 150],
+    9: [0, 0, 0, 0, 0, 1, 36, 71, 106, 150],
+    10: [0, 0, 0, 0, 0, 2, 36, 71, 106, 150],
+    11: [0, 0, 0, 0, 0, 2, 36, 71, 106, 150],
+    12: [0, 0, 10, 0, 0, 4, 46, 81, 116, 160],
+    13: [1, 1, 10, 0, 4, 4, 46, 81, 116, 160],
+    14: [1, 1, 20, 0, 4, 7, 56, 91, 126, 170],
+    15: [1, 1, 20, 0, 4, 7, 56, 91, 126, 170],
+    16: [2, 2, 35, 0, 8, 10, 71, 106, 141, 185],
+    17: [2, 2, 50, 0, 8, 13, 86, 121, 156, 200],
+    18: [3, 3, 75, 0, 12, 16, 111, 146, 181, 225],
+    //NO VALUES OVER 18 IN ACKS
     19: [3, 6, 300, 0, "1-5(1)", 40, 336, 371, 406, 450],
     20: [3, 8, 535, 700, "17(10)", 60, 536, 580, 610, 670, 700],
     21: [4, 9, 635, 810, "17(12)", 70, 636, 680, 720, 790, 810],

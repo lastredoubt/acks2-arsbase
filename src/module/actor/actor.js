@@ -124,9 +124,18 @@ export class ARSActor extends Actor {
    * 
    * @returns index
    */
+
+  /*  ------- ACKS
+We can eliminate this as we don't have 18/% strength
+
+  */
   computedStrengthValue() {
     const str = this.system.abilities.str;
     // If the value isn't 18 or there's no percent, simply return the value
+    //added this in as I remarked out the remaining code
+    return str.value;
+    
+    /* 
     if (str.value !== 18 || str.percent <= 0) return str.value;
 
     // Map ability percent to equivalent strength value
@@ -135,7 +144,7 @@ export class ARSActor extends Actor {
     if (str.percent >= 76) return 90;
     if (str.percent >= 51) return 75;
     // Default strength value for ability.percent < 51
-    return 50;
+    return 50; */
   }
 
   // Property to get the encumbrance value
@@ -1233,6 +1242,8 @@ export class ARSActor extends Actor {
     let maxWeight = parseInt(this.system.abilities.str.allow)
     const currentStr = parseInt(this.system.abilities.str.value);
     switch (game.ars.config.settings.systemVariant) {
+
+      // ACKs we will always be case zero
       case '0':
       case '1':
 

@@ -57,7 +57,7 @@
                     "unencumbered":"(Unencumbered)"
                 },
                 "hit": "Hit Adj",
-                "open": "Open Doors",
+                "open": "Dungeon Bashing",
                 "press": "Max Press"
             },
             "wis": {
@@ -774,12 +774,12 @@
         "rollInitEachRound": "Re-roll",
         "rollInitEachRoundTT": "Enable to re-roll initiative each round, otherwise only when combat begins.",
         "systemVariant": {
-            "0": "Standard",
+            "0": "Standard - Default ACKs2",
             "1": "Variant 1",
             "2": "Variant 2"
         },
         "systemVariantLabel": "Variant",
-        "systemVariantTT": "System Variants: Standard, 1 or 2 (changes to systems such as, but not limited to, initiative, ability charts)",
+        "systemVariantTT": "System Variants: Limited to Standard Acks2 (case 0)",
         "useAutoHitFailDice": "Miss/Hit",
         "useAutoHitFailDiceTT": "On a natural dice roll of 1 mis/fail fumble, on 20 hit/crit",
         "useArmorDamage": "Armor Damage",

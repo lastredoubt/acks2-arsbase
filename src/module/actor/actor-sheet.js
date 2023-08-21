@@ -415,6 +415,7 @@ export class ARSActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /**
+   * ACKS changes
    * 
    * Populate Ability score and Save labels
    * 
@@ -423,6 +424,7 @@ export class ARSActorSheet extends ActorSheet {
   _prepareAbilityAndSaveLabels(data) {
     // console.log("actor-sheet.js _prepareAbilityAndSaveLabels", "data", data)
     // ability labels
+    console.log(' _prepareAbilityAndSaveLabels to populate ability and save labels from "data"')
     for (let [key, abil] of Object.entries(data.system.abilities)) {
       // added sanity check on off chance someone adds additional ability like oh, ".dexvalue" by mistake/on purpose ;)
       if (CONFIG.ARS.abilitiesShort?.[key]) {
